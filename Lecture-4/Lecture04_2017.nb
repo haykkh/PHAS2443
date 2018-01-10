@@ -1,0 +1,4310 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[    161006,       4302]
+NotebookOptionsPosition[    115789,       3364]
+NotebookOutlinePosition[    158905,       4239]
+CellTagsIndexPosition[    158862,       4236]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["4", "Title"],
+
+Cell["\<\
+PHAS2443: Practical Mathematics II
+Lecture 4: Time-Dependent Problems \
+\>", "Subtitle"],
+
+Cell[TextData[{
+ "In a great many problems in physics we are faced with fields which vary in \
+one or more spatial dimensions and also in time, which leads us automatically \
+into the realm of ",
+ StyleBox["partial differential equations (PDE)",
+  FontColor->RGBColor[1, 0, 0]],
+ ". We touched on time-varying problems at the end of the previous lecture, \
+but now we shall take a more systematic look at them. Our model problem will \
+be one of heat flow (though, as noted before, the equations will have the \
+same form as for a diffusion problem).\n  First, we need to derive the \
+equation: for the present we shall stick to one spatial dimension. If the \
+temperature is \[Theta](",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ ",",
+ StyleBox["t",
+  FontSlant->"Italic"],
+ "), we know from the theory of conduction that the heat flow per unit area \
+is proportional to the temperature gradient, with the constant of \
+proportionality being the thermal conductivity \[Kappa]:\n    ",
+ StyleBox["Q",
+  FontSlant->"Italic"],
+ "(",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ ",",
+ StyleBox["t",
+  FontSlant->"Italic"],
+ ") =  - \[Kappa] ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox["d\[Theta]", "dx"], TraditionalForm]]],
+ ".\n  Now consider the heat flow associated with a slice of material between \
+x and x+\[Delta]x. For simplicity, take the cross-sectional area to be unity \
+(you can readily check that if you choose any other area the area will cancel \
+out in the final equation). Any imbalance in the heat flows will result in \
+heating or cooling of the slice of material:"
+}], "Text",
+ CellChangeTimes->{{3.6324661502241173`*^9, 3.632466157804372*^9}, {
+  3.663321144948677*^9, 3.663321146574917*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{
+   RowBox[{"Graphics", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Line", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "1"}], ",", 
+            RowBox[{"-", "1"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "}"}], "]"}], ",", 
+       RowBox[{"Line", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"1", ",", 
+            RowBox[{"-", "1"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", "1"}], "}"}]}], "}"}], "]"}], ",", 
+       RowBox[{"Arrow", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "1.8`"}], ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "0.6`"}], ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+       RowBox[{"Arrow", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0.2`", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"1.4`", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+       RowBox[{"Arrow", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"-", "0.9`"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "1"}], ",", 
+            RowBox[{"-", "0.9`"}]}], "}"}]}], "}"}], "]"}], ",", 
+       RowBox[{"Arrow", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", 
+            RowBox[{"-", "0.9`"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", 
+            RowBox[{"-", "0.9`"}]}], "}"}]}], "}"}], "]"}], ",", 
+       RowBox[{"Text", "[", 
+        RowBox[{"\"\<\[Delta]x\>\"", ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", 
+           RowBox[{"-", ".7"}]}], "}"}]}], "]"}], ",", 
+       RowBox[{"Text", "[", 
+        RowBox[{
+        "\"\<Q(x)=-\!\(\*\nStyleBox[\\\"\[Kappa]\\\",\\nFontSize->14]\)\!\(\*\
+\nStyleBox[\\\"(\\\",\\nFontSize->24]\)\!\(\*FractionBox[\(d\[Theta]\), \
+\(dx\)]\)\!\(\*\nStyleBox[SubscriptBox[\n  \
+StyleBox[\\\")\\\",\\nFontSize->24], \\\"x\\\"],\\nFontSize->14]\)\>\"", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "3.8"}], ",", "0"}], "}"}]}], "]"}], ",", 
+       RowBox[{"Text", "[", 
+        RowBox[{
+        "\"\<Q(x+\[Delta]x)=-\[Kappa]\!\(\*\n\
+StyleBox[\\\"(\\\",\\nFontSize->24]\)\!\(\*FractionBox[\(d\[Theta]\), \(dx\)]\
+\)\!\(\*\nStyleBox[SubscriptBox[\n  StyleBox[\\\")\\\",\\nFontSize->24], \n  \
+RowBox[{\\\"x\\\", \\\"+\\\", \\\"\[Delta]x\\\"}]],\\nFontSize->14]\)\>\"", 
+         ",", 
+         RowBox[{"{", 
+          RowBox[{"4.4", ",", "0"}], "}"}]}], "]"}]}], "}"}], ",", 
+     RowBox[{"BaseStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"FontFamily", "\[Rule]", "\"\<Times\>\""}], ",", 
+        RowBox[{"FontSize", "\[Rule]", "12"}]}], "}"}]}]}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "6.5`"}], ",", "7.5`"}], "}"}], ",", "All"}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellOpen->False,
+ CellChangeTimes->{{3.442568742783*^9, 3.442568777049*^9}, 3.442569184576*^9, 
+   3.442569320745*^9, {3.442569350869*^9, 3.4425693834370003`*^9}, {
+   3.442569429882*^9, 3.442569502446*^9}, 3.442569541809*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{LineBox[{{-1, -1}, {-1, 1}}], LineBox[{{1, -1}, {1, 1}}], 
+   ArrowBox[{{-1.8, 0}, {-0.6, 0}}], ArrowBox[{{0.2, 0}, {1.4, 0}}], 
+   ArrowBox[{{0, -0.9}, {-1, -0.9}}], ArrowBox[{{0, -0.9}, {1, -0.9}}], 
+   InsetBox["\<\"\[Delta]x\"\>", {0, -0.7}], 
+   InsetBox["\<\"Q(x)=-\\!\\(\\*\\nStyleBox[\\\"\[Kappa]\\\",\\nFontSize->14]\
+\\)\\!\\(\\*\\nStyleBox[\\\"(\\\",\\nFontSize->24]\\)\\!\\(\\*FractionBox[\\(\
+d\[Theta]\\), \\(dx\\)]\\)\\!\\(\\*\\nStyleBox[SubscriptBox[\\n  \
+StyleBox[\\\")\\\",\\nFontSize->24], \\\"x\\\"],\\nFontSize->14]\\)\"\>", \
+{-3.8, 0}], 
+   InsetBox["\<\"Q(x+\[Delta]x)=-\[Kappa]\\!\\(\\*\\nStyleBox[\\\"(\\\",\\\
+nFontSize->24]\\)\\!\\(\\*FractionBox[\\(d\[Theta]\\), \
+\\(dx\\)]\\)\\!\\(\\*\\nStyleBox[SubscriptBox[\\n  \
+StyleBox[\\\")\\\",\\nFontSize->24], \\n  RowBox[{\\\"x\\\", \\\"+\\\", \\\"\
+\[Delta]x\\\"}]],\\nFontSize->14]\\)\"\>", {4.4, 0}]},
+  BaseStyle->{FontFamily -> "Times", FontSize -> 12},
+  PlotRange->{{-6.5, 7.5}, All}]], "Output",
+ CellChangeTimes->{
+  3.442569543894*^9},ImageCache->GraphicsData["CompressedBitmap", "\<\
+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
+v6vFlfA+sCZBsNBhONbcqhN052xg+RmsIo6Rm7scIcm5JCgBm4qnVzWKjyfh
+l/QfMdtnHvYUEoS0ShQXKylETeV62ydCrF8jiPV8vog9nudiZsnrMWTDnvUT
+cpXg8jX1JWnEofZBxIEiGLiuRM7uZUi6lI/0Ff6Qk0eyanQCe2N+kwAhNxZv
+OQphJm2HL3YXEaMPPkFGsMDvbi54adR65NXBgb2tKUnB5x3aYtLPhXQ4Rw5N
+4c8Y6ySCwMwS3UOZlBpPDrqZlB6LJO6lGxNr/35fw2b5qCtdgqOLfeE5MxF5
+KnCxT9P42iwEBppGoMezRUDPPzuochMQFhSIwEDyDiDep0wGb3/2/8CZiNxR
+AKYGoKvCpagZ8F5wAmVacF43jdXzt8+Fd/B6EiTpuHypjkjFnoiZkMtnIjFT
+nyFhWdqJtS1U4ZV5qVjiNg79u/bGWxM+xtSpn2C862vo/fYXmLOOMQ6cnKlz
+V+H1li7w+0sh4HPOxLVa/NVodLMRQez4Oj6d/yfZ1KpxMfJLuDpJmBqIpOUg
+/DtgJ4j0GsOcs6wvHF38cUmB1jzx6nAjqhesCHB9lucYZSqoAb2J5W/YQUjW
+dp7wMwrrOfbR55TI+q4bLGgN0W4oNuTX88qnq/oLK/ypO+uJ2ZvziHJzCiZm
+KHqBGF6fhadQrgWXoTx//jxfqhCakLJ/sfdojWz37t2oqKhgCdJQ8lr/1+jM
+TaW6tgA9Hbvhu2wlSyxnFpo9+O6jQejoYAGpTSu49HsHX4ZuxcVKffa4mcsJ
+GuUrpXMZDo9tSczpKBy4r+NGax8cwdftyWxWryHkosL82XKTq8OYNo8q5CUE
+wztkBwrU4Jinuv0TZnnNxpb8Oh4laqBXB8rgNf9XlNSzto3N0ehrLpWnwzHc
+UQK7Af7Ye0fFFs7oS417h0Pg6miJthOX4kylIfwnX+Wu6gfHLj64qGCTMHon
+rwnlNq58VpezHH0cumDGJQUvf7q6Uty6lo3s7GzCcXoVIftaDkrqGLBYW2SF
+qlNT8JJYiJbv/ooHPMT1KNxCixdknyKEX5lTx/NEmYV53WhNzwyOI5m6hmF7
+o27SmgDivrjBc/Ymatr4MrxOkY2YAOJPxsdhzw0Gejb5bYHCwkKmnEzL7KNH
+j2bK7AcPHuTU7F/ssNraWjg5OdEKPlxdXREeHo4//viD07TW/01OcO72o3r2
+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
+9EU3gcDsfwGgwJd9\
+\>"]]
+}, Open  ]],
+
+Cell[TextData[{
+ "The net rate at which heat is deposited in the layer is\n  (heat in - heat \
+out) = Q(x) - Q(x+\[Delta]x) = \[Kappa] ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      FractionBox["d\[Theta]", "dx"], ")"}], 
+     RowBox[{"x", "+", "\[Delta]x"}]], "-", 
+    RowBox[{"\[Kappa]", " ", 
+     SubscriptBox[
+      RowBox[{"(", 
+       FractionBox["d\[Theta]", "dx"], ")"}], "x"]}]}], TraditionalForm]]],
+ "\n  which will equal the heat capacity of the layer multiplied by the time \
+rate of change of temperature. If ",
+ StyleBox["c",
+  FontSlant->"Italic"],
+ " is the specific heat capacity and \[Rho] the mass density of the material, \
+we have -- using partial derivatives as we are now treating \[Theta] as a \
+function of both ",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ " and ",
+ StyleBox["t ",
+  FontSlant->"Italic"],
+ "\n    c\[Rho] \[Delta]x ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox[
+     RowBox[{"\[PartialD]", "\[Theta]"}], 
+     RowBox[{"\[PartialD]", "t"}]], "=", " ", 
+    RowBox[{"\[Kappa]", 
+     FormBox[
+      RowBox[{
+       SubscriptBox[
+        RowBox[{"(", 
+         FractionBox[
+          RowBox[{"\[PartialD]", "\[Theta]"}], 
+          RowBox[{"\[PartialD]", "x"}]], ")"}], 
+        RowBox[{"x", "+", "\[Delta]x"}]], "-", 
+       RowBox[{"\[Kappa]", " ", 
+        SubscriptBox[
+         RowBox[{"(", 
+          FractionBox[
+           RowBox[{"\[PartialD]", "\[Theta]"}], 
+           RowBox[{"\[PartialD]", "x"}]], ")"}], "x"]}]}],
+      TraditionalForm], " "}]}], TraditionalForm]]],
+ "\n    so that\n    ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox[
+     RowBox[{"\[PartialD]", "\[Theta]"}], 
+     RowBox[{"\[PartialD]", "t"}]], "="}], TraditionalForm]]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox["1", "c\[Rho]"], " ", 
+    FractionBox[
+     RowBox[{"\[Kappa]", 
+      FormBox[
+       RowBox[{
+        SubscriptBox[
+         RowBox[{"(", 
+          FractionBox[
+           RowBox[{"\[PartialD]", "\[Theta]"}], 
+           RowBox[{"\[PartialD]", "x"}]], ")"}], 
+         RowBox[{"x", "+", "\[Delta]x"}]], "-", 
+        RowBox[{"\[Kappa]", " ", 
+         SubscriptBox[
+          RowBox[{"(", 
+           FractionBox[
+            RowBox[{"\[PartialD]", "\[Theta]"}], 
+            RowBox[{"\[PartialD]", "x"}]], ")"}], "x"]}]}],
+       TraditionalForm]}], "\[Delta]x"]}], TraditionalForm]]],
+ "= ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox["\[Kappa]", "c\[Rho]"], " ", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["\[PartialD]", "2"], "\[Theta]"}], 
+     RowBox[{"\[PartialD]", " ", 
+      SuperscriptBox["x", "2"]}]]}], TraditionalForm]]],
+ ".\n    This, then, is our final differential equation -- first order in \
+time and second order in space.\n    \n      We now discretise the problem, \
+taking steps \[CapitalDelta]",
+ StyleBox["t ",
+  FontSlant->"Italic"],
+ "in time and \[CapitalDelta]",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ " in space, and label the space-time point (",
+ StyleBox["i",
+  FontSlant->"Italic"],
+ " \[CapitalDelta]",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ ", ",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ " \[CapitalDelta]",
+ StyleBox["t",
+  FontSlant->"Italic"],
+ ") by (",
+ StyleBox["i",
+  FontSlant->"Italic"],
+ ",",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ "). For the spatial derivative we use the approximation\n      ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    RowBox[{"(", 
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["\[PartialD]", "2"], "\[Theta]"}], 
+      RowBox[{"\[PartialD]", " ", 
+       SuperscriptBox["x", "2"]}]], ")"}], 
+    RowBox[{"i", ",", "n"}]], TraditionalForm]]],
+ "\[TildeTilde] ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{
+     SubscriptBox["\[Theta]", 
+      RowBox[{
+       RowBox[{"i", "+", "1"}], ",", "n"}]], "-", 
+     RowBox[{"2", 
+      SubscriptBox["\[Theta]", 
+       RowBox[{"i", ",", "n"}]]}], "+", 
+     SubscriptBox["\[Theta]", 
+      RowBox[{
+       RowBox[{"i", "-", "1"}], ",", "n"}]]}], 
+    SuperscriptBox["\[CapitalDelta]x", "2"]], TraditionalForm]]],
+ ". When it comes to the time derivative, however, we have to think a little: \
+should we use a forward, backward, or centred scheme? "
+}], "Text",
+ CellChangeTimes->{{3.631866107119235*^9, 3.631866134561779*^9}, {
+  3.6318662922587137`*^9, 3.631866309412758*^9}, {3.6318663627584753`*^9, 
+  3.63186639402779*^9}, {3.631869597629711*^9, 3.631869614169976*^9}, {
+  3.6324661028928432`*^9, 3.632466104146008*^9}, {3.6633131538108063`*^9, 
+  3.663313154535305*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Explicit methods", "Section"],
+
+Cell[TextData[{
+ "The simplest approach to the time evolution is to use a forward-difference \
+form for the time derivative, so that\n",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{
+     SubscriptBox["\[Theta]", 
+      RowBox[{"i", ",", 
+       RowBox[{"n", "+", "1"}]}]], "-", 
+     SubscriptBox["\[Theta]", 
+      RowBox[{"i", ",", "n"}]]}], "\[CapitalDelta]t"], TraditionalForm]]],
+ "=",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"  ", 
+    RowBox[{
+     FractionBox["\[Kappa]", "c\[Rho]"], 
+     FractionBox[
+      RowBox[{
+       SubscriptBox["\[Theta]", 
+        RowBox[{
+         RowBox[{"i", "+", "1"}], ",", "n"}]], "-", 
+       RowBox[{"2", 
+        SubscriptBox["\[Theta]", 
+         RowBox[{"i", ",", "n"}]]}], "+", 
+       SubscriptBox["\[Theta]", 
+        RowBox[{
+         RowBox[{"i", "-", "1"}], ",", "n"}]]}], 
+      SuperscriptBox["\[CapitalDelta]x", "2"]]}]}], TraditionalForm]]],
+ "\nwhich we can rewrite as\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Theta]", 
+     RowBox[{"i", ",", 
+      RowBox[{"n", "+", "1"}]}]], "=", " ", 
+    RowBox[{
+     RowBox[{"\[Zeta]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["\[Theta]", 
+         RowBox[{
+          RowBox[{"i", "+", "1"}], ",", "n"}]], "+", 
+        SubscriptBox["\[Theta]", 
+         RowBox[{
+          RowBox[{"i", "-", "1"}], ",", "n"}]]}], ")"}]}], " ", "+", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        RowBox[{"2", "\[Zeta]"}]}], ")"}], " ", 
+      SubscriptBox["\[Theta]", 
+       RowBox[{"i", ",", "n"}]]}]}]}], TraditionalForm]]],
+ ",\nwhere we have written \[Zeta] for the dimensionless parameter ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{"\[Kappa]", " ", "\[CapitalDelta]t"}], 
+    RowBox[{"c\[Rho]", " ", 
+     SuperscriptBox["\[CapitalDelta]x", "2"]}]], TraditionalForm]]],
+ ". We can see that the scheme is particularly simple, and that the value of \
+the temperature at each point is given directly by the values at that point \
+and its neighbours at the previous time step. This is called an ",
+ StyleBox["explicit",
+  FontWeight->"Bold",
+  FontColor->RGBColor[1, 0, 0]],
+ " finite difference method.\n\n  Let's implement this method for a sample \
+problem. Consider a bar, initially at a temperature of 300 K, in which the \
+temperature of one end is raised, at time zero, to 500 K whilst the other end \
+is held at 300 K. Suppose the bar is 1 m long, and we discretise it into \
+lengths \[CapitalDelta]",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ " of 0.1 m. For a realistic metal the thermal conductivity might be \
+\[Kappa]=200 W",
+ StyleBox[" ",
+  FontVariations->{"CompatibilityType"->0}],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SuperscriptBox[
+      StyleBox["m",
+       FontWeight->"Plain",
+       FontSlant->"Plain",
+       FontTracking->"Plain",
+       FontVariations->{"CompatibilityType"->0,
+       "Masked"->False,
+       "Outline"->False,
+       "RotationAngle"->0,
+       "Shadow"->False,
+       "StrikeThrough"->False,
+       "Underline"->False}], 
+      RowBox[{"-", "1"}]], " ", 
+     SuperscriptBox[
+      StyleBox["K",
+       FontWeight->"Plain",
+       FontSlant->"Plain",
+       FontTracking->"Plain",
+       FontVariations->{"CompatibilityType"->0,
+       "Masked"->False,
+       "Outline"->False,
+       "RotationAngle"->0,
+       "Shadow"->False,
+       "StrikeThrough"->False,
+       "Underline"->False}], 
+      RowBox[{"-", "1"}]]}], ","}], TraditionalForm]],
+  FontVariations->{"CompatibilityType"->0}],
+ "  the specific heat capacity c=1000 J ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["kg", 
+     RowBox[{"-", "1"}]], " ", 
+    SuperscriptBox[
+     StyleBox["K",
+      FontWeight->"Plain",
+      FontSlant->"Plain",
+      FontTracking->"Plain",
+      FontVariations->{"CompatibilityType"->0,
+      "Masked"->False,
+      "Outline"->False,
+      "RotationAngle"->0,
+      "Shadow"->False,
+      "StrikeThrough"->False,
+      "Underline"->False}], 
+     RowBox[{"-", "1"}]]}], TraditionalForm]]],
+ ", and the density \[Rho]=2500 kg ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    StyleBox["m",
+     FontWeight->"Plain",
+     FontSlant->"Plain",
+     FontTracking->"Plain",
+     FontVariations->{"CompatibilityType"->0,
+     "Masked"->False,
+     "Outline"->False,
+     "RotationAngle"->0,
+     "Shadow"->False,
+     "StrikeThrough"->False,
+     "Underline"->False}], 
+    RowBox[{"-", "3"}]], TraditionalForm]]],
+ ", giving for \[Kappa]/c\[Rho] (a quantity called the thermal diffusivity) a \
+value of  8 ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["10", 
+     RowBox[{"-", "5"}]], " ", 
+    SuperscriptBox[
+     StyleBox["m",
+      FontWeight->"Plain",
+      FontSlant->"Plain",
+      FontTracking->"Plain",
+      FontVariations->{"CompatibilityType"->0,
+      "Masked"->False,
+      "Outline"->False,
+      "RotationAngle"->0,
+      "Shadow"->False,
+      "StrikeThrough"->False,
+      "Underline"->False}], "2"], " ", 
+    RowBox[{
+     SuperscriptBox[
+      StyleBox["s",
+       FontWeight->"Plain",
+       FontSlant->"Plain",
+       FontTracking->"Plain",
+       FontVariations->{"CompatibilityType"->0,
+       "Masked"->False,
+       "Outline"->False,
+       "RotationAngle"->0,
+       "Shadow"->False,
+       "StrikeThrough"->False,
+       "Underline"->False}], 
+      RowBox[{"-", "1"}]], "."}]}], TraditionalForm]]],
+ " Now we can see what happens as we follow through the integration with \
+various time steps, \[CapitalDelta]",
+ StyleBox["t",
+  FontSlant->"Italic"],
+ ". We'll start with a time step of 50 s, and find that after 100 time steps \
+we get the expected linear variation of temperature along the bar, and at \
+intermediate times we can see the temperature variation evolving. As we vary \
+the time step, say to 75, we can see that something is going badly wrong. A \
+little experimentation shows that as soon as \[Zeta] exceeds 0.5 we have \
+problems."
+}], "Text",
+ CellChangeTimes->{{3.6318661761409893`*^9, 3.631866193425448*^9}, {
+  3.663319685636832*^9, 3.663319687268766*^9}, {3.663319740818316*^9, 
+  3.663319785241943*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"\[CapitalDelta]t", "=", "62"}], ";", 
+  RowBox[{"\[CapitalDelta]x", "=", "0.1`"}], ";", 
+  RowBox[{"\[Zeta]", "=", 
+   FractionBox[
+    RowBox[{"8.`", " ", "\[CapitalDelta]t"}], 
+    RowBox[{
+     SuperscriptBox["10", "5"], " ", 
+     SuperscriptBox["\[CapitalDelta]x", "2"]}]]}]}], "\n", 
+ RowBox[{
+  RowBox[{"\[Theta]", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{"300", ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", "1", ",", "\[CapitalDelta]x"}], "}"}]}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Theta]", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}],
+    "=", "500"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"step", "[", "\[Theta]_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "\[Theta]p", "}"}], ",", 
+    RowBox[{
+     RowBox[{"\[Theta]p", "=", 
+      RowBox[{
+       RowBox[{"\[Zeta]", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"RotateRight", "[", "\[Theta]", "]"}], "+", 
+          RowBox[{"RotateLeft", "[", "\[Theta]", "]"}]}], ")"}]}], "+", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1", "-", 
+          RowBox[{"2", " ", "\[Zeta]"}]}], ")"}], " ", "\[Theta]"}]}]}], ";", 
+     RowBox[{
+      RowBox[{
+      "\[Theta]p", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+      "=", "500"}], ";", 
+     RowBox[{
+      RowBox[{"\[Theta]p", "\[LeftDoubleBracket]", 
+       RowBox[{"-", "1"}], "\[RightDoubleBracket]"}], "=", "300"}], ";", 
+     "\[Theta]p"}]}], "]"}]}], "\n", 
+ RowBox[{
+  RowBox[{"res", "=", 
+   RowBox[{"NestList", "[", 
+    RowBox[{"step", ",", "\[Theta]", ",", "100"}], "]"}]}], ";"}], "\n", 
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"res", "\[LeftDoubleBracket]", "10", "\[RightDoubleBracket]"}], 
+   ",", 
+   RowBox[{"Joined", "\[Rule]", "True"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.663313649796892*^9, 3.663313678581061*^9}, {
+  3.694767094638405*^9, 3.694767095088223*^9}}],
+
+Cell[BoxData["0.4959999999999999`"], "Output",
+ CellChangeTimes->{
+  3.442568575066*^9, {3.663313646900817*^9, 3.6633136794745903`*^9}, 
+   3.694767096230953*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.012833333333333334`],
+      AbsoluteThickness[1.6], 
+     LineBox[{{1., 500.}, {2., 450.399543453867}, {3., 401.5382162351259}, {
+      4., 367.9866517520245}, {5., 335.91321779726934`}, {6., 
+      321.32984387896727`}, {7., 307.8020944574266}, {8., 
+      304.10611898080555`}, {9., 300.77951600321677`}, {10., 
+      300.36338339999577`}, {11., 300.}}]}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0., 290.},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0., 11.}, {300., 500.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.442568575066*^9, {3.663313646900817*^9, 3.6633136794745903`*^9}, 
+   3.6947670966561117`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Stability", "Subsection"],
+
+Cell[TextData[{
+ "We've seen, in practical terms, that we have problems if we take too long a \
+time-step, that is, if the dimensionless parameter \[Zeta]=",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{"\[Kappa]", " ", "\[CapitalDelta]t"}], 
+    RowBox[{"c\[Rho]", " ", 
+     SuperscriptBox["\[CapitalDelta]x", "2"]}]], TraditionalForm]]],
+ "is too large. We can show this with a little matrix algebra. First we \
+rewrite the finite difference equations in matrix form. If we write the list \
+of temperatures at time-step n as a vector ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    StyleBox["\[Theta]",
+     FontWeight->"Bold"], "n"], TraditionalForm]]],
+ " and collect the boundary conditions into another vector b (in principle, \
+we could have time-dependent boundary values, but we ignore this for the \
+moment), \n ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Theta]", 
+     RowBox[{"i", ",", 
+      RowBox[{"n", "+", "1"}]}]], "=", " ", 
+    RowBox[{
+     RowBox[{"\[Zeta]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["\[Theta]", 
+         RowBox[{
+          RowBox[{"i", "+", "1"}], ",", "n"}]], "+", 
+        SubscriptBox["\[Theta]", 
+         RowBox[{
+          RowBox[{"i", "-", "1"}], ",", "n"}]]}], ")"}]}], " ", "+", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        RowBox[{"2", "\[Zeta]"}]}], ")"}], " ", 
+      SubscriptBox["\[Theta]", 
+       RowBox[{"i", ",", "n"}]]}]}]}], TraditionalForm]]],
+ " becomes\n  ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    StyleBox["\[Theta]",
+     FontWeight->"Bold"], 
+    RowBox[{"n", "+", "1"}]], TraditionalForm]]],
+ "=",
+ StyleBox["M",
+  FontFamily->"Arial"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    StyleBox["\[Theta]",
+     FontWeight->"Bold"], "n"], TraditionalForm]]],
+ " + b\n  where the matrix ",
+ StyleBox["M",
+  FontFamily->"Arial"],
+ " is a tridiagonal matrix -- for example, if there are 7 points in the \
+spatial mesh \n  M=",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {
+       RowBox[{"1", "-", 
+        RowBox[{"2", "\[Zeta]"}]}], "\[Zeta]", "0", "0", "0"},
+      {"\[Zeta]", 
+       RowBox[{"1", "-", 
+        RowBox[{"2", "\[Zeta]"}]}], "\[Zeta]", "0", "0"},
+      {"0", "\[Zeta]", 
+       RowBox[{"1", "-", 
+        RowBox[{"2", "\[Zeta]"}]}], "\[Zeta]", "0"},
+      {"0", "0", "\[Zeta]", 
+       RowBox[{"1", "-", 
+        RowBox[{"2", "\[Zeta]"}]}], "\[Zeta]"},
+      {"0", "0", "0", "\[Zeta]", 
+       RowBox[{"1", "-", 
+        RowBox[{"2", "\[Zeta]"}]}]}
+     }], ")"}], TraditionalForm]]],
+ "\n  and the boundary condition vector is\n  b=",
+ Cell[BoxData[
+  RowBox[{"(", 
+   StyleBox[GridBox[{
+      {
+       RowBox[{"\[Zeta]", " ", 
+        SubscriptBox["\[Theta]", "1"]}]},
+      {"0"},
+      {"0"},
+      {"0"},
+      {
+       RowBox[{"\[Zeta]", " ", 
+        SubscriptBox["\[Theta]", "7"]}]}
+     }],
+    FontFamily->"Times New Roman"], ")"}]]],
+ ".\n  Now consider what happens if the calculation is not perfect, but \
+contains errors in the values of \[Theta] at time step n: let these errors be \
+represented by the vector ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    StyleBox["\[Epsilon]",
+     FontWeight->"Bold"], "n"], TraditionalForm]]],
+ ". These errors will propagate into the next time step:\n   ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    StyleBox["\[Theta]",
+     FontWeight->"Bold"], 
+    RowBox[{"n", "+", "1"}]], TraditionalForm]]],
+ "+ ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    StyleBox["\[Epsilon]",
+     FontWeight->"Bold"], 
+    RowBox[{"n", "+", "1"}]], TraditionalForm]]],
+ "= ",
+ StyleBox["M",
+  FontFamily->"Arial"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SubscriptBox[
+      StyleBox["\[Theta]",
+       FontWeight->"Bold"], "n"], "+", " ", 
+     FormBox[
+      SubscriptBox[
+       StyleBox["\[Epsilon]",
+        FontWeight->"Bold"], "n"],
+      TraditionalForm]}], ")"}], TraditionalForm]]],
+ " + b, or\n   ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    StyleBox["\[Epsilon]",
+     FontWeight->"Bold"], 
+    RowBox[{"n", "+", "1"}]], TraditionalForm]]],
+ "=",
+ StyleBox["M",
+  FontFamily->"Arial"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{
+     FormBox[
+      SubscriptBox[
+       StyleBox["\[Epsilon]",
+        FontWeight->"Bold"], "n"],
+      TraditionalForm], "."}]}], TraditionalForm]]],
+ "\n   This equation tells us that the propagation of errors depends only on \
+the properties of the matrix ",
+ StyleBox["M",
+  FontFamily->"Arial"],
+ ", and not on the boundary conditions, so that if we evolve the system for s \
+steps\n   ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FormBox[
+     SubscriptBox[
+      StyleBox["\[Epsilon]",
+       FontWeight->"Bold"], 
+      RowBox[{"n", "+", "s"}]],
+     TraditionalForm], "=", 
+    SuperscriptBox[
+     StyleBox["M",
+      FontFamily->"Arial",
+      FontSlant->"Plain",
+      FontVariations->{"CompatibilityType"->0}], "s"]}], TraditionalForm]]],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{
+     FormBox[
+      SubscriptBox[
+       StyleBox["\[Epsilon]",
+        FontWeight->"Bold"], "n"],
+      TraditionalForm], "."}]}], TraditionalForm]]],
+ "\n   Now comes the matrix theory. For the square matrix ",
+ StyleBox["M",
+  FontFamily->"Arial"],
+ " we can express a general vector ",
+ StyleBox["x",
+  FontWeight->"Bold"],
+ " as a sum of the eigenvectors ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    StyleBox["v",
+     FontWeight->"Bold"], "i"], TraditionalForm]]],
+ " of ",
+ StyleBox["M",
+  FontFamily->"Arial"],
+ ":\n   ",
+ StyleBox["x",
+  FontWeight->"Bold"],
+ "=",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    UnderoverscriptBox["\[Sum]", 
+     RowBox[{"i", "=", "1"}], "N"], 
+    RowBox[{
+     SubscriptBox["c", "i"], 
+     SubscriptBox["v", "i"]}]}], TraditionalForm]]],
+ "\n   where ",
+ StyleBox["N",
+  FontSlant->"Italic"],
+ " is the dimension of the matrix (two less than the number of points in the \
+mesh) and the eigenvalue property tells us that\n    ",
+ StyleBox["M",
+  FontFamily->"Arial"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox[
+     StyleBox["v",
+      FontWeight->"Bold"], "i"], "=", " ", 
+    RowBox[{
+     SubscriptBox["\[Lambda]", "i"], 
+     SubscriptBox[
+      StyleBox["v",
+       FontWeight->"Bold"], "i"]}]}], TraditionalForm]]],
+ ".\n    It follows that if we keep multiplying by ",
+ StyleBox["M",
+  FontFamily->"Arial"],
+ " we find\n     ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    StyleBox["M",
+     FontFamily->"Arial",
+     FontSlant->"Plain",
+     FontVariations->{"CompatibilityType"->0}], "s"], TraditionalForm]]],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    StyleBox["x",
+     FontWeight->"Bold"], "=", " ", 
+    RowBox[{
+     UnderoverscriptBox["\[Sum]", 
+      RowBox[{"i", "=", "1"}], "N"], 
+     RowBox[{
+      SubscriptBox["c", "i"], 
+      SubsuperscriptBox["\[Lambda]", "i", "s"], 
+      SubscriptBox[
+       StyleBox["v",
+        FontWeight->"Bold"], "i"]}]}]}], TraditionalForm]]],
+ ",\n     which will eventually be dominated by the largest eigenvalue -- and \
+there we see the problem: if the largest eigenvalue has a magnitude greater \
+than one, the resulting vector will growth without limit. In our case, any \
+error will grow without limit.\n     \n     The crucial question, then, is \
+how large the eigenvalues of the propagation matrix are. They turn out to be\n\
+     ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Lambda]", "i"], "=", 
+    RowBox[{"1", " ", "-", " ", 
+     RowBox[{"4", " ", "\[Zeta]", " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"sin", "(", 
+         FractionBox[
+          RowBox[{"i", " ", "\[Pi]"}], 
+          RowBox[{"2", 
+           RowBox[{"(", 
+            RowBox[{"N", "+", "1"}], ")"}]}]], ")"}], ")"}], "2"]}]}]}], 
+   TraditionalForm]]],
+ ",\n     and it is clear that no eigenvalue can exceed 1 (as \[Zeta] is a \
+positive quantity), but the eigenvalues are only guaranteed to be greater \
+than -1 if \n     1-4\[Zeta] \[GreaterSlantEqual] -1, or\n     \[Zeta] \
+\[LessSlantEqual] 0.5.\n     We have thus shown formally the condition we \
+previously derived empirically. This condition is commonly referred to the ",
+ StyleBox["CFL (Courant-Friedrichs\[Dash]Lewy) condition",
+  FontWeight->"Bold",
+  FontColor->RGBColor[1, 0, 0]],
+ " for diffusion equation."
+}], "Text",
+ CellChangeTimes->{{3.631862780709873*^9, 3.6318628103923817`*^9}, {
+  3.6318664852638903`*^9, 3.6318664862616673`*^9}, {3.631866520699432*^9, 
+  3.6318665251015253`*^9}, {3.631866666523192*^9, 3.631866749979609*^9}}],
+
+Cell["\<\
+Although we have not derived the eigenvalues analytically, we can at least \
+check them numerically.\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"trid", "[", "n_", "]"}], ":=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Which", "[", 
+     RowBox[{
+      RowBox[{"i", "\[Equal]", "j"}], ",", 
+      RowBox[{"1", "-", 
+       RowBox[{"2", "a"}]}], ",", 
+      RowBox[{"i", "\[Equal]", 
+       RowBox[{"j", "+", "1"}]}], ",", "a", ",", 
+      RowBox[{"i", "\[Equal]", 
+       RowBox[{"j", "-", "1"}]}], ",", "a", ",", "True", ",", "0"}], "]"}], 
+    ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "n"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"j", ",", "1", ",", "n"}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", 
+  RowBox[{"trid", "[", "8", "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ex", "=", 
+  RowBox[{"Det", "[", 
+   RowBox[{
+    RowBox[{"trid", "[", "8", "]"}], "-", 
+    RowBox[{"DiagonalMatrix", "[", 
+     RowBox[{"Table", "[", 
+      RowBox[{"\[Lambda]", ",", 
+       RowBox[{"{", "8", "}"}]}], "]"}], "]"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ex", "/.", 
+   RowBox[{"\[Lambda]", "\[Rule]", 
+    RowBox[{"1", "-", 
+     RowBox[{"4", "a", " ", 
+      RowBox[{
+       RowBox[{"Sin", "[", 
+        RowBox[{"i", " ", 
+         RowBox[{"\[Pi]", "/", 
+          RowBox[{"(", 
+           RowBox[{"2", 
+            RowBox[{"(", 
+             RowBox[{"8", "+", "1"}], ")"}]}], ")"}]}]}], "]"}], "^", 
+       "2"}]}]}]}]}], "//", "Simplify"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"%", "/.", 
+   RowBox[{"i", "\[Rule]", "3"}]}], "//", "N"}]}], "Input",
+ CellChangeTimes->{{3.663314261089655*^9, 3.663314287131542*^9}, {
+  3.663314341450799*^9, 3.663314478680787*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"1", "-", 
+       RowBox[{"2", " ", "a"}]}], "a", "0", "0", "0", "0", "0", "0"},
+     {"a", 
+      RowBox[{"1", "-", 
+       RowBox[{"2", " ", "a"}]}], "a", "0", "0", "0", "0", "0"},
+     {"0", "a", 
+      RowBox[{"1", "-", 
+       RowBox[{"2", " ", "a"}]}], "a", "0", "0", "0", "0"},
+     {"0", "0", "a", 
+      RowBox[{"1", "-", 
+       RowBox[{"2", " ", "a"}]}], "a", "0", "0", "0"},
+     {"0", "0", "0", "a", 
+      RowBox[{"1", "-", 
+       RowBox[{"2", " ", "a"}]}], "a", "0", "0"},
+     {"0", "0", "0", "0", "a", 
+      RowBox[{"1", "-", 
+       RowBox[{"2", " ", "a"}]}], "a", "0"},
+     {"0", "0", "0", "0", "0", "a", 
+      RowBox[{"1", "-", 
+       RowBox[{"2", " ", "a"}]}], "a"},
+     {"0", "0", "0", "0", "0", "0", "a", 
+      RowBox[{"1", "-", 
+       RowBox[{"2", " ", "a"}]}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.442568575309*^9, {3.663314251554031*^9, 3.6633142885664253`*^9}, {
+   3.663314346440926*^9, 3.663314479316368*^9}}],
+
+Cell[BoxData[
+ RowBox[{"1", "-", 
+  RowBox[{"16", " ", "a"}], "+", 
+  RowBox[{"105", " ", 
+   SuperscriptBox["a", "2"]}], "-", 
+  RowBox[{"364", " ", 
+   SuperscriptBox["a", "3"]}], "+", 
+  RowBox[{"715", " ", 
+   SuperscriptBox["a", "4"]}], "-", 
+  RowBox[{"792", " ", 
+   SuperscriptBox["a", "5"]}], "+", 
+  RowBox[{"462", " ", 
+   SuperscriptBox["a", "6"]}], "-", 
+  RowBox[{"120", " ", 
+   SuperscriptBox["a", "7"]}], "+", 
+  RowBox[{"9", " ", 
+   SuperscriptBox["a", "8"]}], "-", 
+  RowBox[{"8", " ", "\[Lambda]"}], "+", 
+  RowBox[{"112", " ", "a", " ", "\[Lambda]"}], "-", 
+  RowBox[{"630", " ", 
+   SuperscriptBox["a", "2"], " ", "\[Lambda]"}], "+", 
+  RowBox[{"1820", " ", 
+   SuperscriptBox["a", "3"], " ", "\[Lambda]"}], "-", 
+  RowBox[{"2860", " ", 
+   SuperscriptBox["a", "4"], " ", "\[Lambda]"}], "+", 
+  RowBox[{"2376", " ", 
+   SuperscriptBox["a", "5"], " ", "\[Lambda]"}], "-", 
+  RowBox[{"924", " ", 
+   SuperscriptBox["a", "6"], " ", "\[Lambda]"}], "+", 
+  RowBox[{"120", " ", 
+   SuperscriptBox["a", "7"], " ", "\[Lambda]"}], "+", 
+  RowBox[{"28", " ", 
+   SuperscriptBox["\[Lambda]", "2"]}], "-", 
+  RowBox[{"336", " ", "a", " ", 
+   SuperscriptBox["\[Lambda]", "2"]}], "+", 
+  RowBox[{"1575", " ", 
+   SuperscriptBox["a", "2"], " ", 
+   SuperscriptBox["\[Lambda]", "2"]}], "-", 
+  RowBox[{"3640", " ", 
+   SuperscriptBox["a", "3"], " ", 
+   SuperscriptBox["\[Lambda]", "2"]}], "+", 
+  RowBox[{"4290", " ", 
+   SuperscriptBox["a", "4"], " ", 
+   SuperscriptBox["\[Lambda]", "2"]}], "-", 
+  RowBox[{"2376", " ", 
+   SuperscriptBox["a", "5"], " ", 
+   SuperscriptBox["\[Lambda]", "2"]}], "+", 
+  RowBox[{"462", " ", 
+   SuperscriptBox["a", "6"], " ", 
+   SuperscriptBox["\[Lambda]", "2"]}], "-", 
+  RowBox[{"56", " ", 
+   SuperscriptBox["\[Lambda]", "3"]}], "+", 
+  RowBox[{"560", " ", "a", " ", 
+   SuperscriptBox["\[Lambda]", "3"]}], "-", 
+  RowBox[{"2100", " ", 
+   SuperscriptBox["a", "2"], " ", 
+   SuperscriptBox["\[Lambda]", "3"]}], "+", 
+  RowBox[{"3640", " ", 
+   SuperscriptBox["a", "3"], " ", 
+   SuperscriptBox["\[Lambda]", "3"]}], "-", 
+  RowBox[{"2860", " ", 
+   SuperscriptBox["a", "4"], " ", 
+   SuperscriptBox["\[Lambda]", "3"]}], "+", 
+  RowBox[{"792", " ", 
+   SuperscriptBox["a", "5"], " ", 
+   SuperscriptBox["\[Lambda]", "3"]}], "+", 
+  RowBox[{"70", " ", 
+   SuperscriptBox["\[Lambda]", "4"]}], "-", 
+  RowBox[{"560", " ", "a", " ", 
+   SuperscriptBox["\[Lambda]", "4"]}], "+", 
+  RowBox[{"1575", " ", 
+   SuperscriptBox["a", "2"], " ", 
+   SuperscriptBox["\[Lambda]", "4"]}], "-", 
+  RowBox[{"1820", " ", 
+   SuperscriptBox["a", "3"], " ", 
+   SuperscriptBox["\[Lambda]", "4"]}], "+", 
+  RowBox[{"715", " ", 
+   SuperscriptBox["a", "4"], " ", 
+   SuperscriptBox["\[Lambda]", "4"]}], "-", 
+  RowBox[{"56", " ", 
+   SuperscriptBox["\[Lambda]", "5"]}], "+", 
+  RowBox[{"336", " ", "a", " ", 
+   SuperscriptBox["\[Lambda]", "5"]}], "-", 
+  RowBox[{"630", " ", 
+   SuperscriptBox["a", "2"], " ", 
+   SuperscriptBox["\[Lambda]", "5"]}], "+", 
+  RowBox[{"364", " ", 
+   SuperscriptBox["a", "3"], " ", 
+   SuperscriptBox["\[Lambda]", "5"]}], "+", 
+  RowBox[{"28", " ", 
+   SuperscriptBox["\[Lambda]", "6"]}], "-", 
+  RowBox[{"112", " ", "a", " ", 
+   SuperscriptBox["\[Lambda]", "6"]}], "+", 
+  RowBox[{"105", " ", 
+   SuperscriptBox["a", "2"], " ", 
+   SuperscriptBox["\[Lambda]", "6"]}], "-", 
+  RowBox[{"8", " ", 
+   SuperscriptBox["\[Lambda]", "7"]}], "+", 
+  RowBox[{"16", " ", "a", " ", 
+   SuperscriptBox["\[Lambda]", "7"]}], "+", 
+  SuperscriptBox["\[Lambda]", "8"]}]], "Output",
+ CellChangeTimes->{
+  3.442568575309*^9, {3.663314251554031*^9, 3.6633142885664253`*^9}, {
+   3.663314346440926*^9, 3.6633144793306093`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  SuperscriptBox["a", "8"], " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "+", 
+    RowBox[{"2", " ", 
+     RowBox[{"Cos", "[", 
+      FractionBox[
+       RowBox[{"2", " ", "i", " ", "\[Pi]"}], "9"], "]"}]}], "+", 
+    RowBox[{"2", " ", 
+     RowBox[{"Cos", "[", 
+      FractionBox[
+       RowBox[{"4", " ", "i", " ", "\[Pi]"}], "9"], "]"}]}], "+", 
+    RowBox[{"2", " ", 
+     RowBox[{"Cos", "[", 
+      FractionBox[
+       RowBox[{"2", " ", "i", " ", "\[Pi]"}], "3"], "]"}]}], "+", 
+    RowBox[{"2", " ", 
+     RowBox[{"Cos", "[", 
+      FractionBox[
+       RowBox[{"8", " ", "i", " ", "\[Pi]"}], "9"], "]"}]}]}], 
+   ")"}]}]], "Output",
+ CellChangeTimes->{
+  3.442568575309*^9, {3.663314251554031*^9, 3.6633142885664253`*^9}, {
+   3.663314346440926*^9, 3.663314479475884*^9}}],
+
+Cell[BoxData["0.`"], "Output",
+ CellChangeTimes->{
+  3.442568575309*^9, {3.663314251554031*^9, 3.6633142885664253`*^9}, {
+   3.663314346440926*^9, 3.663314479478767*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Consistency", "Subsection"],
+
+Cell[TextData[{
+ "Really we should have dealt with consistency and stability in the opposite \
+order, but as our numerical experiments showed us the stability problem we \
+looked at that first. Consistency addresses a slightly different question, \
+namely, whether as the time and space intervals both tend to zero we really \
+recover the differential equation. \n\nFirst, we take an informal approach to \
+the problem. Consider the explicit scheme for the diffusion equation,\n ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Theta]", 
+     RowBox[{"i", ",", 
+      RowBox[{"n", "+", "1"}]}]], "=", " ", 
+    RowBox[{
+     RowBox[{"\[Zeta]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["\[Theta]", 
+         RowBox[{
+          RowBox[{"i", "+", "1"}], ",", "n"}]], "+", 
+        SubscriptBox["\[Theta]", 
+         RowBox[{
+          RowBox[{"i", "-", "1"}], ",", "n"}]]}], ")"}]}], " ", "+", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        RowBox[{"2", "\[Zeta]"}]}], ")"}], " ", 
+      SubscriptBox["\[Theta]", 
+       RowBox[{"i", ",", "n"}]]}]}]}], TraditionalForm]]],
+ ",\n and replace the values of \[Theta] evaluated other than at position ",
+ StyleBox["i",
+  FontSlant->"Italic"],
+ " \[CapitalDelta]",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ ", time ",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ " \[CapitalDelta]",
+ StyleBox["t",
+  FontSlant->"Italic"],
+ ", by their Taylor expansions about ",
+ StyleBox["i",
+  FontSlant->"Italic"],
+ ",",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ ":\n ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Theta]", 
+     RowBox[{"i", ",", 
+      RowBox[{"n", "+", "1"}]}]], "="}], TraditionalForm]]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Theta]", 
+      RowBox[{"i", ",", "n"}]], "+", " ", 
+     RowBox[{"\[CapitalDelta]t", " ", 
+      FractionBox[
+       RowBox[{"\[PartialD]", 
+        SubscriptBox["\[Theta]", 
+         RowBox[{"i", ",", "n"}]]}], 
+       RowBox[{"\[PartialD]", "t"}]]}], "+", 
+     RowBox[{
+      FractionBox["1", "2"], 
+      SuperscriptBox["\[CapitalDelta]t", "2"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[PartialD]", "2"], 
+        SubscriptBox["\[Theta]", 
+         RowBox[{"i", ",", "n"}]]}], 
+       RowBox[{"\[PartialD]", 
+        SuperscriptBox["t", "2"]}]]}], "+"}], "..."}], TraditionalForm]]],
+ "\n ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Theta]", 
+     RowBox[{
+      RowBox[{"i", "+", "1"}], ",", "n"}]], "="}], TraditionalForm]]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Theta]", 
+      RowBox[{"i", ",", "n"}]], "+", " ", 
+     RowBox[{"\[CapitalDelta]x", " ", 
+      FractionBox[
+       RowBox[{"\[PartialD]", 
+        SubscriptBox["\[Theta]", 
+         RowBox[{"i", ",", "n"}]]}], 
+       RowBox[{"\[PartialD]", "x"}]]}], "+", 
+     RowBox[{
+      FractionBox["1", "2"], 
+      SuperscriptBox["\[CapitalDelta]x", "2"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[PartialD]", "2"], 
+        SubscriptBox["\[Theta]", 
+         RowBox[{"i", ",", "n"}]]}], 
+       RowBox[{"\[PartialD]", 
+        SuperscriptBox["x", "2"]}]]}], "+", 
+     RowBox[{
+      FractionBox["1", 
+       RowBox[{"3", "!"}]], 
+      SuperscriptBox["\[CapitalDelta]x", "3"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[PartialD]", "3"], 
+        SubscriptBox["\[Theta]", 
+         RowBox[{"i", ",", "n"}]]}], 
+       RowBox[{"\[PartialD]", 
+        SuperscriptBox["x", "3"]}]]}], "+"}], "..."}], TraditionalForm]]],
+ "\n ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Theta]", 
+     RowBox[{
+      RowBox[{"i", "-", "1"}], ",", "n"}]], "="}], TraditionalForm]]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Theta]", 
+      RowBox[{"i", ",", "n"}]], "-", " ", 
+     RowBox[{"\[CapitalDelta]x", " ", 
+      FractionBox[
+       RowBox[{"\[PartialD]", 
+        SubscriptBox["\[Theta]", 
+         RowBox[{"i", ",", "n"}]]}], 
+       RowBox[{"\[PartialD]", "x"}]]}], "+", 
+     RowBox[{
+      FractionBox["1", "2"], 
+      SuperscriptBox["\[CapitalDelta]x", "2"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[PartialD]", "2"], 
+        SubscriptBox["\[Theta]", 
+         RowBox[{"i", ",", "n"}]]}], 
+       RowBox[{"\[PartialD]", 
+        SuperscriptBox["x", "2"]}]]}], "-", 
+     RowBox[{
+      FractionBox["1", 
+       RowBox[{"3", "!"}]], 
+      SuperscriptBox["\[CapitalDelta]x", "3"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[PartialD]", "3"], 
+        SubscriptBox["\[Theta]", 
+         RowBox[{"i", ",", "n"}]]}], 
+       RowBox[{"\[PartialD]", 
+        SuperscriptBox["x", "3"]}]]}], "+"}], "..."}], TraditionalForm]]],
+ "\n so that we obtain\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Theta]", 
+      RowBox[{"i", ",", "n"}]], "+", " ", 
+     RowBox[{"\[CapitalDelta]t", " ", 
+      FractionBox[
+       RowBox[{"\[PartialD]", 
+        SubscriptBox["\[Theta]", 
+         RowBox[{"i", ",", "n"}]]}], 
+       RowBox[{"\[PartialD]", "t"}]]}], "+", 
+     RowBox[{
+      FractionBox["1", "2"], 
+      SuperscriptBox["\[CapitalDelta]t", "2"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[PartialD]", "2"], 
+        SubscriptBox["\[Theta]", 
+         RowBox[{"i", ",", "n"}]]}], 
+       RowBox[{"\[PartialD]", 
+        SuperscriptBox["t", "2"]}]]}], "+"}], "..."}], TraditionalForm]]],
+ "=",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{
+     RowBox[{"\[Zeta]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           SubscriptBox["\[Theta]", 
+            RowBox[{"i", ",", "n"}]], "+", " ", 
+           RowBox[{"\[CapitalDelta]x", " ", 
+            FractionBox[
+             RowBox[{"\[PartialD]", 
+              SubscriptBox["\[Theta]", 
+               RowBox[{"i", ",", "n"}]]}], 
+             RowBox[{"\[PartialD]", "x"}]]}], "+", 
+           RowBox[{
+            FractionBox["1", "2"], 
+            SuperscriptBox["\[CapitalDelta]x", "2"], 
+            FractionBox[
+             RowBox[{
+              SuperscriptBox["\[PartialD]", "2"], 
+              SubscriptBox["\[Theta]", 
+               RowBox[{"i", ",", "n"}]]}], 
+             RowBox[{"\[PartialD]", 
+              SuperscriptBox["x", "2"]}]]}], "+", 
+           RowBox[{
+            FractionBox["1", 
+             RowBox[{"3", "!"}]], 
+            SuperscriptBox["\[CapitalDelta]x", "3"], 
+            FractionBox[
+             RowBox[{
+              SuperscriptBox["\[PartialD]", "3"], 
+              SubscriptBox["\[Theta]", 
+               RowBox[{"i", ",", "n"}]]}], 
+             RowBox[{"\[PartialD]", 
+              SuperscriptBox["x", "3"]}]]}], "+"}], "..."}], "+", 
+         SubscriptBox["\[Theta]", 
+          RowBox[{"i", ",", "n"}]], "-", " ", 
+         RowBox[{"\[CapitalDelta]x", " ", 
+          FractionBox[
+           RowBox[{"\[PartialD]", 
+            SubscriptBox["\[Theta]", 
+             RowBox[{"i", ",", "n"}]]}], 
+           RowBox[{"\[PartialD]", "x"}]]}], "+", 
+         RowBox[{
+          FractionBox["1", "2"], 
+          SuperscriptBox["\[CapitalDelta]x", "2"], 
+          FractionBox[
+           RowBox[{
+            SuperscriptBox["\[PartialD]", "2"], 
+            SubscriptBox["\[Theta]", 
+             RowBox[{"i", ",", "n"}]]}], 
+           RowBox[{"\[PartialD]", 
+            SuperscriptBox["x", "2"]}]]}], "-", 
+         RowBox[{
+          FractionBox["1", 
+           RowBox[{"3", "!"}]], 
+          SuperscriptBox["\[CapitalDelta]x", "3"], 
+          FractionBox[
+           RowBox[{
+            SuperscriptBox["\[PartialD]", "3"], 
+            SubscriptBox["\[Theta]", 
+             RowBox[{"i", ",", "n"}]]}], 
+           RowBox[{"\[PartialD]", 
+            SuperscriptBox["x", "3"]}]]}], "+"}], "..."}], ")"}]}], " ", "+", 
+     " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        RowBox[{"2", "\[Zeta]"}]}], ")"}], " ", 
+      SubscriptBox["\[Theta]", 
+       RowBox[{"i", ",", "n"}]]}]}]}], TraditionalForm]]],
+ ".\nRearranging,\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"\[CapitalDelta]t", " ", 
+       FractionBox[
+        RowBox[{"\[PartialD]", 
+         SubscriptBox["\[Theta]", 
+          RowBox[{"i", ",", "n"}]]}], 
+        RowBox[{"\[PartialD]", "t"}]]}], "+", 
+      RowBox[{
+       FractionBox["1", "2"], 
+       SuperscriptBox["\[CapitalDelta]t", "2"], 
+       FractionBox[
+        RowBox[{
+         SuperscriptBox["\[PartialD]", "2"], 
+         SubscriptBox["\[Theta]", 
+          RowBox[{"i", ",", "n"}]]}], 
+        RowBox[{"\[PartialD]", 
+         SuperscriptBox["t", "2"]}]]}], "+"}], "..."}]}], TraditionalForm]]],
+ "=",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{"\[Zeta]", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         SuperscriptBox["\[CapitalDelta]x", "2"], 
+         FractionBox[
+          RowBox[{
+           SuperscriptBox["\[PartialD]", "2"], 
+           SubscriptBox["\[Theta]", 
+            RowBox[{"i", ",", "n"}]]}], 
+          RowBox[{"\[PartialD]", 
+           SuperscriptBox["x", "2"]}]]}], "+", 
+        RowBox[{
+         FractionBox["2", 
+          RowBox[{"4", "!"}]], 
+         SuperscriptBox["\[CapitalDelta]x", "4"], 
+         FractionBox[
+          RowBox[{
+           SuperscriptBox["\[PartialD]", "4"], 
+           SubscriptBox["\[Theta]", 
+            RowBox[{"i", ",", "n"}]]}], 
+          RowBox[{"\[PartialD]", 
+           SuperscriptBox["x", "4"]}]]}], "+"}], "..."}], ")"}], " "}]}], 
+   TraditionalForm]]],
+ "\nor (recalling that \[Zeta]=",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{"\[Kappa]", " ", "\[CapitalDelta]t"}], 
+    RowBox[{"c\[Rho]", " ", 
+     SuperscriptBox["\[CapitalDelta]x", "2"]}]], TraditionalForm]]],
+ ")\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"  ", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"\[PartialD]", 
+       SubscriptBox["\[Theta]", 
+        RowBox[{"i", ",", "n"}]]}], 
+      RowBox[{"\[PartialD]", "t"}]], "-", 
+     RowBox[{
+      FractionBox["\[Kappa]", "c\[Rho]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[PartialD]", "2"], 
+        SubscriptBox["\[Theta]", 
+         RowBox[{"i", ",", "n"}]]}], 
+       RowBox[{"\[PartialD]", 
+        SuperscriptBox["x", "2"]}]]}]}]}], TraditionalForm]]],
+ "=",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"  ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        FractionBox[
+         RowBox[{"2", "\[Zeta]"}], 
+         RowBox[{"4", "!"}]], 
+        SuperscriptBox["\[CapitalDelta]x", "2"], 
+        FractionBox[
+         RowBox[{
+          SuperscriptBox["\[PartialD]", "4"], 
+          SubscriptBox["\[Theta]", 
+           RowBox[{"i", ",", "n"}]]}], 
+         RowBox[{"\[PartialD]", 
+          SuperscriptBox["x", "4"]}]]}], "-", 
+       RowBox[{
+        FractionBox["1", "2"], "\[CapitalDelta]t", 
+        FractionBox[
+         RowBox[{
+          SuperscriptBox["\[PartialD]", "2"], 
+          SubscriptBox["\[Theta]", 
+           RowBox[{"i", ",", "n"}]]}], 
+         RowBox[{"\[PartialD]", 
+          SuperscriptBox["t", "2"]}]]}]}], "..."}], "\[IndentingNewLine]", 
+     RowBox[{"=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         FractionBox["2", 
+          RowBox[{"4", "!"}]], 
+         FractionBox["\[Kappa]", "c\[Rho]"], "\[CapitalDelta]t", 
+         FractionBox[
+          RowBox[{
+           SuperscriptBox["\[PartialD]", "4"], 
+           SubscriptBox["\[Theta]", 
+            RowBox[{"i", ",", "n"}]]}], 
+          RowBox[{"\[PartialD]", 
+           SuperscriptBox["x", "4"]}]]}], "-", 
+        RowBox[{
+         FractionBox["1", "2"], "\[CapitalDelta]t", 
+         FractionBox[
+          RowBox[{
+           SuperscriptBox["\[PartialD]", "2"], 
+           SubscriptBox["\[Theta]", 
+            RowBox[{"i", ",", "n"}]]}], 
+          RowBox[{"\[PartialD]", 
+           SuperscriptBox["t", "2"]}]]}]}], "..."}]}]}]}], TraditionalForm]]],
+ "\n and we can see that as \[CapitalDelta]t tends to zero the right-hand \
+side tends to zero, and we recover\n ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"  ", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"\[PartialD]", 
+       SubscriptBox["\[Theta]", 
+        RowBox[{"i", ",", "n"}]]}], 
+      RowBox[{"\[PartialD]", "t"}]], "-", 
+     RowBox[{
+      FractionBox["\[Kappa]", "c\[Rho]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[PartialD]", "2"], 
+        SubscriptBox["\[Theta]", 
+         RowBox[{"i", ",", "n"}]]}], 
+       RowBox[{"\[PartialD]", 
+        SuperscriptBox["x", "2"]}]]}]}]}], TraditionalForm]]],
+ "=0,\n the original differential equation.\n \nWe can go through this more \
+formally, by considering the way in which the finite difference solution \
+converges on the exact solution. In this case we need to add one more \
+mathematical trick to our armoury. This is the fact that for any \
+single-valued function ",
+ StyleBox["f",
+  FontSlant->"Italic"],
+ "(",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ ") which is continuous in the range ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["x", "1"], "\[LessSlantEqual]", "x", "\[LessSlantEqual]", 
+    SubscriptBox["x", "2"]}], TraditionalForm]]],
+ " it is possible to write\n  ",
+ StyleBox["f",
+  FontSlant->"Italic"],
+ "(",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["x", "3"], ")"}], " ", "=", " ", 
+    RowBox[{
+     FractionBox["1", "2"], 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"f", "(", 
+        SubscriptBox["x", "1"], ")"}], "+", 
+       RowBox[{"f", "(", 
+        SubscriptBox["x", "2"], ")"}]}], ")"}]}]}], TraditionalForm]]],
+ " \n  where ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["x", "1"], "\[LessSlantEqual]", 
+    SubscriptBox["x", "3"], "\[LessSlantEqual]", 
+    RowBox[{
+     SubscriptBox["x", "2"], "."}]}], TraditionalForm]]],
+ " The best way of convincing oneself of the truth of this is probably by \
+drawing a graph.\n  \n    Now suppose that in solving the diffusion equation \
+using the explicit method,\n     ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Theta]", 
+     RowBox[{"i", ",", 
+      RowBox[{"n", "+", "1"}]}]], "=", " ", 
+    RowBox[{
+     RowBox[{"\[Zeta]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["\[Theta]", 
+         RowBox[{
+          RowBox[{"i", "+", "1"}], ",", "n"}]], "+", 
+        SubscriptBox["\[Theta]", 
+         RowBox[{
+          RowBox[{"i", "-", "1"}], ",", "n"}]]}], ")"}]}], " ", "+", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        RowBox[{"2", "\[Zeta]"}]}], ")"}], " ", 
+      SubscriptBox["\[Theta]", 
+       RowBox[{"i", ",", "n"}]]}]}]}], TraditionalForm]]],
+ ",\n     the values \[Theta] found in the numerical simulation differ \
+slightly from the exact values, \[CapitalTheta]. Write the error term as\n    \
+ ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Epsilon]", 
+     RowBox[{"i", ",", "n"}]], "="}], TraditionalForm]]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Theta]", 
+     RowBox[{"i", ",", "n"}]], "-", 
+    SubscriptBox["\[CapitalTheta]", 
+     RowBox[{"i", ",", "n"}]]}], TraditionalForm]]],
+ ".\n     Substituting, then, we find\n     ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Epsilon]", 
+     RowBox[{"i", ",", 
+      RowBox[{"n", "+", "1"}]}]], "=", " ", 
+    RowBox[{
+     RowBox[{"\[Zeta]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["\[Epsilon]", 
+         RowBox[{
+          RowBox[{"i", "+", "1"}], ",", "n"}]], "+", 
+        SubscriptBox["\[Epsilon]", 
+         RowBox[{
+          RowBox[{"i", "-", "1"}], ",", "n"}]]}], ")"}]}], " ", "+", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        RowBox[{"2", "\[Zeta]"}]}], ")"}], " ", 
+      SubscriptBox["\[Epsilon]", 
+       RowBox[{"i", ",", "n"}]]}], "+", 
+     RowBox[{"\[Zeta]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["\[CapitalTheta]", 
+         RowBox[{
+          RowBox[{"i", "+", "1"}], ",", "n"}]], "+", 
+        SubscriptBox["\[CapitalTheta]", 
+         RowBox[{
+          RowBox[{"i", "-", "1"}], ",", "n"}]]}], ")"}]}], " ", "+", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        RowBox[{"2", "\[Zeta]"}]}], ")"}], " ", 
+      SubscriptBox["\[CapitalTheta]", 
+       RowBox[{"i", ",", "n"}]]}], "-", 
+     SubscriptBox["\[CapitalTheta]", 
+      RowBox[{"i", ",", 
+       RowBox[{"n", "+", "1"}]}]]}]}], TraditionalForm]]],
+ ". \n     Now use the Taylor expansion, but keep the correct remainder term \
+(remember that this involved the properties of the function at a point \
+somewhere within the expansion interval -- you can see where this is going). \
+So, for example,\n       ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[CapitalTheta]", 
+     RowBox[{
+      RowBox[{"i", "+", "1"}], ",", "n"}]], "=", " ", 
+    RowBox[{
+     SubscriptBox["\[CapitalTheta]", 
+      RowBox[{"i", ",", "n"}]], "+", 
+     RowBox[{"\[CapitalDelta]x", 
+      FractionBox[
+       RowBox[{"\[PartialD]", 
+        SubscriptBox["\[CapitalTheta]", 
+         RowBox[{"i", ",", "n"}]]}], 
+       RowBox[{"\[PartialD]", "x"}]]}], " ", "+", 
+     RowBox[{
+      FractionBox[
+       SuperscriptBox[
+        RowBox[{"(", "\[CapitalDelta]x", ")"}], "2"], "2"], " ", 
+      SubscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{
+          SuperscriptBox["\[PartialD]", "2"], "\[CapitalTheta]"}], 
+         RowBox[{"\[PartialD]", 
+          SuperscriptBox["x", "2"]}]], ")"}], 
+       RowBox[{
+        RowBox[{"x", "=", 
+         OverscriptBox["x", "_"]}], ",", "n"}]]}]}]}], TraditionalForm]]],
+ ",\n       where ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"i", " ", "\[CapitalDelta]x"}], "\[LessSlantEqual]", 
+    OverscriptBox["x", "_"], "\[LessSlantEqual]", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"i", "+", "1"}], ")"}], 
+     RowBox[{"\[CapitalDelta]x", "."}]}]}], TraditionalForm]]],
+ "\n       We can do the same thing for the expansion towards (",
+ StyleBox["i",
+  FontSlant->"Italic"],
+ "-1)\[CapitalDelta]x and for the expansion in time, and put the results \
+together, to find\n       ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Epsilon]", 
+     RowBox[{"i", ",", 
+      RowBox[{"n", "+", "1"}]}]], "=", " ", 
+    RowBox[{
+     RowBox[{"\[Zeta]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["\[Epsilon]", 
+         RowBox[{
+          RowBox[{"i", "+", "1"}], ",", "n"}]], "+", 
+        SubscriptBox["\[Epsilon]", 
+         RowBox[{
+          RowBox[{"i", "-", "1"}], ",", "n"}]]}], ")"}]}], " ", "+", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        RowBox[{"2", "\[Zeta]"}]}], ")"}], " ", 
+      SubscriptBox["\[Epsilon]", 
+       RowBox[{"i", ",", "n"}]]}], "-", 
+     RowBox[{"\[CapitalDelta]t", " ", "[", 
+      RowBox[{
+       SubscriptBox[
+        RowBox[{"(", 
+         FractionBox[
+          RowBox[{"\[PartialD]", "\[CapitalTheta]"}], 
+          RowBox[{"\[PartialD]", "t"}]], ")"}], 
+        RowBox[{"i", ",", 
+         RowBox[{"t", "=", 
+          OverscriptBox["t", "_"]}]}]], "-", 
+       RowBox[{
+        FractionBox["\[Kappa]", 
+         RowBox[{"2", "c\[Rho]"}]], 
+        RowBox[{"{", " ", 
+         RowBox[{
+          SubscriptBox[
+           RowBox[{"(", 
+            FractionBox[
+             RowBox[{
+              SuperscriptBox["\[PartialD]", "2"], "\[CapitalTheta]"}], 
+             RowBox[{"\[PartialD]", 
+              SuperscriptBox["x", "2"]}]], ")"}], 
+           RowBox[{
+            RowBox[{"x", "=", 
+             OverscriptBox["x", "_"]}], ",", "n"}]], "+", " ", 
+          SubscriptBox[
+           RowBox[{"(", 
+            FractionBox[
+             RowBox[{
+              SuperscriptBox["\[PartialD]", "2"], "\[CapitalTheta]"}], 
+             RowBox[{"\[PartialD]", 
+              SuperscriptBox["x", "2"]}]], ")"}], 
+           RowBox[{
+            RowBox[{"x", "=", 
+             OverscriptBox[
+              RowBox[{"x", "'"}], "_"]}], ",", "n"}]]}], "}"}]}]}], "]"}]}]}],
+    TraditionalForm]]],
+ ",\n       where ",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox["x", "_"], TraditionalForm]]],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   OverscriptBox[
+    RowBox[{"x", "'"}], "_"], TraditionalForm]]],
+ " represent the error terms in the forward and backward differences in \
+space. Now at any time step, ",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ ", there will be different error terms for different space points ",
+ StyleBox["i",
+  FontSlant->"Italic"],
+ ". As long as we insist that (1-2\[Zeta]) is positive or zero, though, we \
+can work in terms of the maximum error at any step, ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["E", "n"], TraditionalForm]]],
+ ", and if we write the quantity in square brackets as ",
+ StyleBox["Q",
+  FontSlant->"Italic"],
+ " we have\n       |",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Epsilon]", 
+     RowBox[{"i", ",", 
+      RowBox[{"n", "+", "1"}]}]], "|"}], TraditionalForm]]],
+ " \[LessSlantEqual] \[Zeta](",
+ Cell[BoxData[{
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      SubscriptBox["E", "n"], "+", 
+      SubscriptBox["E", "n"]}], ")"}], " ", "+", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       RowBox[{"2", "\[Zeta]"}]}], ")"}], " ", 
+     SubscriptBox["E", "n"]}], " ", "+", " ", 
+    RowBox[{"Q", " ", 
+     StyleBox[
+      RowBox[{"\[CapitalDelta]", 
+       StyleBox["t",
+        FontSlant->"Italic"]}]]}]}], TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"=", " ", 
+    RowBox[{
+     SubscriptBox["E", "n"], " ", "+", " ", 
+     RowBox[{"Q", " ", 
+      RowBox[{
+       StyleBox[
+        RowBox[{"\[CapitalDelta]", 
+         StyleBox["t",
+          FontSlant->"Italic"]}]], "."}]}]}]}], TraditionalForm]}]],
+ "\n       So we can see that as the time-step \[CapitalDelta]",
+ StyleBox["t",
+  FontSlant->"Italic"],
+ " tends to zero the growth in the error also tends to zero -- but as the \
+error in the initial condition is assumed to be zero this means that the \
+error tends to zero. Furthermore, as both \[CapitalDelta]",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ " and \[CapitalDelta]",
+ StyleBox["t ",
+  FontSlant->"Italic"],
+ "tend to zero the term in square brackets tends to the differential equation\
+\n       ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"[", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"\[PartialD]", "\[CapitalTheta]"}], 
+      RowBox[{"\[PartialD]", "t"}]], "-", 
+     RowBox[{
+      FractionBox["\[Kappa]", "c\[Rho]"], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[PartialD]", "2"], "\[CapitalTheta]"}], 
+       RowBox[{"\[PartialD]", 
+        SuperscriptBox["x", "2"]}]]}]}], "]"}], TraditionalForm]]],
+ "\n   with all the terms evaluated at the same ",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ " and ",
+ StyleBox["t, ",
+  FontSlant->"Italic"],
+ StyleBox["which we know is zero. ",
+  FontVariations->{"CompatibilityType"->0}],
+ "\n       \n        We have proved that the difference equation we have \
+derived can be made consistent. The condition for consistency is rather \
+boring, as it is the same as the stability condition, but this is not always \
+the case. The exercises accompanying this lecture explore a more interesting \
+case.  "
+}], "Text",
+ CellChangeTimes->{{3.6318628799975986`*^9, 3.6318628843461657`*^9}, {
+  3.631862933898121*^9, 3.631862935886169*^9}, {3.631863031274913*^9, 
+  3.63186303262938*^9}, {3.6318630792760277`*^9, 3.6318630815141163`*^9}, {
+  3.631866766291334*^9, 3.631866834285057*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Symplectic Integration", "Subsection"],
+
+Cell[TextData[{
+ "If we think of a particle moving in one dimension, we can plot a \
+two-dimensional curve representing its velocity and position as a function of \
+time: a plot with velocity on one axis and position on another is called a ",
+ StyleBox["phase plot",
+  FontSlant->"Italic"],
+ ". Now the velocity determined the kinetic energy, and the position \
+determines the potential energy, so each point in phase space has a \
+particular energy. Furthermore, a particle with fixed energy must stay on a \
+constant energy surface. Symplectic integrators are designed to keep the \
+deviation of a particle's trajectory in phase space within a small distance \
+of the appropriate constant energy surface. Actually, the concept is rather \
+more general than that, and other conserved quantities (momentum, angular \
+momentum,...) may be specified, but that is the gist of it. In the exercises \
+we will explore the dynamics of particles, and show experimentally the \
+superiority of a particular family of algorithms (the Verlet algorithms) \
+which can be shown to be symplectic to various orders in the time-step."
+}], "Text",
+ CellChangeTimes->{{3.631863116525112*^9, 3.6318631360847282`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Implicit Methods", "Section"],
+
+Cell[TextData[{
+ "What we have done up to now is to treat ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{
+     SubscriptBox["\[Theta]", 
+      RowBox[{"i", ",", 
+       RowBox[{"n", "+", "1"}]}]], "-", 
+     SubscriptBox["\[Theta]", 
+      RowBox[{"i", ",", "n"}]]}], "\[CapitalDelta]t"], TraditionalForm]]],
+ " as a one-sided finite difference approximation to the time derivative at (",
+ StyleBox["i",
+  FontSlant->"Italic"],
+ ",",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ "). We could, however, think of it as a centred difference approximation to \
+the time derivative at (",
+ StyleBox["i",
+  FontSlant->"Italic"],
+ ",",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ "+",
+ Cell[BoxData[
+  FormBox[
+   FractionBox["1", "2"], TraditionalForm]]],
+ "). As we know that the centred difference is accurate to higher order than \
+the one-sided difference, we might hope to get a better difference scheme if \
+we can use this idea. That means we need the spatial derivative at the \
+half-time-step too. We will take\n",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    RowBox[{"(", 
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["\[PartialD]", "2"], "\[Theta]"}], 
+      RowBox[{"\[PartialD]", " ", 
+       SuperscriptBox["x", "2"]}]], ")"}], 
+    RowBox[{"i", ",", 
+     RowBox[{"n", "+", 
+      FractionBox["1", "2"]}]}]], TraditionalForm]]],
+ "=",
+ Cell[BoxData[
+  FormBox[
+   FractionBox["1", "2"], TraditionalForm]]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    RowBox[{"[", 
+     SubscriptBox[
+      RowBox[{"(", 
+       FractionBox[
+        RowBox[{
+         SuperscriptBox["\[PartialD]", "2"], "\[Theta]"}], 
+        RowBox[{"\[PartialD]", " ", 
+         SuperscriptBox["x", "2"]}]], ")"}], 
+      RowBox[{"i", ",", "n"}]]}]}], TraditionalForm]]],
+ "+",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[PartialD]", "2"], "\[Theta]"}], 
+       RowBox[{"\[PartialD]", " ", 
+        SuperscriptBox["x", "2"]}]], ")"}], 
+     RowBox[{"i", ",", 
+      RowBox[{"n", "+", "1"}]}]], "]"}], TraditionalForm]]],
+ ",\nwith\n",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    RowBox[{"(", 
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["\[PartialD]", "2"], "\[Theta]"}], 
+      RowBox[{"\[PartialD]", " ", 
+       SuperscriptBox["x", "2"]}]], ")"}], 
+    RowBox[{"i", ",", "n"}]], TraditionalForm]]],
+ "\[TildeTilde] ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{
+     SubscriptBox["\[Theta]", 
+      RowBox[{
+       RowBox[{"i", "+", "1"}], ",", "n"}]], "-", 
+     RowBox[{"2", 
+      SubscriptBox["\[Theta]", 
+       RowBox[{"i", ",", "n"}]]}], "+", 
+     SubscriptBox["\[Theta]", 
+      RowBox[{
+       RowBox[{"i", "-", "1"}], ",", "n"}]]}], 
+    SuperscriptBox["\[CapitalDelta]x", "2"]], TraditionalForm]]],
+ " \nand\n",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox[
+    RowBox[{"(", 
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["\[PartialD]", "2"], "\[Theta]"}], 
+      RowBox[{"\[PartialD]", " ", 
+       SuperscriptBox["x", "2"]}]], ")"}], 
+    RowBox[{"i", ",", 
+     RowBox[{"n", "+", "1"}]}]], TraditionalForm]]],
+ "\[TildeTilde] ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{
+     SubscriptBox["\[Theta]", 
+      RowBox[{
+       RowBox[{"i", "+", "1"}], ",", 
+       RowBox[{"n", "+", "1"}]}]], "-", 
+     RowBox[{"2", 
+      SubscriptBox["\[Theta]", 
+       RowBox[{"i", ",", 
+        RowBox[{"n", "+", "1"}]}]]}], "+", 
+     SubscriptBox["\[Theta]", 
+      RowBox[{
+       RowBox[{"i", "-", "1"}], ",", 
+       RowBox[{"n", "+", "1"}]}]]}], 
+    SuperscriptBox["\[CapitalDelta]x", "2"]], TraditionalForm]]],
+ ".\nInserting these approximations in the differential equation gives\n",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    RowBox[{
+     SubscriptBox["\[Theta]", 
+      RowBox[{"i", ",", 
+       RowBox[{"n", "+", "1"}]}]], "-", 
+     SubscriptBox["\[Theta]", 
+      RowBox[{"i", ",", "n"}]]}], "\[CapitalDelta]t"], TraditionalForm]]],
+ "=",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox["\[Kappa]", 
+     RowBox[{"2", "c\[Rho]"}]], "[", 
+    RowBox[{
+     FractionBox[
+      RowBox[{
+       SubscriptBox["\[Theta]", 
+        RowBox[{
+         RowBox[{"i", "+", "1"}], ",", "n"}]], "-", 
+       RowBox[{"2", 
+        SubscriptBox["\[Theta]", 
+         RowBox[{"i", ",", "n"}]]}], "+", 
+       SubscriptBox["\[Theta]", 
+        RowBox[{
+         RowBox[{"i", "-", "1"}], ",", "n"}]]}], 
+      SuperscriptBox["\[CapitalDelta]x", "2"]], "+"}]}], TraditionalForm]]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox[
+     RowBox[{
+      SubscriptBox["\[Theta]", 
+       RowBox[{
+        RowBox[{"i", "+", "1"}], ",", 
+        RowBox[{"n", "+", "1"}]}]], "-", 
+      RowBox[{"2", 
+       SubscriptBox["\[Theta]", 
+        RowBox[{"i", ",", 
+         RowBox[{"n", "+", "1"}]}]]}], "+", 
+      SubscriptBox["\[Theta]", 
+       RowBox[{
+        RowBox[{"i", "-", "1"}], ",", 
+        RowBox[{"n", "+", "1"}]}]]}], 
+     SuperscriptBox["\[CapitalDelta]x", "2"]], "]"}], TraditionalForm]]],
+ ",\nwhich can be rearranged as\n",
+ StyleBox[Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "\[Zeta]"}], " ", 
+      SubscriptBox["\[Theta]", 
+       RowBox[{
+        RowBox[{"i", "-", "1"}], ",", 
+        RowBox[{"n", "+", "1"}]}]]}], "+", " ", 
+     RowBox[{"2", 
+      RowBox[{"(", 
+       RowBox[{"1", "+", "\[Zeta]"}], ")"}], " ", 
+      SubscriptBox["\[Theta]", 
+       RowBox[{"i", ",", 
+        RowBox[{"n", "+", "1"}]}]]}], " ", "-", " ", 
+     RowBox[{"\[Zeta]", " ", 
+      SubscriptBox["\[Theta]", 
+       RowBox[{
+        RowBox[{"i", "+", "1"}], ",", 
+        RowBox[{"n", "+", "1"}]}]]}]}], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"\[Zeta]", " ", 
+      SubscriptBox["\[Theta]", 
+       RowBox[{
+        RowBox[{"i", "-", "1"}], ",", "n"}]]}], " ", "+", " ", 
+     RowBox[{"2", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", "\[Zeta]"}], ")"}], " ", 
+      SubscriptBox["\[Theta]", 
+       RowBox[{"i", ",", "n"}]]}], " ", "+", " ", 
+     RowBox[{"\[Zeta]", " ", 
+      SubscriptBox["\[Theta]", 
+       RowBox[{
+        RowBox[{"i", "+", "1"}], ",", "n"}]]}]}]}], TraditionalForm]], 
+  "NumberedEquation"], "NumberedEquation"],
+ StyleBox[",", "NumberedEquation"],
+ "\nwith \[Zeta] defined in the same way as before, as ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Zeta]", "=", 
+    FractionBox[
+     RowBox[{"\[Kappa]", " ", "\[CapitalDelta]t"}], 
+     RowBox[{"c\[Rho]", " ", 
+      SuperscriptBox["\[CapitalDelta]x", "2"]}]]}], TraditionalForm]]],
+ ".\n  The only problem with this equation is that it does not give the \
+temperature at one point at one timestep explicitly in terms of the values at \
+the point and its neighbours at the previous step -- it gives a set of \
+equations that must be solved to find the new temperatures. This is called an \
+implicit finite difference scheme: more precisely, this is the ",
+ StyleBox["Crank-Nicholson implicit method",
+  FontColor->RGBColor[1, 0, 0]],
+ ". Solving the equations is not a problem for us, though, as these linear \
+equations have just the same tridiagonal form as the one we solved with the \
+two-point boundary steady-state heat flow problem in Lecture 3.\n  \n    We \
+can rewrite the equation in a matrix form, as\n   ",
+ StyleBox[" M",
+  FontFamily->"Arial"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox[
+     StyleBox["\[Theta]",
+      FontWeight->"Bold"], 
+     RowBox[{"n", "+", "1"}]], " ", "=", " ", 
+    SubscriptBox[
+     StyleBox["c",
+      FontWeight->"Bold"], "n"]}], TraditionalForm]]],
+ ",\n    where, for our 7-spatial-element problem,\n    ",
+ StyleBox["M",
+  FontFamily->"Arial"],
+ " = ",
+ Cell[BoxData[
+  RowBox[{"(", 
+   StyleBox[GridBox[{
+      {
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "\[Zeta]"}], ")"}]}], 
+       RowBox[{"-", "\[Zeta]"}], "0", "0", "0"},
+      {
+       RowBox[{"-", "\[Zeta]"}], 
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "\[Zeta]"}], ")"}]}], 
+       RowBox[{"-", "\[Zeta]"}], "0", "0"},
+      {"0", 
+       RowBox[{"-", "\[Zeta]"}], 
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "\[Zeta]"}], ")"}]}], 
+       RowBox[{"-", "\[Zeta]"}], "0"},
+      {"0", "0", 
+       RowBox[{"-", "\[Zeta]"}], 
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "\[Zeta]"}], ")"}]}], 
+       RowBox[{"-", "\[Zeta]"}]},
+      {"0", "0", "0", 
+       RowBox[{"-", "\[Zeta]"}], 
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "\[Zeta]"}], ")"}]}]}
+     }],
+    FontFamily->"Times New Roman"], ")"}]]],
+ "\n    and the right-hand side must incorporate both the temperature at the \
+previous step and the boundary conditions. For the effect of the previous \
+step it is convenient again to adopt a matrix form, so that the set of terms\n\
+    ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox[
+     StyleBox["c",
+      FontWeight->"Bold"], "n"], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"\[Zeta]", " ", 
+      SubscriptBox["\[Theta]", 
+       RowBox[{
+        RowBox[{"i", "-", "1"}], ",", "n"}]]}], " ", "+", " ", 
+     RowBox[{"2", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", "\[Zeta]"}], ")"}], " ", 
+      SubscriptBox["\[Theta]", 
+       RowBox[{"i", ",", "n"}]]}], " ", "+", " ", 
+     RowBox[{"\[Zeta]", " ", 
+      SubscriptBox["\[Theta]", 
+       RowBox[{
+        RowBox[{"i", "+", "1"}], ",", "n"}]]}]}]}], TraditionalForm]]],
+ "\ncan be written as\n   ",
+ Cell[BoxData[
+  RowBox[{"(", 
+   StyleBox[GridBox[{
+      {
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", "\[Zeta]"}], ")"}]}], "\[Zeta]", "0", "0", "0"},
+      {"\[Zeta]", 
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", "\[Zeta]"}], ")"}]}], "\[Zeta]", "0", "0"},
+      {"0", "\[Zeta]", 
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", "\[Zeta]"}], ")"}]}], "\[Zeta]", "0"},
+      {"0", "0", "\[Zeta]", 
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", "\[Zeta]"}], ")"}]}], "\[Zeta]"},
+      {"0", "0", "0", "\[Zeta]", 
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", "\[Zeta]"}], ")"}]}]}
+     }],
+    FontFamily->"Times New Roman"], ")"}]]],
+ Cell[BoxData[
+  StyleBox[
+   RowBox[{"(", GridBox[{
+      {
+       SubscriptBox["\[Theta]", 
+        RowBox[{"2", ",", 
+         StyleBox["n",
+          FontSlant->"Italic"]}]]},
+      {
+       SubscriptBox["\[Theta]", 
+        RowBox[{"3", ",", 
+         StyleBox["n",
+          FontSlant->"Italic"]}]]},
+      {
+       SubscriptBox["\[Theta]", 
+        RowBox[{"4", ",", 
+         StyleBox["n",
+          FontSlant->"Italic"]}]]},
+      {
+       SubscriptBox["\[Theta]", 
+        RowBox[{"5", ",", 
+         StyleBox["n",
+          FontSlant->"Italic"]}]]},
+      {
+       SubscriptBox["\[Theta]", 
+        RowBox[{"6", ",", 
+         StyleBox["n",
+          FontSlant->"Italic"]}]]}
+     }], ")"}],
+   FontFamily->"Times New Roman"]]],
+ ",\n   or\n   ",
+ StyleBox[" N",
+  FontFamily->"Arial"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox[
+     StyleBox["\[Theta]",
+      FontWeight->"Bold"], "n"], " "}], TraditionalForm]]],
+ ".\n    So the equations become\n     ",
+ Cell[BoxData[
+  RowBox[{"(", 
+   StyleBox[GridBox[{
+      {
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "\[Zeta]"}], ")"}]}], 
+       RowBox[{"-", "\[Zeta]"}], "0", "0", "0"},
+      {
+       RowBox[{"-", "\[Zeta]"}], 
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "\[Zeta]"}], ")"}]}], 
+       RowBox[{"-", "\[Zeta]"}], "0", "0"},
+      {"0", 
+       RowBox[{"-", "\[Zeta]"}], 
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "\[Zeta]"}], ")"}]}], 
+       RowBox[{"-", "\[Zeta]"}], "0"},
+      {"0", "0", 
+       RowBox[{"-", "\[Zeta]"}], 
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "\[Zeta]"}], ")"}]}], 
+       RowBox[{"-", "\[Zeta]"}]},
+      {"0", "0", "0", 
+       RowBox[{"-", "\[Zeta]"}], 
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "\[Zeta]"}], ")"}]}]}
+     }],
+    FontFamily->"Times New Roman"], ")"}]]],
+ Cell[BoxData[
+  RowBox[{
+   StyleBox[
+    RowBox[{"(", GridBox[{
+       {
+        SubscriptBox["\[Theta]", 
+         RowBox[{"2", ",", 
+          RowBox[{
+           StyleBox["n",
+            FontSlant->"Italic"], "+", "1"}]}]]},
+       {
+        SubscriptBox["\[Theta]", 
+         RowBox[{"3", ",", 
+          RowBox[{
+           StyleBox["n",
+            FontSlant->"Italic"], "+", "1"}]}]]},
+       {
+        SubscriptBox["\[Theta]", 
+         RowBox[{"4", ",", 
+          RowBox[{
+           StyleBox["n",
+            FontSlant->"Italic"], "+", "1"}]}]]},
+       {
+        SubscriptBox["\[Theta]", 
+         RowBox[{"5", ",", 
+          RowBox[{
+           StyleBox["n",
+            FontSlant->"Italic"], "+", "1"}]}]]},
+       {
+        SubscriptBox["\[Theta]", 
+         RowBox[{"6", ",", 
+          RowBox[{
+           StyleBox["n",
+            FontSlant->"Italic"], "+", "1"}]}]]}
+      }], ")"}],
+    FontFamily->"Times New Roman"], "=", 
+   RowBox[{
+    StyleBox[
+     RowBox[{"(", GridBox[{
+        {
+         RowBox[{"2", "\[Zeta]", " ", 
+          SubscriptBox["\[Theta]", "1"]}]},
+        {"0"},
+        {"0"},
+        {"0"},
+        {
+         RowBox[{"2", "\[Zeta]", " ", 
+          SubscriptBox["\[Theta]", "7"]}]}
+       }], ")"}],
+     FontFamily->"Times New Roman"], "+"}]}]]],
+ " ",
+ Cell[BoxData[
+  RowBox[{"(", 
+   StyleBox[GridBox[{
+      {
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", "\[Zeta]"}], ")"}]}], "\[Zeta]", "0", "0", "0"},
+      {"\[Zeta]", 
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", "\[Zeta]"}], ")"}]}], "\[Zeta]", "0", "0"},
+      {"0", "\[Zeta]", 
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", "\[Zeta]"}], ")"}]}], "\[Zeta]", "0"},
+      {"0", "0", "\[Zeta]", 
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", "\[Zeta]"}], ")"}]}], "\[Zeta]"},
+      {"0", "0", "0", "\[Zeta]", 
+       RowBox[{"2", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", "\[Zeta]"}], ")"}]}]}
+     }],
+    FontFamily->"Times New Roman"], ")"}]]],
+ Cell[BoxData[
+  StyleBox[
+   RowBox[{"(", GridBox[{
+      {
+       SubscriptBox["\[Theta]", 
+        RowBox[{"2", ",", 
+         StyleBox["n",
+          FontSlant->"Italic"]}]]},
+      {
+       SubscriptBox["\[Theta]", 
+        RowBox[{"3", ",", 
+         StyleBox["n",
+          FontSlant->"Italic"]}]]},
+      {
+       SubscriptBox["\[Theta]", 
+        RowBox[{"4", ",", 
+         StyleBox["n",
+          FontSlant->"Italic"]}]]},
+      {
+       SubscriptBox["\[Theta]", 
+        RowBox[{"5", ",", 
+         StyleBox["n",
+          FontSlant->"Italic"]}]]},
+      {
+       SubscriptBox["\[Theta]", 
+        RowBox[{"6", ",", 
+         StyleBox["n",
+          FontSlant->"Italic"]}]]}
+     }], ")"}],
+   FontFamily->"Times New Roman"]]],
+ ".\n     (the factor of 2 in the first vector on the right-hand side comes \
+from the fact that there is a term ",
+ Cell[BoxData[
+  RowBox[{"\[Zeta]", " ", 
+   SubscriptBox["\[Theta]", 
+    RowBox[{"1", ",", 
+     RowBox[{"n", "+", "1"}]}]]}]]],
+ " and a term ",
+ Cell[BoxData[
+  RowBox[{"\[Zeta]", " ", 
+   RowBox[{
+    SubscriptBox["\[Theta]", 
+     RowBox[{"1", ",", "n"}]], "."}]}]]],
+ "\n     If we write the boundary condition vector as ",
+ StyleBox["b, ",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ StyleBox["we have\n     ",
+  FontVariations->{"CompatibilityType"->0}],
+ StyleBox["M",
+  FontFamily->"Arial"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox[
+     StyleBox["\[Theta]",
+      FontWeight->"Bold"], 
+     RowBox[{"n", "+", "1"}]], " ", "=", " ", 
+    SubscriptBox[
+     StyleBox["b",
+      FontWeight->"Bold"], "n"]}], TraditionalForm]]],
+ " + ",
+ StyleBox["N",
+  FontFamily->"Arial"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox[
+     StyleBox["\[Theta]",
+      FontWeight->"Bold"], "n"], " "}], TraditionalForm]]],
+ ",\n     with the solution\n    ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox[
+     StyleBox["\[Theta]",
+      FontWeight->"Bold"], 
+     RowBox[{"n", "+", "1"}]], " ", "=", "  ", 
+    RowBox[{
+     SuperscriptBox[
+      StyleBox["M",
+       FontFamily->"Arial",
+       FontSlant->"Plain",
+       FontVariations->{"CompatibilityType"->0}], 
+      RowBox[{"-", "1"}]], "  ", 
+     SubscriptBox[
+      StyleBox["b",
+       FontWeight->"Bold"], "n"]}]}], TraditionalForm]]],
+ " +  ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    StyleBox[
+     RowBox[{
+      StyleBox["M",
+       FontWeight->"Plain",
+       FontSlant->"Plain",
+       FontTracking->"Plain",
+       FontVariations->{"Masked"->False,
+       "Outline"->False,
+       "RotationAngle"->0,
+       "Shadow"->False,
+       "StrikeThrough"->False,
+       "Underline"->False}], " "}],
+     FontFamily->"Arial",
+     FontVariations->{"CompatibilityType"->0}], 
+    RowBox[{"-", "1"}]], TraditionalForm]]],
+ StyleBox["N",
+  FontFamily->"Arial"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox[
+     StyleBox["\[Theta]",
+      FontWeight->"Bold"], "n"], " "}], TraditionalForm]]],
+ ".\n     Although this looks as if it is going to involve a lot more \
+computation, we only have to calculate the matrices ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{" ", 
+    SuperscriptBox[
+     StyleBox["M",
+      FontFamily->"Arial",
+      FontSlant->"Plain",
+      FontVariations->{"CompatibilityType"->0}], 
+     RowBox[{"-", "1"}]], " "}], TraditionalForm]]],
+ " and  ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox[
+    StyleBox[
+     RowBox[{
+      StyleBox["M",
+       FontWeight->"Plain",
+       FontSlant->"Plain",
+       FontTracking->"Plain",
+       FontVariations->{"Masked"->False,
+       "Outline"->False,
+       "RotationAngle"->0,
+       "Shadow"->False,
+       "StrikeThrough"->False,
+       "Underline"->False}], " "}],
+     FontFamily->"Arial",
+     FontVariations->{"CompatibilityType"->0}], 
+    RowBox[{"-", "1"}]], TraditionalForm]]],
+ StyleBox["N  ",
+  FontFamily->"Arial"],
+ StyleBox["once at the beginning of the problem, as they do not change \
+thereafter (assuming that the material properties do not change with \
+temperature and we keep the time-step constant so that \[Zeta] is constant).",
+  FontFamily->"Times New Roman",
+  FontSize->14]
+}], "Text",
+ CellChangeTimes->{{3.631863306380941*^9, 3.6318633079508553`*^9}, {
+  3.631863361196643*^9, 3.631863387817705*^9}, {3.631866847998275*^9, 
+  3.631866853507614*^9}, {3.6633129718015823`*^9, 3.6633129950621653`*^9}, {
+  3.694769155877483*^9, 3.69476915836304*^9}, {3.6947692914153547`*^9, 
+  3.694769294424582*^9}}],
+
+Cell["\<\
+  Now that we have the theory in place, we'll set the problem up in \
+Mathematica code and compare it with the explicit time-stepping method. We \
+tackle the same problem as before. We will see that it is possible to take \
+much longer time-steps than before (try 50, 75, 100). If the step is made \
+very long (500 or 1000, say), some noise will appear in the solution but the \
+general trend will still be correct.\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"\[CapitalDelta]t", "=", "50"}], ";", 
+  RowBox[{"\[CapitalDelta]x", "=", "0.1`"}], ";", 
+  RowBox[{"\[Zeta]", "=", 
+   FractionBox[
+    RowBox[{"8.`", " ", "\[CapitalDelta]t"}], 
+    RowBox[{
+     SuperscriptBox["10", "5"], " ", 
+     SuperscriptBox["\[CapitalDelta]x", "2"]}]]}]}], "\n", 
+ RowBox[{
+  RowBox[{"bcl", "=", "500"}], ";", 
+  RowBox[{"bcr", "=", "300"}], ";"}], "\n", 
+ RowBox[{"nx", "=", 
+  RowBox[{
+   RowBox[{"Floor", "[", 
+    FractionBox["1.`", "\[CapitalDelta]x"], "]"}], "+", "1"}]}], "\n", 
+ RowBox[{
+  RowBox[{"\[Theta]", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{"300", ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "nx"}], "}"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"bvec", "=", 
+   RowBox[{"2", " ", "\[Zeta]", " ", 
+    RowBox[{"Append", "[", 
+     RowBox[{
+      RowBox[{"Prepend", "[", 
+       RowBox[{
+        RowBox[{"Table", "[", 
+         RowBox[{"0", ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "2", ",", 
+            RowBox[{"nx", "-", "1"}]}], "}"}]}], "]"}], ",", "bcl"}], "]"}], 
+      ",", "bcr"}], "]"}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"mmat", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Which", "[", 
+      RowBox[{
+       RowBox[{"i", "\[Equal]", "j"}], ",", 
+       RowBox[{"2", " ", 
+        RowBox[{"(", 
+         RowBox[{"1", "+", "\[Zeta]"}], ")"}]}], ",", 
+       RowBox[{"i", "\[Equal]", 
+        RowBox[{"j", "+", "1"}]}], ",", 
+       RowBox[{"-", "\[Zeta]"}], ",", 
+       RowBox[{"i", "\[Equal]", 
+        RowBox[{"j", "-", "1"}]}], ",", 
+       RowBox[{"-", "\[Zeta]"}], ",", "True", ",", "0"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "nx"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "1", ",", "nx"}], "}"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"nmat", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Which", "[", 
+      RowBox[{
+       RowBox[{"i", "\[Equal]", "j"}], ",", 
+       RowBox[{"2", " ", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", "\[Zeta]"}], ")"}]}], ",", 
+       RowBox[{"i", "\[Equal]", 
+        RowBox[{"j", "+", "1"}]}], ",", "\[Zeta]", ",", 
+       RowBox[{"i", "\[Equal]", 
+        RowBox[{"j", "-", "1"}]}], ",", "\[Zeta]", ",", "True", ",", "0"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "nx"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "1", ",", "nx"}], "}"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"mmatinv", "=", 
+   RowBox[{"MatrixPower", "[", 
+    RowBox[{"mmat", ",", 
+     RowBox[{"-", "1"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"mmatinvnmat", "=", 
+   RowBox[{"mmatinv", ".", "nmat"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"mmatinvbvec", "=", 
+   RowBox[{"mmatinv", ".", "bvec"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"step", "[", "\[Theta]_List", "]"}], ":=", 
+  RowBox[{"mmatinvbvec", "+", 
+   RowBox[{"mmatinvnmat", ".", "\[Theta]"}]}]}], "\n", 
+ RowBox[{
+  RowBox[{"res", "=", 
+   RowBox[{"NestList", "[", 
+    RowBox[{"step", ",", "\[Theta]", ",", "100"}], "]"}]}], ";"}], "\n", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"Print", "[", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{
+      RowBox[{"Append", "[", 
+       RowBox[{
+        RowBox[{"Prepend", "[", 
+         RowBox[{
+          RowBox[{
+          "res", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
+          "bcl"}], "]"}], ",", "bcr"}], "]"}], ",", 
+      RowBox[{"Joined", "\[Rule]", "True"}], ",", 
+      RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "1", ",", "10"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.694769454249908*^9, 3.69476950007835*^9}, 
+   3.694769612943975*^9}],
+
+Cell[BoxData["0.3999999999999999`"], "Output",
+ CellChangeTimes->{
+  3.4425685758900003`*^9, {3.694769440572969*^9, 3.69476950143044*^9}, 
+   3.694769613886229*^9}],
+
+Cell[BoxData["11"], "Output",
+ CellChangeTimes->{
+  3.4425685758900003`*^9, {3.694769440572969*^9, 3.69476950143044*^9}, 
+   3.694769613888825*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.012833333333333334`],
+      AbsoluteThickness[1.6], 
+     LineBox[{{1., 500.}, {2., 300.}, {3., 300.}, {4., 300.}, {5., 300.}, {6.,
+       300.}, {7., 300.}, {8., 300.}, {9., 300.}, {10., 300.}, {11., 300.}, {
+      12., 300.}, {13., 300.}}]}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0.8125, 290.},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{1., 13.}, {300., 500.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Print",
+ CellChangeTimes->{
+  3.442568576395*^9, {3.694769440993339*^9, 3.6947695016539307`*^9}, 
+   3.694769614095518*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.012833333333333334`],
+      AbsoluteThickness[1.6], 
+     LineBox[{{1., 500.}, {2., 358.3592135001262}, {3., 
+      308.51449450088325`}, {4., 301.24224800605674`}, {5., 
+      300.18124154151394`}, {6., 300.0264427845407}, {7., 
+      300.00385795027097`}, {8., 300.0005628673565}, {9., 300.000082121224}, {
+      10., 300.0000119812121}, {11., 300.00000174726006`}, {12., 
+      300.0000002496086}, {13., 300.}}]}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0.8125, 290.},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{1., 13.}, {300., 500.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Print",
+ CellChangeTimes->{
+  3.442568576395*^9, {3.694769440993339*^9, 3.6947695016539307`*^9}, 
+   3.69476961429554*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.012833333333333334`],
+      AbsoluteThickness[1.6], 
+     LineBox[{{1., 500.}, {2., 386.9967789998036}, {3., 325.3853179973641}, {
+      4., 305.5555019729128}, {5., 301.08071575245845`}, {6., 
+      300.1970928791568}, {7., 300.0345065562329}, {8., 
+      300.00587351176284`}, {9., 300.00097935254246`}, {10., 
+      300.00016074379363`}, {11., 300.0000260418926}, {12., 
+      300.0000040768541}, {13., 300.}}]}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0.8125, 290.},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{1., 13.}, {300., 500.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Print",
+ CellChangeTimes->{
+  3.442568576395*^9, {3.694769440993339*^9, 3.6947695016539307`*^9}, 
+   3.694769614489326*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.012833333333333334`],
+      AbsoluteThickness[1.6], 
+     LineBox[{{1., 500.}, {2., 403.8701665003099}, {3., 340.7155105053944}, {
+      4., 312.4301720726429}, {5., 303.16315433454514`}, {6., 
+      300.71716615972804`}, {7., 300.1505078373897}, {8., 
+      300.02990264238167`}, {9., 300.00570421521815`}, {10., 
+      300.0010545509616}, {11., 300.00019001569717`}, {12., 
+      300.0000326125932}, {13., 300.}}]}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0.8125, 290.},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{1., 13.}, {300., 500.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Print",
+ CellChangeTimes->{
+  3.442568576395*^9, {3.694769440993339*^9, 3.6947695016539307`*^9}, 
+   3.694769614686489*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.012833333333333334`],
+      AbsoluteThickness[1.6], 
+     LineBox[{{1., 500.}, {2., 415.1012326662793}, {3., 
+      353.38261865763167`}, {4., 320.13022784800665`}, {5., 
+      306.35979522054686`}, {6., 301.7515374598154}, {7., 
+      300.4358063470414}, {8., 300.1005146551955}, {9., 300.0218762595743}, {
+      10., 300.0045493228267}, {11., 300.0009111164122}, {12., 
+      300.00017128141275`}, {13., 300.}}]}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0.8125, 290.},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{1., 13.}, {300., 500.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Print",
+ CellChangeTimes->{
+  3.442568576395*^9, {3.694769440993339*^9, 3.6947695016539307`*^9}, 
+   3.694769614885055*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.012833333333333334`],
+      AbsoluteThickness[1.6], 
+     LineBox[{{1., 500.}, {2., 423.20675268568004`}, {3., 363.760952143291}, {
+      4., 327.7405958301766}, {5., 310.2901212457465}, {6., 
+      303.3291019205861}, {7., 300.96337825132156`}, {8., 
+      300.2550746825301}, {9., 300.0629179541866}, {10., 
+      300.01465824003145`}, {11., 300.00325438156676`}, {12., 
+      300.0006684774596}, {13., 300.}}]}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0.8125, 290.},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{1., 13.}, {300., 500.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Print",
+ CellChangeTimes->{
+  3.442568576395*^9, {3.694769440993339*^9, 3.6947695016539307`*^9}, 
+   3.694769615081254*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.012833333333333334`],
+      AbsoluteThickness[1.6], 
+     LineBox[{{1., 500.}, {2., 429.3914371804851}, {3., 372.358850063065}, {
+      4., 334.89030831523985`}, {5., 314.600447264047}, {6., 
+      305.37276104508754`}, {7., 301.76807479274}, {8., 
+      300.52945114701095`}, {9., 300.1465629832379}, {10., 
+      300.03800295053315`}, {11., 300.0093106146462}, {12., 
+      300.00208148979885`}, {13., 300.}}]}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0.8125, 290.},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{1., 13.}, {300., 500.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Print",
+ CellChangeTimes->{
+  3.442568576395*^9, {3.694769440993339*^9, 3.6947695016539307`*^9}, 
+   3.6947696152806587`*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.012833333333333334`],
+      AbsoluteThickness[1.6], 
+     LineBox[{{1., 500.}, {2., 434.303260429308}, {3., 379.5896614006357}, {
+      4., 341.4660736902228}, {5., 319.04263215809186`}, {6., 
+      307.76794026395197`}, {7., 302.8461444975225}, {8., 
+      300.9486346483871}, {9., 300.2913068241757}, {10., 300.0833700735854}, {
+      11., 300.0224012414383}, {12., 300.0054223322116}, {13., 300.}}]}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0.8125, 290.},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{1., 13.}, {300., 500.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Print",
+ CellChangeTimes->{
+  3.442568576395*^9, {3.694769440993339*^9, 3.6947695016539307`*^9}, 
+   3.694769615479632*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.012833333333333334`],
+      AbsoluteThickness[1.6], 
+     LineBox[{{1., 500.}, {2., 438.32289787130264`}, {3., 
+      385.7608424105596}, {4., 347.4646806811772}, {5., 
+      323.46140772828545`}, {6., 310.40326298837067`}, {7., 
+      304.1688357428392}, {8., 301.52357880659656`}, {9., 
+      300.5128606364768}, {10., 300.1605204542417}, {11., 
+      300.0469642568447}, {12., 300.0122332135597}, {13., 300.}}]}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0.8125, 290.},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{1., 13.}, {300., 500.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Print",
+ CellChangeTimes->{
+  3.442568576395*^9, {3.694769440993339*^9, 3.6947695016539307`*^9}, 
+   3.694769615681959*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.012833333333333334`],
+      AbsoluteThickness[1.6], 
+     LineBox[{{1., 500.}, {2., 441.68963844534767`}, {3., 
+      391.09793309296623`}, {4., 352.92578742125846`}, {5., 
+      327.7662866734667}, {6., 313.1860524386043}, {7., 305.6960479605267}, {
+      8., 302.2529342615972}, {9., 300.8220590715476}, {10., 
+      300.2787980689678}, {11., 300.0881411551801}, {12., 
+      300.0245435789577}, {13., 300.}}]}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0.8125, 290.},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{1., 13.}, {300., 500.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Print",
+ CellChangeTimes->{
+  3.442568576395*^9, {3.694769440993339*^9, 3.6947695016539307`*^9}, 
+   3.694769615885404*^9}]
+}, Open  ]],
+
+Cell["\<\
+Although we shall not do so here, we can use the same approaches as for the \
+explicit method to study the consistency and stability of this \
+Crank-Nicholson method. We find that not only is the method consistent, it is \
+also stable for all values of \[Zeta]. Thus it is possible to show formally \
+what we have discovered empirically.\
+\>", "Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Section"],
+
+Cell["\<\
+  Explicit finite difference schemes become unstable if one takes too long a \
+time-step. This is more than just the loss of accuracy one expects because \
+the finite difference approximation becomes a less good approximation to the \
+derivative -- the unstable scheme actually generates nonsense. An implicit \
+scheme often extends the range of stability, sometimes indefinitely.
+\
+\>", "Text",
+ CellChangeTimes->{3.442568197019*^9}],
+
+Cell[TextData[StyleBox["A.H. Harker\nPhysics and Astronomy, UCL\nSeptember \
+2005, revised January 2009\nAmended by Patrick Guio, Physics and Astronomy, \
+UCL, February 2015-2017",
+ FontColor->RGBColor[0, 1, 0]]], "Text",
+ CellChangeTimes->{{3.44256818519*^9, 3.4425681927209997`*^9}, {
+  3.631863497856329*^9, 3.631863528974202*^9}, {3.631863724486335*^9, 
+  3.6318637305454483`*^9}, {3.66391635949367*^9, 3.663916360554323*^9}, {
+  3.69476962687149*^9, 3.694769626989278*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1920, 1136},
+WindowMargins->{{-1, Automatic}, {Automatic, -1}},
+PrintingCopies->1,
+PrintingStartingPageNumber->1,
+PrintingPageRange->{Automatic, Automatic},
+PageHeaders->{{
+   Cell[
+    TextData[
+     StyleBox[
+      CounterBox["Page"], "PageNumber"]], "Header", 
+    CellMargins -> {{0, Inherited}, {Inherited, Inherited}}], None, 
+   Cell[
+    TextData[
+     StyleBox[
+      OptionValueBox["FileName"], "Header"]], "Header", 
+    CellMargins -> {{Inherited, 0}, {Inherited, Inherited}}]}, {
+   Cell[
+    TextData[
+     StyleBox[
+      OptionValueBox["FileName"], "Header"]], "Header", 
+    CellMargins -> {{0, Inherited}, {Inherited, Inherited}}], None, 
+   Cell[
+    TextData[
+     StyleBox[
+      CounterBox["Page"], "PageNumber"]], "Header", 
+    CellMargins -> {{Inherited, 0}, {Inherited, Inherited}}]}},
+PageFooters->{{None, None, None}, {None, None, None}},
+PageHeaderLines->{True, True},
+PageFooterLines->{False, False},
+PrintingOptions->{"FacingPages"->False,
+"FirstPageFace"->Right,
+"FirstPageFooter"->True,
+"FirstPageHeader"->False,
+"PaperOrientation"->"Portrait",
+"PaperSize"->{594.75, 842.25},
+"PostScriptOutputFile"->"",
+"PrintingMargins"->{{28.4881889763645, 28.4881889763645}, {54.99212598422599, \
+54.99212598422599}}},
+ShowSelection->True,
+Magnification:>1.5 Inherited,
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
+StyleDefinitions->Notebook[{
+   Cell[
+    CellGroupData[{
+      Cell["Style Definitions", "Subtitle"], 
+      Cell[
+      "Modify the definitions below to change the default appearance of all \
+cells in a given style.  Make modifications to any definition using commands \
+in the Format menu.", "Text"], 
+      Cell[
+       CellGroupData[{
+         Cell["Style Environment Names", "Subsection"], 
+         Cell[
+          StyleData[All, "Working"], 
+          CellBracketOptions -> {"Color" -> RGBColor[0, 0.2, 1]}, 
+          ScriptMinSize -> 9], 
+         Cell[
+          StyleData[All, "Printout"], PageWidth -> PaperWidth, 
+          PrivateFontOptions -> {"FontType" -> "Outline"}]}, Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell["Notebook Options", "Subsection"], 
+         Cell[
+         "  The options defined for the style below will be used at the \
+Notebook level.  ", "Text"], 
+         Cell[
+          StyleData["Notebook"], PageHeaders -> {{
+             Cell[
+              TextData[{
+                CounterBox["Page"]}], "PageNumber"], None, 
+             Cell[
+              TextData[{
+                OptionValueBox["FileName"]}], "Header"]}, {
+             Cell[
+              TextData[{
+                OptionValueBox["FileName"]}], "Header"], None, 
+             Cell[
+              TextData[{
+                CounterBox["Page"]}], "PageNumber"]}}, 
+          PrintingOptions -> {
+           "FacingPages" -> False, "FirstPageHeader" -> False, 
+            "PageHeaderMargins" -> {43, 43}, "PageSize" -> {611.688, 792}}, 
+          CellFrameLabelMargins -> 6, StyleMenuListing -> None]}, Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell[
+         "Headings", "Subsection", 
+          HyphenationOptions -> {"HyphenationMinLengths" -> {Inherited, 7}}], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["Title"], CellFrame -> {{0, 0}, {15, 0}}, 
+             CellMargins -> {{10, 0}, {0, 4}}, 
+             CellGroupingRules -> {"TitleGrouping", 0}, 
+             CellFrameMargins -> {{0, 0}, {-8, 0}}, CellFrameColor -> 
+             RGBColor[0.400015, 0, 0.600015], TextAlignment -> Right, 
+             HyphenationOptions -> {
+              "HyphenationMinLengths" -> {Inherited, 7}}, 
+             LineSpacing -> {1, 0}, CounterIncrements -> "Title", 
+             CounterAssignments -> {{"Section", 0}, {"Equation", 0}, {
+               "Figure", 0}, {"Subtitle", 0}}, FontFamily -> "Arial", 
+             FontSize -> 72, FontWeight -> "Bold", FontColor -> 
+             RGBColor[0.400015, 0, 0.600015]], 
+            Cell[
+             StyleData["Title", "Printout"], CellFrame -> {{0, 0}, {6, 0}}, 
+             CellMargins -> {{10, 0}, {0, 6}}, 
+             CellFrameMargins -> {{0, 0}, {-7, 0}}, CellFrameColor -> 
+             GrayLevel[0.6], 
+             HyphenationOptions -> {
+              "HyphenationMinLengths" -> {Inherited, 7}}, FontFamily -> 
+             "Arial", FontSize -> 38, FontWeight -> "Bold", FontColor -> 
+             GrayLevel[0]]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["Subtitle"], CellMargins -> {{10, -0.75}, {20, 7}}, 
+             CellGroupingRules -> {"TitleGrouping", 10}, 
+             HyphenationOptions -> {
+              "HyphenationMinLengths" -> {Inherited, 7}}, CounterIncrements -> 
+             "Subtitle", 
+             CounterAssignments -> {{"Section", 0}, {"Equation", 0}, {
+               "Figure", 0}, {"Subsubtitle", 0}}, FontFamily -> "Arial", 
+             FontSize -> 32, FontWeight -> "Bold", FontColor -> 
+             RGBColor[0.400015, 0, 0.600015]], 
+            Cell[
+             StyleData["Subtitle", "Printout"], 
+             CellMargins -> {{10, -0.75}, {20, 8}}, 
+             HyphenationOptions -> {
+              "HyphenationMinLengths" -> {Inherited, 7}}, FontFamily -> 
+             "Arial", FontSize -> 21, FontWeight -> "Bold", FontColor -> 
+             GrayLevel[0]]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["SmallText"], CellMargins -> {{50, 10}, {10, 2}}, 
+             TextAlignment -> Right, Hyphenation -> True, 
+             HyphenationOptions -> {
+              "HyphenationMinLengths" -> {Inherited, 7}}, 
+             LineSpacing -> {1, 2}, CounterIncrements -> "SmallText", 
+             FontFamily -> "Times", FontSize -> 12, FontSlant -> "Italic"], 
+            Cell[
+             StyleData["SmallText", "Printout"], PageWidth -> PaperWidth, 
+             CellMargins -> {{50, 2}, {10, 4}}, 
+             HyphenationOptions -> {
+              "HyphenationMinLengths" -> {Inherited, 7}}, 
+             LineSpacing -> {1, 2}, FontFamily -> "Palatino", FontSize -> 9]},
+            Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["Section"], CellFrame -> {{6, 0}, {0, 1.5}}, 
+             CellMargins -> {{10, 0}, {12, 18}}, 
+             CellElementSpacings -> {"ClosedGroupTopMargin" -> 18}, 
+             CellGroupingRules -> {"SectionGrouping", 30}, 
+             CellFrameMargins -> {{12, 0}, {2, 4}}, CellFrameColor -> 
+             RGBColor[0.530007, 0, 0], 
+             HyphenationOptions -> {
+              "HyphenationMinLengths" -> {Inherited, 7}}, CounterIncrements -> 
+             "Section", 
+             CounterAssignments -> {{"Subsection", 0}, {"Subsubsection", 0}, {
+               "NumberedEquation", 0}}, FontFamily -> "Arial", FontSize -> 22,
+              FontWeight -> "Bold", FontColor -> RGBColor[0.530007, 0, 0]], 
+            Cell[
+             StyleData["Section", "Printout"], 
+             CellFrame -> {{0, 0}, {2.5, 0}}, 
+             CellMargins -> {{10, 0}, {14, 18}}, PageBreakBelow -> False, 
+             CellFrameMargins -> {{10, 0}, {0, 7}}, CellFrameColor -> 
+             GrayLevel[0.500008], 
+             HyphenationOptions -> {
+              "HyphenationMinLengths" -> {Inherited, 7}}, FontFamily -> 
+             "Arial", FontSize -> 14, FontWeight -> "Bold", FontColor -> 
+             GrayLevel[0]]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["Subsection"], CellFrame -> {{6, 0}, {0, 1.5}}, 
+             CellMargins -> {{10, 0}, {11, 16}}, 
+             CellElementSpacings -> {"ClosedGroupTopMargin" -> 12}, 
+             CellGroupingRules -> {"SectionGrouping", 40}, 
+             CellFrameMargins -> {{12, 0}, {2, 4}}, CellFrameColor -> 
+             RGBColor[0.100008, 0.0899977, 0.659998], 
+             HyphenationOptions -> {
+              "HyphenationMinLengths" -> {Inherited, 7}}, CounterIncrements -> 
+             "Subsection", CounterAssignments -> {{"Subsubsection", 0}}, 
+             FontFamily -> "Arial", FontSize -> 18, FontWeight -> "Bold", 
+             FontColor -> RGBColor[0.100008, 0.0899977, 0.659998]], 
+            Cell[
+             StyleData["Subsection", "Printout"], CellFrame -> False, 
+             CellDingbat -> None, CellMargins -> {{10, 0}, {9, 14}}, 
+             PageBreakBelow -> False, 
+             CellFrameMargins -> {{10, 0}, {0.6875, 6}}, CellFrameColor -> 
+             GrayLevel[0.6], 
+             HyphenationOptions -> {
+              "HyphenationMinLengths" -> {Inherited, 7}}, FontFamily -> 
+             "Arial", FontSize -> 12, FontWeight -> "Bold", FontColor -> 
+             GrayLevel[0]]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["Subsubsection"], CellFrame -> {{6, 0}, {0, 1.5}}, 
+             CellDingbat -> None, CellMargins -> {{10, 0}, {6, 12}}, 
+             CellElementSpacings -> {"ClosedGroupTopMargin" -> 12}, 
+             CellGroupingRules -> {"SectionGrouping", 50}, 
+             CellFrameMargins -> {{12, 0}, {2, 4}}, CellFrameColor -> 
+             RGBColor[0.110002, 0.429999, 0.110002], 
+             HyphenationOptions -> {
+              "HyphenationMinLengths" -> {Inherited, 7}}, CounterIncrements -> 
+             "Subsubsection", FontFamily -> "Arial", FontSize -> 14, 
+             FontWeight -> "Bold", FontColor -> 
+             RGBColor[0.110002, 0.429999, 0.110002]], 
+            Cell[
+             StyleData["Subsubsection", "Printout"], CellFrame -> False, 
+             CellDingbat -> "\[FilledSquare]", 
+             CellMargins -> {{21, 0}, {6, 9}}, PageBreakBelow -> False, 
+             CellFrameColor -> GrayLevel[0.6], 
+             HyphenationOptions -> {
+              "HyphenationMinLengths" -> {Inherited, 7}}, 
+             LineSpacing -> {1, 2}, FontFamily -> "Arial", FontSize -> 10, 
+             FontWeight -> "Bold", FontColor -> GrayLevel[0]]}, Open]]}, 
+        Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell["Text", "Subsection"], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["Text"], CellMargins -> {{10, 0}, {2, 2}}, 
+             InputAutoReplacements -> {
+              "mma" -> "Mathematica", "Mma" -> "Mathematica", "MMA" -> 
+               "Mathematica", Inherited}, Hyphenation -> True, 
+             LineSpacing -> {1, 4}, ParagraphSpacing -> {0, 0}, TabSpacings -> 
+             1.8, CounterIncrements -> "Text", FontFamily -> "Times", 
+             FontSize -> 12], 
+            Cell[
+             StyleData["Text", "Printout"], PageWidth -> PaperWidth, 
+             CellMargins -> {{10, 0}, {0, 0}}, TextJustification -> 1, 
+             LineSpacing -> {1, 2}, ParagraphSpacing -> {0, 0}, TabSpacings -> 
+             1.5, FontFamily -> "Palatino", FontSize -> 10]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["EmphasizedText"], CellFrame -> {{1, 0}, {0, 0}}, 
+             CellMargins -> {{10, 0}, {3, 3}}, 
+             CellFrameMargins -> {{10, Inherited}, {Inherited, Inherited}}, 
+             CellFrameColor -> RGBColor[0.829999, 0, 0.0500038], 
+             InputAutoReplacements -> {
+              "mma" -> "Mathematica", "Mma" -> "Mathematica", "MMA" -> 
+               "Mathematica", Inherited}, Hyphenation -> True, 
+             LineSpacing -> {1, 4}, ParagraphIndent -> -14, TabSpacings -> 
+             1.8, CounterIncrements -> "Text", FontFamily -> "Times", 
+             FontSize -> 12, Background -> RGBColor[1, 0.994522, 0.910979]], 
+            Cell[
+             StyleData["EmphasizedText", "Printout"], PageWidth -> PaperWidth,
+              CellFrame -> False, CellMargins -> {{23, 0}, {5, 5}}, 
+             CellFrameMargins -> {{7, Inherited}, {Inherited, Inherited}}, 
+             CellFrameColor -> GrayLevel[0], TextJustification -> 1, 
+             LineSpacing -> {1, 2}, ParagraphIndent -> -8.6875, TabSpacings -> 
+             1.5, FontFamily -> "Palatino", FontSize -> 10, Background -> 
+             GrayLevel[1]]}, Open]]}, Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell["Input/Output", "Subsection"], 
+         Cell[
+         "The cells in this section define styles used for input and output \
+to the kernel.  Be careful when modifying, renaming, or removing these \
+styles, because the front end associates special meanings with these style \
+names.    ", "Text"], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["Input"], CellMargins -> {{40, 10}, {4, 4}}, 
+             Evaluatable -> True, CellGroupingRules -> "InputGrouping", 
+             PageBreakWithin -> False, GroupPageBreakWithin -> False, 
+             CellLabelAutoDelete -> True, 
+             CellLabelMargins -> {{11, Inherited}, {Inherited, Inherited}}, 
+             DefaultFormatType -> DefaultInputFormatType, 
+             HyphenationOptions -> {
+              "HyphenationCharacter" -> "\[Continuation]"}, 
+             LineSpacing -> {1, 4}, AutoItalicWords -> {}, LanguageCategory -> 
+             "Mathematica", FormatType -> StandardForm, ShowStringCharacters -> 
+             True, NumberMarks -> True, 
+             LinebreakAdjustments -> {0.85, 2, 10, 0, 1}, CounterIncrements -> 
+             "Input", FontFamily -> "Courier", FontSize -> 12, FontWeight -> 
+             "Bold"], 
+            Cell[
+             StyleData["Input", "Printout"], CellMargins -> {{28, 0}, {4, 4}},
+              LineSpacing -> {1, 1}, 
+             LinebreakAdjustments -> {0.85, 2, 10, 1, 1}, FontSize -> 9]}, 
+           Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["Output"], CellMargins -> {{40, 10}, {4, 2}}, 
+             CellEditDuplicate -> True, CellGroupingRules -> "OutputGrouping",
+              PageBreakWithin -> False, GroupPageBreakWithin -> False, 
+             GeneratedCell -> True, CellAutoOverwrite -> True, 
+             CellLabelAutoDelete -> True, 
+             CellLabelMargins -> {{11, Inherited}, {Inherited, Inherited}}, 
+             DefaultFormatType -> DefaultOutputFormatType, 
+             HyphenationOptions -> {
+              "HyphenationCharacter" -> "\[Continuation]"}, 
+             AutoItalicWords -> {}, LanguageCategory -> None, FormatType -> 
+             StandardForm, CounterIncrements -> "Output", FontFamily -> 
+             "Courier", FontSize -> 12], 
+            Cell[
+             StyleData["Output", "Printout"], 
+             CellMargins -> {{28, 0}, {4, 0}}, FontSize -> 9]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["Message"], CellMargins -> {{28, Inherited}, {2, 1}}, 
+             CellGroupingRules -> "OutputGrouping", PageBreakWithin -> False, 
+             GroupPageBreakWithin -> False, GeneratedCell -> True, 
+             CellAutoOverwrite -> True, ShowCellLabel -> False, 
+             DefaultFormatType -> DefaultOutputFormatType, 
+             HyphenationOptions -> {
+              "HyphenationCharacter" -> "\[Continuation]"}, 
+             AutoItalicWords -> {}, LanguageCategory -> None, FormatType -> 
+             InputForm, CounterIncrements -> "Message", StyleMenuListing -> 
+             None, FontFamily -> "Courier", FontSize -> 12, FontColor -> 
+             RGBColor[0, 0.2, 1]], 
+            Cell[
+             StyleData["Message", "Printout"], ShowCellBracket -> False, 
+             FontSize -> 9]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["Print"], CellMargins -> {{40, Inherited}, {2, 1}}, 
+             CellGroupingRules -> "OutputGrouping", PageBreakWithin -> False, 
+             GroupPageBreakWithin -> False, GeneratedCell -> True, 
+             CellAutoOverwrite -> True, ShowCellLabel -> False, 
+             DefaultFormatType -> DefaultOutputFormatType, 
+             HyphenationOptions -> {
+              "HyphenationCharacter" -> "\[Continuation]"}, 
+             AutoItalicWords -> {}, FormatType -> InputForm, 
+             CounterIncrements -> "Print", StyleMenuListing -> None, 
+             FontFamily -> "Courier", FontSize -> 12], 
+            Cell[
+             StyleData["Print", "Printout"], ShowCellBracket -> False, 
+             CellMargins -> {{28, Inherited}, {2, 1}}, FontSize -> 9]}, 
+           Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["Graphics"], 
+             CellMargins -> {{25, Inherited}, {Inherited, Inherited}}, 
+             CellGroupingRules -> "GraphicsGrouping", CellHorizontalScrolling -> 
+             True, PageBreakWithin -> False, GeneratedCell -> True, 
+             CellAutoOverwrite -> True, ShowCellLabel -> False, 
+             DefaultFormatType -> DefaultOutputFormatType, FormatType -> 
+             InputForm, CounterIncrements -> "Graphics", 
+             ImageMargins -> {{43, Inherited}, {Inherited, 0}}, 
+             StyleMenuListing -> None], 
+            Cell[
+             StyleData["Graphics", "Printout"], 
+             CellMargins -> {{12, Inherited}, {Inherited, Inherited}}, 
+             ImageSize -> {110, 110}, 
+             ImageMargins -> {{18, Inherited}, {Inherited, 0}}, FontSize -> 
+             9]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["CellLabel"], StyleMenuListing -> None, FontFamily -> 
+             "Arial", FontSize -> 12, FontColor -> RGBColor[0, 0.2, 1]], 
+            Cell[
+             StyleData["CellLabel", "Printout"], FontSize -> 9, FontSlant -> 
+             "Oblique", FontColor -> GrayLevel[0]]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["FrameLabel"], LanguageCategory -> None, 
+             StyleMenuListing -> None, FontFamily -> "Times", FontSize -> 12], 
+            Cell[
+             StyleData["FrameLabel", "Printout"], FontFamily -> "Palatino", 
+             FontSize -> 10, FontColor -> GrayLevel[0]]}, Open]]}, Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell["Variations for Headings", "Subsection"], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["SectionZeroAbove"], CellFrame -> {{6, 0}, {0, 1.5}}, 
+             CellMargins -> {{10, 0}, {12, 18}}, 
+             CellElementSpacings -> {"ClosedGroupTopMargin" -> 18}, 
+             CellGroupingRules -> {"SectionGrouping", 30}, 
+             CellFrameMargins -> {{12, 0}, {2, 4}}, CellFrameColor -> 
+             RGBColor[0.530007, 0, 0], CounterIncrements -> "Section", 
+             CounterAssignments -> {{"Subsection", 0}, {"Subsubsection", 0}, {
+               "NumberedEquation", 0}}, FontFamily -> "Arial", FontSize -> 22,
+              FontWeight -> "Bold", FontColor -> RGBColor[0.530007, 0, 0]], 
+            Cell[
+             StyleData["SectionZeroAbove", "Printout"], 
+             CellFrame -> {{0, 0}, {2.5, 0}}, 
+             CellMargins -> {{10, 0}, {14, 0}}, PageBreakBelow -> False, 
+             CellFrameMargins -> {{10, 0}, {0, 7}}, CellFrameColor -> 
+             GrayLevel[0.500008], FontFamily -> "Arial", FontSize -> 14, 
+             FontWeight -> "Bold", FontColor -> GrayLevel[0]]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["SubsectionZeroAbove"], 
+             CellFrame -> {{6, 0}, {0, 1.5}}, 
+             CellMargins -> {{10, 0}, {11, 5}}, 
+             CellElementSpacings -> {"ClosedGroupTopMargin" -> 12}, 
+             CellGroupingRules -> {"SectionGrouping", 40}, 
+             CellFrameMargins -> {{12, 0}, {2, 4}}, CellFrameColor -> 
+             RGBColor[0.100008, 0.0899977, 0.659998], CounterIncrements -> 
+             "Subsection", CounterAssignments -> {{"Subsubsection", 0}}, 
+             FontFamily -> "Arial", FontSize -> 18, FontWeight -> "Bold", 
+             FontColor -> RGBColor[0.100008, 0.0899977, 0.659998]], 
+            Cell[
+             StyleData["SubsectionZeroAbove", "Printout"], CellFrame -> False,
+              CellDingbat -> None, CellMargins -> {{10, 0}, {9, 0}}, 
+             PageBreakBelow -> False, 
+             CellFrameMargins -> {{10, 0}, {0.6875, 6}}, CellFrameColor -> 
+             GrayLevel[0.6], FontFamily -> "Arial", FontSize -> 12, 
+             FontWeight -> "Bold", FontColor -> GrayLevel[0]]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["SubsectionZeroBelow"], 
+             CellFrame -> {{6, 0}, {0, 1.5}}, 
+             CellMargins -> {{10, 0}, {8, 16}}, 
+             CellElementSpacings -> {"ClosedGroupTopMargin" -> 12}, 
+             CellGroupingRules -> {"SectionGrouping", 40}, 
+             CellFrameMargins -> {{12, 0}, {2, 4}}, CellFrameColor -> 
+             RGBColor[0.100008, 0.0899977, 0.659998], CounterIncrements -> 
+             "Subsection", CounterAssignments -> {{"Subsubsection", 0}}, 
+             FontFamily -> "Arial", FontSize -> 18, FontWeight -> "Bold", 
+             FontColor -> RGBColor[0.100008, 0.0899977, 0.659998]], 
+            Cell[
+             StyleData["SubsectionZeroBelow", "Printout"], CellFrame -> False,
+              CellDingbat -> None, CellMargins -> {{10, 0}, {4, 14}}, 
+             PageBreakBelow -> False, 
+             CellFrameMargins -> {{10, 0}, {0.6875, 6}}, CellFrameColor -> 
+             GrayLevel[0.6], FontFamily -> "Arial", FontSize -> 12, 
+             FontWeight -> "Bold", FontColor -> GrayLevel[0]]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["SubsectionZeroAboveBelow"], 
+             CellFrame -> {{6, 0}, {0, 1.5}}, 
+             CellMargins -> {{10, 0}, {8, 5}}, 
+             CellElementSpacings -> {"ClosedGroupTopMargin" -> 12}, 
+             CellGroupingRules -> {"SectionGrouping", 40}, 
+             CellFrameMargins -> {{12, 0}, {2, 4}}, CellFrameColor -> 
+             RGBColor[0.100008, 0.0899977, 0.659998], CounterIncrements -> 
+             "Subsection", CounterAssignments -> {{"Subsubsection", 0}}, 
+             FontFamily -> "Arial", FontSize -> 18, FontWeight -> "Bold", 
+             FontColor -> RGBColor[0.100008, 0.0899977, 0.659998]], 
+            Cell[
+             StyleData["SubsectionZeroAboveBelow", "Printout"], CellFrame -> 
+             False, CellDingbat -> None, CellMargins -> {{10, 0}, {4, 0}}, 
+             PageBreakBelow -> False, 
+             CellFrameMargins -> {{10, 0}, {0.6875, 6}}, CellFrameColor -> 
+             GrayLevel[0.6], FontFamily -> "Arial", FontSize -> 12, 
+             FontWeight -> "Bold", FontColor -> GrayLevel[0]]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["SubsubsectionZeroAbove"], 
+             CellFrame -> {{6, 0}, {0, 1.5}}, CellDingbat -> None, 
+             CellMargins -> {{10, 0}, {6, 7}}, 
+             CellElementSpacings -> {"ClosedGroupTopMargin" -> 12}, 
+             CellGroupingRules -> {"SectionGrouping", 50}, 
+             CellFrameMargins -> {{12, 0}, {2, 4}}, CellFrameColor -> 
+             RGBColor[0.110002, 0.429999, 0.110002], CounterIncrements -> 
+             "Subsubsection", FontFamily -> "Arial", FontSize -> 14, 
+             FontWeight -> "Bold", FontColor -> 
+             RGBColor[0.110002, 0.429999, 0.110002]], 
+            Cell[
+             StyleData["SubsubsectionZeroAbove", "Printout"], CellFrame -> 
+             False, CellDingbat -> "\[FilledSquare]", 
+             CellMargins -> {{21, 0}, {6, 0}}, PageBreakBelow -> False, 
+             CellFrameColor -> GrayLevel[0.6], LineSpacing -> {1, 2}, 
+             FontFamily -> "Arial", FontSize -> 10, FontWeight -> "Bold", 
+             FontColor -> GrayLevel[0]]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["SubsubsectionZeroBelow"], 
+             CellFrame -> {{6, 0}, {0, 1.5}}, CellDingbat -> None, 
+             CellMargins -> {{10, 0}, {3, 12}}, 
+             CellElementSpacings -> {"ClosedGroupTopMargin" -> 12}, 
+             CellGroupingRules -> {"SectionGrouping", 50}, 
+             CellFrameMargins -> {{12, 0}, {2, 4}}, CellFrameColor -> 
+             RGBColor[0.110002, 0.429999, 0.110002], CounterIncrements -> 
+             "Subsubsection", FontFamily -> "Arial", FontSize -> 14, 
+             FontWeight -> "Bold", FontColor -> 
+             RGBColor[0.110002, 0.429999, 0.110002]], 
+            Cell[
+             StyleData["SubsubsectionZeroBelow", "Printout"], CellFrame -> 
+             False, CellDingbat -> "\[FilledSquare]", 
+             CellMargins -> {{21, 0}, {1, 9}}, PageBreakBelow -> False, 
+             CellFrameColor -> GrayLevel[0.6], LineSpacing -> {1, 2}, 
+             FontFamily -> "Arial", FontSize -> 10, FontWeight -> "Bold", 
+             FontColor -> GrayLevel[0]]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["SubsubsectionZeroAboveBelow"], 
+             CellFrame -> {{6, 0}, {0, 1.5}}, CellDingbat -> None, 
+             CellMargins -> {{10, 0}, {3, 7}}, 
+             CellElementSpacings -> {"ClosedGroupTopMargin" -> 12}, 
+             CellGroupingRules -> {"SectionGrouping", 50}, 
+             CellFrameMargins -> {{12, 0}, {2, 4}}, CellFrameColor -> 
+             RGBColor[0.110002, 0.429999, 0.110002], CounterIncrements -> 
+             "Subsubsection", FontFamily -> "Arial", FontSize -> 14, 
+             FontWeight -> "Bold", FontColor -> 
+             RGBColor[0.110002, 0.429999, 0.110002]], 
+            Cell[
+             StyleData["SubsubsectionZeroAboveBelow", "Printout"], CellFrame -> 
+             False, CellDingbat -> "\[FilledSquare]", 
+             CellMargins -> {{21, 0}, {1, 0}}, PageBreakBelow -> False, 
+             CellFrameColor -> GrayLevel[0.6], LineSpacing -> {1, 2}, 
+             FontFamily -> "Arial", FontSize -> 10, FontWeight -> "Bold", 
+             FontColor -> GrayLevel[0]]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["ChapterContents1"], CellMargins -> {{10, 0}, {2, 2}}, 
+             Hyphenation -> True, LineSpacing -> {1, 4}, FontFamily -> 
+             "Times", FontSize -> 13, FontWeight -> "Bold"], 
+            Cell[
+             StyleData["ChapterContents1", "Printout"], PageWidth -> 
+             PaperWidth, CellMargins -> {{10, 0}, {1, 1}}, FontFamily -> 
+             "Palatino", FontSize -> 9]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["ChapterContents2"], CellMargins -> {{32, 0}, {2, 2}}, 
+             Hyphenation -> True, LineSpacing -> {1, 5}, 
+             ParagraphIndent -> -30, FontFamily -> "Times", FontSize -> 12], 
+            Cell[
+             StyleData["ChapterContents2", "Printout"], PageWidth -> 
+             PaperWidth, CellMargins -> {{27, 0}, {0, 0}}, 
+             LineSpacing -> {1, 4}, FontFamily -> "Palatino", FontSize -> 9]},
+            Open]]}, Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell["Variations for Text", "Subsection"], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["BoxedText"], CellFrame -> {{1.5, 0.25}, {0.25, 1.5}}, 
+             CellMargins -> {{10, 0}, {6, 6}}, 
+             CellFrameMargins -> {{14, 4}, {6, 6}}, CellFrameColor -> 
+             RGBColor[0, 0.00999466, 0.549996], Hyphenation -> True, 
+             LineSpacing -> {1, 4}, ParagraphSpacing -> {0, 0}, 
+             ParagraphIndent -> -15, TabSpacings -> 1.5, CounterIncrements -> 
+             "Text", FontFamily -> "Times", FontSize -> 12, Background -> 
+             RGBColor[0.930007, 0.949996, 1]], 
+            Cell[
+             StyleData["BoxedText", "Printout"], PageWidth -> PaperWidth, 
+             CellFrame -> True, CellMargins -> {{10, 0}, {6, 6}}, 
+             PageBreakWithin -> True, CellFrameMargins -> {{9, 3}, {4, 4}}, 
+             CellFrameColor -> GrayLevel[0], LineSpacing -> {1, 2}, 
+             ParagraphSpacing -> {0, 0}, ParagraphIndent -> -8.875, 
+             TabSpacings -> 1.1, FontFamily -> "Palatino", FontSize -> 10, 
+             Background -> GrayLevel[1]]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["BoxedProgram"], 
+             CellFrame -> {{1.5, 0.25}, {0.25, 1.5}}, 
+             CellMargins -> {{10, 0}, {6, 6}}, Evaluatable -> True, 
+             CellFrameMargins -> {{14, 6}, {6, 6}}, CellFrameColor -> 
+             RGBColor[0, 0.349996, 0], DefaultFormatType -> 
+             DefaultInputFormatType, Hyphenation -> True, 
+             LineSpacing -> {1, 2}, FormatType -> StandardForm, 
+             ShowStringCharacters -> True, CounterIncrements -> "Text", 
+             FontFamily -> "Courier", FontSize -> 12, FontWeight -> "Bold", 
+             Background -> RGBColor[0.919997, 0.940002, 0.910079]], 
+            Cell[
+             StyleData["BoxedProgram", "Printout"], PageWidth -> PaperWidth, 
+             CellFrame -> True, CellFrameMargins -> {{12, 3}, {4, 4}}, 
+             CellFrameColor -> GrayLevel[0], ParagraphIndent -> -15, 
+             FontFamily -> "Courier", FontSize -> 9, Background -> 
+             GrayLevel[1]]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["Files"], FontFamily -> "Arial", FontSize -> 11, 
+             FontWeight -> "Bold"], 
+            Cell[
+             StyleData["Files", "Printout"], PageWidth -> PaperWidth, 
+             FontFamily -> "Arial", FontSize -> 9]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["DisplayEquation"], CellMargins -> {{10, 0}, {7, 7}}, 
+             InputAutoReplacements -> {
+              "mma" -> "Mathematica", "Mma" -> "Mathematica", "MMA" -> 
+               "Mathematica", Inherited}, Hyphenation -> True, 
+             LineSpacing -> {1, 4}, TabSpacings -> 1.8, CounterIncrements -> 
+             "Text", FontFamily -> "Times", FontSize -> 12], 
+            Cell[
+             StyleData["DisplayEquation", "Printout"], PageWidth -> 
+             PaperWidth, CellMargins -> {{10, 0}, {4, 4}}, CellFrameColor -> 
+             GrayLevel[0], TextJustification -> 1, LineSpacing -> {1, 2}, 
+             TabSpacings -> 1.5, FontFamily -> "Palatino", FontSize -> 10, 
+             Background -> GrayLevel[1]]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["NumberedEquation"], CellMargins -> {{10, 0}, {7, 7}}, 
+             CellFrameLabels -> {{None, 
+                Cell[
+                 TextData[{"(", 
+                   CounterBox["NumberedEquation"], ")"}]]}, {None, None}}, 
+             DefaultFormatType -> DefaultInputFormatType, 
+             LineSpacing -> {1, 4}, TabSpacings -> 1.8, CounterIncrements -> 
+             "NumberedEquation", FormatTypeAutoConvert -> False], 
+            Cell[
+             StyleData["NumberedEquation", "Printout"], 
+             CellMargins -> {{10, 0}, {4, 4}}, LineSpacing -> {1, 2}, 
+             TabSpacings -> 1.5, FontSize -> 10]}, Open]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["DotNumberedEquation"], 
+             CellMargins -> {{10, 0}, {7, 7}}, CellFrameLabels -> {{None, 
+                Cell[
+                 TextData[{"(", 
+                   CounterBox["Section"], ".", 
+                   CounterBox["NumberedEquation"], ")"}]]}, {None, None}}, 
+             DefaultFormatType -> DefaultInputFormatType, 
+             LineSpacing -> {1, 4}, TabSpacings -> 1.8, CounterIncrements -> 
+             "NumberedEquation", FormatTypeAutoConvert -> False], 
+            Cell[
+             StyleData["DotNumberedEquation", "Printout"], 
+             CellMargins -> {{10, 0}, {4, 4}}, LineSpacing -> {1, 2}, 
+             TabSpacings -> 1.5, FontSize -> 10]}, Open]], 
+         Cell[
+          StyleData["PictureGroup"], CellMargins -> {{41, 4}, {0, 4}}, 
+          CellGroupingRules -> "GraphicsGrouping", CellHorizontalScrolling -> 
+          True, StyleMenuListing -> None]}, Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell["Format Types", "Subsection"], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["CellExpression"], PageWidth -> Infinity, 
+             CellMargins -> {{28, 10}, {4, 4}}, ShowCellLabel -> False, 
+             ShowSpecialCharacters -> False, AllowInlineCells -> False, 
+             AutoItalicWords -> {}, StyleMenuListing -> None, FontFamily -> 
+             "Courier", FontSize -> 12, Background -> GrayLevel[1]], 
+            Cell[
+             StyleData["CellExpression", "Printout"], PageWidth -> PaperWidth,
+              CellMargins -> {{28, 0}, {4, 4}}, ShowCellLabel -> False, 
+             ShowSpecialCharacters -> False, AllowInlineCells -> False, 
+             AutoItalicWords -> {}, StyleMenuListing -> None, FontFamily -> 
+             "Courier", FontSize -> 9, Background -> GrayLevel[1]]}, Open]], 
+         Cell[
+          StyleData["InputForm"], InputAutoReplacements -> {}, 
+          AllowInlineCells -> False, Hyphenation -> False, StyleMenuListing -> 
+          None, FontFamily -> "Courier"], 
+         Cell[
+          StyleData["OutputForm"], PageWidth -> Infinity, TextAlignment -> 
+          Left, LineSpacing -> {0.6, 1}, StyleMenuListing -> None, FontFamily -> 
+          "Courier"], 
+         Cell[
+          StyleData["StandardForm"], 
+          InputAutoReplacements -> {
+           "->" -> "\[Rule]", ":>" -> "\[RuleDelayed]", "<=" -> 
+            "\[LessEqual]", ">=" -> "\[GreaterEqual]", "!=" -> "\[NotEqual]", 
+            "==" -> "\[Equal]", Inherited}, 
+          "TwoByteSyntaxCharacterAutoReplacement" -> True, 
+          LineSpacing -> {1.25, 0}, StyleMenuListing -> None, FontFamily -> 
+          "Courier"], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["TraditionalForm"], 
+             InputAutoReplacements -> {
+              "->" -> "\[Rule]", ":>" -> "\[RuleDelayed]", "<=" -> 
+               "\[LessEqual]", ">=" -> "\[GreaterEqual]", "!=" -> 
+               "\[NotEqual]", "==" -> "\[Equal]", Inherited}, 
+             "TwoByteSyntaxCharacterAutoReplacement" -> True, 
+             LineSpacing -> {1.25, 0}, SingleLetterItalics -> True, 
+             TraditionalFunctionNotation -> True, DelimiterMatching -> None, 
+             StyleMenuListing -> None, FontFamily -> "Times"], 
+            Cell[
+             StyleData["TraditionalForm", "Printout"], 
+             InputAutoReplacements -> {
+              "->" -> "\[Rule]", ":>" -> "\[RuleDelayed]", "<=" -> 
+               "\[LessEqual]", ">=" -> "\[GreaterEqual]", "!=" -> 
+               "\[NotEqual]", "==" -> "\[Equal]", Inherited}, 
+             "TwoByteSyntaxCharacterAutoReplacement" -> True, 
+             LineSpacing -> {1.25, 0}, SingleLetterItalics -> True, 
+             TraditionalFunctionNotation -> True, DelimiterMatching -> None, 
+             StyleMenuListing -> None, FontFamily -> "Palatino", FontSize -> 
+             10]}, Open]]}, Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell["Headers and Footers", "Subsection"], 
+         Cell[
+          StyleData["Header"], CellMargins -> {{10, 0}, {0, 0}}, 
+          DefaultNewInlineCellStyle -> "None", LanguageCategory -> 
+          "NaturalLanguage", StyleMenuListing -> None, FontFamily -> "Arial", 
+          FontSize -> 9, FontWeight -> "Bold"], 
+         Cell[
+          StyleData["Footer"], CellMargins -> {{0, 0}, {0, 4}}, 
+          DefaultNewInlineCellStyle -> "None", LanguageCategory -> 
+          "NaturalLanguage", StyleMenuListing -> None, FontSize -> 9, 
+          FontSlant -> "Italic"], 
+         Cell[
+          StyleData["PageNumber"], CellMargins -> {{10, 0}, {0, 0}}, 
+          StyleMenuListing -> None, FontFamily -> "Palatino", FontSize -> 12, 
+          FontSlant -> "Italic"]}, Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell["Hyperlink Styles", "Subsection"], 
+         Cell[
+         "The cells below define styles useful for making hypertext \
+ButtonBoxes.  The \"Hyperlink\" style is for links within the same Notebook, \
+or between Notebooks.", "Text"], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["Hyperlink"], StyleMenuListing -> None, 
+             ButtonStyleMenuListing -> Automatic, 
+             FontVariations -> {"Underline" -> True}, FontColor -> 
+             RGBColor[0, 0, 1], 
+             ButtonBoxOptions -> {
+              Active -> True, ButtonFunction :> (FrontEndExecute[{
+                  FrontEnd`NotebookLocate[#2]}]& ), ButtonNote -> 
+               ButtonData}], 
+            Cell[
+             StyleData["Hyperlink", "Printout"], FontSize -> 10, 
+             FontVariations -> {"Underline" -> False}, FontColor -> 
+             GrayLevel[0]]}, Closed]], 
+         Cell[
+         "The following styles are for linking automatically to the on-line \
+help system.", "Text"], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["MainBookLink"], StyleMenuListing -> None, 
+             ButtonStyleMenuListing -> Automatic, 
+             FontVariations -> {"Underline" -> True}, FontColor -> 
+             RGBColor[0, 0, 1], 
+             ButtonBoxOptions -> {
+              Active -> True, Appearance -> {Automatic, None}, 
+               ButtonFunction :> (FrontEndExecute[{
+                  FrontEnd`HelpBrowserLookup["MainBook", #]}]& )}], 
+            Cell[
+             StyleData["MainBookLink", "Printout"], FontSize -> 10, 
+             FontVariations -> {"Underline" -> False}, FontColor -> 
+             GrayLevel[0]]}, Closed]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["AddOnsLink"], StyleMenuListing -> None, 
+             ButtonStyleMenuListing -> Automatic, FontFamily -> "Courier", 
+             FontVariations -> {"Underline" -> True}, FontColor -> 
+             RGBColor[0, 0, 1], 
+             ButtonBoxOptions -> {
+              Active -> True, Appearance -> {Automatic, None}, 
+               ButtonFunction :> (FrontEndExecute[{
+                  FrontEnd`HelpBrowserLookup["AddOns", #]}]& )}], 
+            Cell[
+             StyleData["AddOnsLink", "Printout"], FontFamily -> "Palatino", 
+             FontSize -> 10, FontVariations -> {"Underline" -> False}, 
+             FontColor -> GrayLevel[0]]}, Closed]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["RefGuideLink"], StyleMenuListing -> None, 
+             ButtonStyleMenuListing -> Automatic, FontFamily -> "Courier", 
+             FontVariations -> {"Underline" -> True}, FontColor -> 
+             RGBColor[0, 0, 1], 
+             ButtonBoxOptions -> {
+              Active -> True, Appearance -> {Automatic, None}, 
+               ButtonFunction :> (FrontEndExecute[{
+                  FrontEnd`HelpBrowserLookup["RefGuide", #]}]& )}], 
+            Cell[
+             StyleData["RefGuideLink", "Printout"], FontSize -> 10, 
+             FontVariations -> {"Underline" -> False}, FontColor -> 
+             GrayLevel[0]]}, Closed]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["GettingStartedLink"], StyleMenuListing -> None, 
+             ButtonStyleMenuListing -> Automatic, 
+             FontVariations -> {"Underline" -> True}, FontColor -> 
+             RGBColor[0, 0, 1], 
+             ButtonBoxOptions -> {
+              Active -> True, Appearance -> {Automatic, None}, 
+               ButtonFunction :> (FrontEndExecute[{
+                  FrontEnd`HelpBrowserLookup["GettingStarted", #]}]& )}], 
+            Cell[
+             StyleData["GettingStartedLink", "Printout"], FontSize -> 10, 
+             FontVariations -> {"Underline" -> False}, FontColor -> 
+             GrayLevel[0]]}, Closed]], 
+         Cell[
+          CellGroupData[{
+            Cell[
+             StyleData["OtherInformationLink"], StyleMenuListing -> None, 
+             ButtonStyleMenuListing -> Automatic, 
+             FontVariations -> {"Underline" -> True}, FontColor -> 
+             RGBColor[0, 0, 1], 
+             ButtonBoxOptions -> {
+              Active -> True, Appearance -> {Automatic, None}, 
+               ButtonFunction :> (FrontEndExecute[{
+                  FrontEnd`HelpBrowserLookup["OtherInformation", #]}]& )}], 
+            Cell[
+             StyleData["OtherInformationLink", "Printout"], FontSize -> 10, 
+             FontVariations -> {"Underline" -> False}, FontColor -> 
+             GrayLevel[0]]}, Closed]]}, Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell["Palette Styles", "Subsection"], 
+         Cell[
+         "The cells below define styles that define standard ButtonFunctions, \
+for use in palette buttons.", "Text"], 
+         Cell[
+          StyleData["Paste"], StyleMenuListing -> None, 
+          ButtonStyleMenuListing -> Automatic, 
+          ButtonBoxOptions -> {ButtonFunction :> (FrontEndExecute[{
+               FrontEnd`NotebookApply[
+                FrontEnd`InputNotebook[], #, After]}]& )}], 
+         Cell[
+          StyleData["Evaluate"], StyleMenuListing -> None, 
+          ButtonStyleMenuListing -> Automatic, 
+          ButtonBoxOptions -> {ButtonFunction :> (FrontEndExecute[{
+               FrontEnd`NotebookApply[
+                FrontEnd`InputNotebook[], #, All], 
+               SelectionEvaluate[
+                FrontEnd`InputNotebook[], All]}]& )}], 
+         Cell[
+          StyleData["EvaluateCell"], StyleMenuListing -> None, 
+          ButtonStyleMenuListing -> Automatic, 
+          ButtonBoxOptions -> {ButtonFunction :> (FrontEndExecute[{
+               FrontEnd`NotebookApply[
+                FrontEnd`InputNotebook[], #, All], 
+               FrontEnd`SelectionMove[
+                FrontEnd`InputNotebook[], All, Cell, 1], 
+               FrontEnd`SelectionEvaluateCreateCell[
+                FrontEnd`InputNotebook[], All]}]& )}], 
+         Cell[
+          StyleData["CopyEvaluate"], StyleMenuListing -> None, 
+          ButtonStyleMenuListing -> Automatic, 
+          ButtonBoxOptions -> {ButtonFunction :> (FrontEndExecute[{
+               FrontEnd`SelectionCreateCell[
+                FrontEnd`InputNotebook[], All], 
+               FrontEnd`NotebookApply[
+                FrontEnd`InputNotebook[], #, All], 
+               FrontEnd`SelectionEvaluate[
+                FrontEnd`InputNotebook[], All]}]& )}], 
+         Cell[
+          StyleData["CopyEvaluateCell"], StyleMenuListing -> None, 
+          ButtonStyleMenuListing -> Automatic, 
+          ButtonBoxOptions -> {ButtonFunction :> (FrontEndExecute[{
+               FrontEnd`SelectionCreateCell[
+                FrontEnd`InputNotebook[], All], 
+               FrontEnd`NotebookApply[
+                FrontEnd`InputNotebook[], #, All], 
+               FrontEnd`SelectionEvaluateCreateCell[
+                FrontEnd`InputNotebook[], All]}]& )}]}, Closed]]}, Open]]}, 
+  Visible -> False, FrontEndVersion -> 
+  "10.4 for Linux x86 (64-bit) (April 11, 2016)", StyleDefinitions -> 
+  "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 18, 0, 137, "Title"],
+Cell[588, 24, 98, 3, 149, "Subtitle"],
+Cell[689, 29, 1704, 39, 249, "Text"],
+Cell[CellGroupData[{
+Cell[2418, 72, 3534, 98, 28, "Input",
+ CellOpen->False],
+Cell[5955, 172, 11492, 190, 90, 1007, 16, "CachedBoxData", "BoxData", "Output"]
+}, Open  ]],
+Cell[17462, 365, 4546, 146, 412, "Text"],
+Cell[CellGroupData[{
+Cell[22033, 515, 35, 0, 91, "Section"],
+Cell[22071, 517, 6112, 189, 398, "Text"],
+Cell[CellGroupData[{
+Cell[28208, 710, 1967, 56, 237, "Input"],
+Cell[30178, 768, 162, 3, 54, "Output"],
+Cell[30343, 773, 1701, 40, 375, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32081, 818, 31, 0, 79, "Subsection"],
+Cell[32115, 820, 8592, 290, 1115, "Text"],
+Cell[40710, 1112, 124, 3, 29, "Text"],
+Cell[CellGroupData[{
+Cell[40859, 1119, 1645, 49, 147, "Input"],
+Cell[42507, 1170, 1507, 42, 188, "Output"],
+Cell[44017, 1214, 3663, 103, 95, "Output"],
+Cell[47683, 1319, 795, 24, 53, "Output"],
+Cell[48481, 1345, 170, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[48700, 1354, 33, 0, 79, "Subsection"],
+Cell[48736, 1356, 23598, 735, 1753, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[72371, 2096, 44, 0, 79, "Subsection"],
+Cell[72418, 2098, 1196, 18, 145, "Text"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[73663, 2122, 35, 0, 91, "Section"],
+Cell[73701, 2124, 18724, 643, 1562, "Text"],
+Cell[92428, 2769, 439, 7, 58, "Text"],
+Cell[CellGroupData[{
+Cell[92892, 2780, 3740, 111, 472, "Input"],
+Cell[96635, 2893, 164, 3, 54, "Output"],
+Cell[96802, 2898, 147, 3, 54, "Output"],
+Cell[96952, 2903, 1588, 38, 342, "Print"],
+Cell[98543, 2943, 1760, 41, 342, "Print"],
+Cell[100306, 2986, 1760, 41, 342, "Print"],
+Cell[102069, 3029, 1762, 41, 342, "Print"],
+Cell[103834, 3072, 1760, 41, 342, "Print"],
+Cell[105597, 3115, 1759, 41, 342, "Print"],
+Cell[107359, 3158, 1760, 41, 342, "Print"],
+Cell[109122, 3201, 1748, 40, 342, "Print"],
+Cell[110873, 3243, 1760, 41, 342, "Print"],
+Cell[112636, 3286, 1758, 41, 342, "Print"]
+}, Open  ]],
+Cell[114409, 3330, 361, 6, 58, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[114807, 3341, 26, 0, 91, "Section"],
+Cell[114836, 3343, 444, 8, 86, "Text"],
+Cell[115283, 3353, 478, 7, 115, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

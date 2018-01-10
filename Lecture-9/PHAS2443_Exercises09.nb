@@ -1,0 +1,219 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      7057,        210]
+NotebookOptionsPosition[      6242,        180]
+NotebookOutlinePosition[      6883,        205]
+CellTagsIndexPosition[      6840,        202]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[StyleBox["PHAS2443: Practical Mathematics II\nExercises 9: \
+Fourier Series and Transforms",
+ FontFamily->"Arial",
+ FontColor->GrayLevel[1]]], "Title",
+ CellChangeTimes->{{3.4461954106148*^9, 3.4461954198408003`*^9}, {
+  3.477723669984*^9, 3.477723671215*^9}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ FontColor->RGBColor[1, 0, 0]],
+
+Cell[TextData[{
+ StyleBox["1. ",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["Find the trigonometric expansion to order 6 of the periodic \
+function which takes the value ",
+  FontColor->RGBColor[0, 0, 1]],
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["e", 
+    RowBox[{"\[Dash]", " ", "x"}]], TraditionalForm]],
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[" in the range -1/2 < ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["x",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[" \[LessEqual] 1/2 and is periodic with period 1.   Plot the \
+original function and the Fourier expansion on the same graph.  Then repeat \
+for order 12. Describe qualitatively how the graphs compare. ",
+  FontColor->RGBColor[0, 0, 1]]
+}], "Text",
+ CellChangeTimes->{3.477723665259*^9}],
+
+Cell[TextData[{
+ StyleBox["2.",
+  FontColor->RGBColor[1, 0, 0]],
+ " ",
+ StyleBox["Mathematica knows about the Legendre polynomials: ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["LegendreP[n,x] ",
+  FontFamily->"Courier New",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["gives the ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["n",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["th order Legendre polynomial in ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["x",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[".  Verify that the first 3 Legendre polynomials form an orthogonal \
+set over the interval -1<",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["x",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["<1. Do they form an orthonormal set?\n",
+  FontColor->RGBColor[0, 0, 1]]
+}], "Text"],
+
+Cell[TextData[{
+ StyleBox["3.",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[" The following code sets up an image that has been contaminated by \
+random noise, and defines a colour function to plot it. You should find it \
+hard to discern the pattern.",
+  FontColor->RGBColor[0, 0, 1]]
+}], "Text"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"nim", "=", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"#", 
+       RowBox[{"(", 
+        RowBox[{"1", "+", 
+         RowBox[{"RandomReal", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "1"}], ",", "1"}], "}"}], "]"}]}], ")"}]}], "&"}], 
+     ",", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Which", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"Abs", "[", "x", "]"}], "<", "20"}], "||", 
+          RowBox[{
+           RowBox[{"Abs", "[", "y", "]"}], "<", "20"}]}], ",", "0.6", ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Abs", "[", 
+            RowBox[{"x", "-", "y"}], "]"}], "<", "20"}], "||", 
+          RowBox[{
+           RowBox[{"Abs", "[", 
+            RowBox[{"x", "+", "y"}], "]"}], "<", "20"}]}], ",", "0.7", ",", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["x", "2"], "+", 
+           SuperscriptBox["y", "2"]}], "<", "6000"}], ",", ".8", ",", "True", 
+         ",", "0.5"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", 
+         RowBox[{"-", "100"}], ",", "100"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"y", ",", 
+         RowBox[{"-", "100"}], ",", "100"}], "}"}]}], "]"}], ",", 
+     RowBox[{"{", "2", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"cc", "[", "i_", "]"}], ":=", 
+  RowBox[{"Hue", "[", 
+   RowBox[{"0.7`", " ", 
+    RowBox[{"(", 
+     RowBox[{"1", "-", "i"}], ")"}]}], "]"}]}], "\n", 
+ RowBox[{"ListDensityPlot", "[", 
+  RowBox[{"nim", ",", 
+   RowBox[{"Mesh", "\[Rule]", "False"}], ",", 
+   RowBox[{"ColorFunction", "\[Rule]", "cc"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.47772461479*^9, 3.477724615205*^9}, 
+   3.5090947391529856`*^9, {3.509098743964048*^9, 3.5090987446040845`*^9}}],
+
+Cell[TextData[{
+ StyleBox["Use the numerical Fourier transform routine, ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["Fourier",
+  FontFamily->"Courier New",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[", to transform the image to a frequency-space image (note that ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["Fourier",
+  FontFamily->"Courier New",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[" is quite happy to do two-dimensional or higher-dimensional \
+transforms).  Try two approaches to recover the image  (actually, neither \
+will be fully successful -- it's not an easy problem as the noise level is \
+high):\n  a) set everything except the low-frequency components (the ones in \
+squares or quadrants of a circle near the corners) to zero.  Experiment with \
+deleting or keeping different ranges of frequency.",
+  FontColor->RGBColor[0, 0, 1]]
+}], "Text",
+ CellChangeTimes->{{3.4777245975959997`*^9, 3.4777245989*^9}, {
+  3.509092664706334*^9, 3.5090926718517427`*^9}}],
+
+Cell[TextData[StyleBox["  b) try a 'real-space' approach, replacing each \
+point by four times the value at that site plus the values above, below, to \
+the left, and to the right.\n    \n    Comment on the success or otherwise of \
+the approaches.",
+ FontColor->RGBColor[0, 0, 1]]], "Text",
+ CellChangeTimes->{{3.477724601516*^9, 3.477724605767*^9}}],
+
+Cell[TextData[StyleBox["A.H. Harker\nUCL\nSeptember 2005, revised March 2009, \
+March 2010.",
+ FontColor->RGBColor[0, 1, 0]]], "Text",
+ CellChangeTimes->{{3.4461939607618*^9, 3.4461939679538*^9}, {
+  3.477723686776*^9, 3.477723689888*^9}}]
+},
+WindowToolbars->{},
+CellGrouping->Manual,
+WindowSize->{925, 730},
+WindowMargins->{{0, Automatic}, {Automatic, 14}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+PrivateNotebookOptions->{"ColorPalette"->{RGBColor, -1}},
+ShowCellLabel->True,
+ShowCellTags->False,
+RenderingOptions->{"ObjectDithering"->True,
+"RasterDithering"->False},
+Magnification->1.5,
+FrontEndVersion->"7.0 for Microsoft Windows (64-bit) (February 18, 2009)",
+StyleDefinitions->"Classroom.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 337, 7, 231, "Title"],
+Cell[885, 29, 780, 21, 84, "Text"],
+Cell[1668, 52, 844, 27, 122, "Text"],
+Cell[2515, 81, 296, 7, 60, "Text"],
+Cell[2814, 90, 1847, 53, 236, "Input"],
+Cell[4664, 145, 978, 20, 147, "Text"],
+Cell[5645, 167, 351, 5, 133, "Text"],
+Cell[5999, 174, 239, 4, 108, "Text"]
+}
+]
+*)
+
+(* End of internal cache information *)
