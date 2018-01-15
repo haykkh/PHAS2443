@@ -10,12 +10,11 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[     74484,       1630]
-NotebookOptionsPosition[      8419,        241]
-NotebookOutlinePosition[     74387,       1627]
-CellTagsIndexPosition[     74344,       1624]
-WindowFrame->Normal
-ContainsDynamic->False*)
+NotebookDataLength[    136208,       2930]
+NotebookOptionsPosition[     69201,       1515]
+NotebookOutlinePosition[    135237,       2898]
+CellTagsIndexPosition[    135194,       2895]
+WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
@@ -84,6 +83,1112 @@ accuracies of the one-sided and centred differences?",
   FontColor->RGBColor[0, 0, 1]]
 }], "Text",
  CellChangeTimes->{{3.441350493266*^9, 3.441350493501*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Exp[-x]", "Subsection",
+ CellChangeTimes->{{3.725020295075407*^9, 3.725020300193104*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"del", " ", "=", " ", "0.2"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"expList", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"x", ",", " ", 
+       RowBox[{"Exp", "[", 
+        RowBox[{"-", "x"}], "]"}]}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", " ", "0.01", ",", " ", 
+       RowBox[{"2", "\[Pi]"}], ",", " ", "del"}], "}"}]}], "]"}]}], ";", " ", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"*", " ", "table", " ", "of", " ", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "y"}], "}"}], " ", "values", " ", "for", " ", 
+     RowBox[{"Exp", "[", 
+      RowBox[{"-", "x"}], "]"}], " ", "with", " ", "0.01"}], " ", "<", " ", 
+    "x", " ", "<", 
+    RowBox[{"2", "\[Pi]"}]}], " ", "**)"}], "\[IndentingNewLine]", 
+  RowBox[{"ListPlot", "[", 
+   RowBox[{"expList", ",", " ", 
+    RowBox[{"Joined", " ", "\[Rule]", " ", "True"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.725020304625185*^9, 3.725020397960595*^9}, {
+   3.725020432470788*^9, 3.725020439726371*^9}, 3.725020481881331*^9, 
+   3.725020516248323*^9, {3.7250207047051077`*^9, 3.7250207085825863`*^9}, {
+   3.725021276570722*^9, 3.725021317918351*^9}, {3.725024107958687*^9, 
+   3.725024153051996*^9}}],
+
+Cell[BoxData["0.2`"], "Output",
+ CellChangeTimes->{{3.725024108359887*^9, 3.725024153240387*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.012833333333333334`],
+      AbsoluteThickness[1.6], LineBox[CompressedData["
+1:eJxTTMoPSmViYGBQAGIQXS2yzv1hVYv9vznaf2vWvbd/VAUSOGWfxJEc7/fh
+pb0d1/XFBba37DdqcRXPt3lq3/Y6cIdc62P7gs1zYxSTH9q/AXFfv7QvaSn6
+3ltxx14zpv/QV40P9tHPSuVj/a/bx4K4MZ/tFUV3ca0SvWw/AcTt/2af6hfu
+I+Zw3v4wiHvop/0nplXXXk09af8NxP36x/6i9La0eZ+O2IOdJ8LgcCzoXnmX
+2kF7MHcdo0N+/M7KcNE99h4grjuzg0zAvRlK/7bZg7kPWRzM1k97o3F5kz3E
+f2wOipqHgwwur4Oax+FQUlLtcchmJdQ8TodrzTE281cugZrH7XDyreC2Y68W
+QM3jcbhbEbmtavNsqHl8DiJ+qorM66bZg4OHS8Dhwjr2vv6Jk+zB3OsCDnXH
+zl8+mt5nvwTEXSzokFVqnX3hSYd9IYhbIOTQ/Cm8cF5iCzR8hR2CN1aYX17f
+ADVPxOHO5/4fn4KqoeaJODjee3X3V1wZ1DxRB7fdlcdvBRRBzRNzOJ0ru/Ti
+31yoeeIOhd/tWAT7MqDmSTi8rLHrnyGVAjVPwqF9ZZja2tIEewAVAe7u
+      "]]}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 6.21}, {0, 0.9900498337491681}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.725024108359887*^9, 3.725024153490384*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["List rotation method", "Subsection",
+ CellChangeTimes->{{3.725024324897373*^9, 3.7250243269350653`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"expX", ",", " ", "expY"}], "}"}], " ", "=", " ", 
+   RowBox[{"Transpose", "[", "expList", "]"}]}], ";", " ", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"*", " ", "separate", " ", "the", " ", "x"}], " ", "&"}], " ", 
+    "y", " ", "coords", " ", "into", " ", "separate", " ", "lists"}], " ", 
+   "**)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"forDiff", " ", "=", " ", 
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{"expX", ",", " ", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"RotateLeft", "[", "expY", "]"}], " ", "-", " ", "expY"}], 
+        ")"}], " ", "/", " ", "del"}]}], "}"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"backDiff", " ", "=", " ", 
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{"expX", ",", " ", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"expY", " ", "-", " ", 
+         RowBox[{"RotateRight", "[", "expY", "]"}]}], ")"}], " ", "/", " ", 
+       "del"}]}], "}"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"centDiff", " ", "=", " ", 
+    RowBox[{"Transpose", "[", 
+     RowBox[{"{", 
+      RowBox[{"expX", ",", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"RotateLeft", "[", "expY", "]"}], " ", "-", " ", 
+           RowBox[{"RotateRight", "[", "expY", "]"}]}], ")"}], " ", "/", " ", 
+         "2"}], " ", "del"}]}], "}"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"listExp", " ", "=", " ", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"forDiff", ",", " ", "backDiff", ",", " ", "centDiff"}], "}"}], 
+     ",", " ", 
+     RowBox[{"Joined", " ", "\[Rule]", " ", "True"}], ",", " ", 
+     RowBox[{"PlotLegends", " ", "\[Rule]", " ", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<forDiff\>\"", ",", " ", "\"\<backDiff\>\"", ",", " ", 
+        "\"\<centDiff\>\""}], "}"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"exactExp", " ", "=", " ", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"D", "[", 
+       RowBox[{
+        RowBox[{"Exp", "[", 
+         RowBox[{"-", "x"}], "]"}], ",", " ", "x"}], "]"}], "/.", 
+      RowBox[{"x", "\[Rule]", "t"}]}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", " ", "0.01", ",", " ", 
+       RowBox[{"2", "\[Pi]"}]}], "}"}], ",", " ", 
+     RowBox[{"PlotStyle", " ", "\[Rule]", " ", "Red"}], ",", " ", 
+     RowBox[{"PlotLegends", " ", "\[Rule]", " ", "\"\<Exact\>\""}]}], "]"}]}],
+   " ", ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Show", "[", 
+   RowBox[{"listExp", ",", " ", "exactExp"}], "]"}], 
+  " "}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.725020519377967*^9, 3.7250206642070513`*^9}, 
+   3.72502071772581*^9, {3.7250207502911167`*^9, 3.725020769835578*^9}, {
+   3.725020876888585*^9, 3.725020960956614*^9}, {3.7250211088017*^9, 
+   3.725021158788261*^9}, {3.72502118990217*^9, 3.725021206674802*^9}, {
+   3.725021239170148*^9, 3.725021269295946*^9}, {3.725021326950172*^9, 
+   3.725021334704352*^9}, {3.7250214085203333`*^9, 3.725021431145896*^9}, {
+   3.725021658018167*^9, 3.725021666489922*^9}, {3.7250217083676033`*^9, 
+   3.725021716526203*^9}, {3.725021751247505*^9, 3.72502178469051*^9}, {
+   3.725021821228759*^9, 3.725021845642743*^9}, {3.725022050779509*^9, 
+   3.725022085639887*^9}, {3.72502221897542*^9, 3.725022226053381*^9}, {
+   3.725022814739194*^9, 3.725022814809636*^9}, {3.7250239453630333`*^9, 
+   3.725023956490596*^9}, {3.725024303883801*^9, 3.725024304834989*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{GraphicsBox[{{{}, {{{}, {}, {
+         Hue[0.67, 0.6, 0.6], 
+         Directive[
+          PointSize[0.011000000000000001`], 
+          RGBColor[0.368417, 0.506779, 0.709798], 
+          AbsoluteThickness[1.6]], 
+         LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBWIQ7chW4Nxb/8z+koSo5Ovbd/a/Cdwh1/r6pX2t2Hvz
+L2dv7teM6T/0VeODvZLY6vR6hav7Y0HcmM/2K1RPlEn5XNw/AcTt/2ZvX5nk
+czPozP7DIO6hn/ZLmw/r1xkc3/8NxP36x978rdmq5D+H9ousc39YJcLgMDFO
+wG+z2P79YO46Rof5Pu4pHCU793uAuO7MDnUqabEPrm3ZD+Y+ZHGwaeW8cJl/
+4/5qsAFsDontacZqH1ZDzeNwENs8y2b9/WVQ8zgdHN+VzLfatQhqHrdD59vP
+PbGr5kHN43F4e5XlVaj0TKh5fA4hMlPuO/ZN2c91fXGBLZeAw9Wf80zir0zY
+D+ZeF3BImfqU63Rf9/4lIO5iQYfmvsKHP/vb9heCuAVCDh9cYxR/VDTttwMb
+IOzwSfO5f6N9HdQ8EQf2HMvWG4croOaJODxfZ1qwwK0Eap6owyPR6Sd2ziyA
+mifmcMg/QuWwXjbUPHGHFSlMnlGOaVDzJBxeKbTzzLRI2n9v9YPSElEJh0aV
+k1Pu6160BwDNmt/d
+          "]]}, {
+         Hue[0.9060679774997897, 0.6, 0.6], 
+         Directive[
+          PointSize[0.011000000000000001`], 
+          RGBColor[0.880722, 0.611041, 0.142051], 
+          AbsoluteThickness[1.6]], 
+         LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQAWIQvTzn2srPT9/YX5IQlXx9+85+zZj+Q181PtjXir03
+/3L25v5YEDfms72S2Or0eoWr+yeAuP3f7FeoniiT8rm4/zCIe+invX1lks/N
+oDP7v4G4X//YL20+rF9ncHy/yDr3h1UiDA7mb81WJf85tB/MXcfoMDFOwG+z
+2P79HiCuO7PDfB/3FI6SnfvB3IcsDnUqabEPrm3ZXw02gM3BppXzwmX+jVDz
+OBwS29OM1T6shprH6SC2eZbN+vvLoOZxOzi+K5lvtWsR1Dweh863n3tiV82D
+msfn8PYqy6tQ6Zn7ua4vLrDlEnAIkZly37Fvyn4w97qAw9Wf80zir0zYvwTE
+XSzokDL1Kdfpvu79hSBugZBDc1/hw5/9bfvtwAYIO3xwjVH8UdEENU/E4ZPm
+c/9G+zqoeSIO7DmWrTcOV0DNE3V4vs60YIFbCdQ8MYdHotNP7JxZADVP3OGQ
+f4TKYb1sqHkSDitSmDyjHNOg5kk4vFJo55lpkbQfAPtR2R4=
+          "]], 
+         LineBox[{{0.17006007187803282`, 0.2684248879418832}, {
+          0.1947056848505481, -0.4509227509446535}}]}, {
+         Hue[0.1421359549995791, 0.6, 0.6], 
+         Directive[
+          PointSize[0.011000000000000001`], 
+          RGBColor[0.560181, 0.691569, 0.194885], 
+          AbsoluteThickness[1.6]], 
+         LineBox[CompressedData["
+1:eJxTTMoPSmViYGBQAGIQXS2yzv1hVYv9cfVTB4U3b7F/VAUSOGX/aFuGs/62
+BfvtuK4vLrC9ZZ+7ctXVmNjZ+9teB+6Qa31sv2HL+drG9Gn734C4r1/a58+6
+euhq+KT9mjH9h75qfLDnMvQ7ZM/Ztz8WxI35bO//N3h7zvSO/RNA3P5v9s/t
+BP45KrXsPwziHvpp3/6KkfNzdcP+byDu1z/26rMi9Bn/Ve0HO0+EweFNZOCb
+PMmy/WDuOkYHqffTVF6JF+33AHHdmR1k069+m7Igdz+Y+5DFYf/H6H+7HDP2
+Q/zH5vCFv/m5xJ1kqHkcDhUchXsbnRKg5nE6qDxqufJxfhTUPG4HiTqjrJwz
+oVDzeBz+Vp9yuXsjEGoen4OWQs7zMEvf/eDg4RJwcNnz/bHxW/f9YO51AYcP
+N+X9nkxz3r8ExF0s6BDf1jP3BqfD/kIQt0DIQZzXxl7L2QoavsIOq/zSnMsa
+TKHmiTgsWmArvWaWIdQ8EQf3F8JzGy7rQM0Tddjv1Rt+eaY61DwxB50Zb+8u
+CFKGmifuwG427f7LxfJQ8yQcFI75/lz6XBJqnoTDubrH2/w8dtoDAPhF9mk=
+
+          "]]}}}, {}}, {{{{}, {}, {
+         Directive[
+          Opacity[1.], 
+          AbsoluteThickness[1.6], 
+          RGBColor[1, 0, 0]], 
+         LineBox[CompressedData["
+1:eJwB4QQe+yFib1JlAgAAAE0AAAACAAAAisOOdvJ6hD+TLh+5fK7vv26V+WCp
+a4g/L9V92uWe779TZ2RLYFyMPxm8nqdWj++/jgUdEOcekj95+g82T3Dvv1ap
+8uRUAJo/ktZ0upsy7790+E5HmOGkP7WSeB2fuO6/AyB9+DlSsj+MNIGNNcrt
+v8ozFNGKCsE/QZLK89gC7L/FRiU3ZRDRP9Is/PW9gui/cAFIJZUK2T84ZRbF
+Z6Plv4B5g+habuA/toNh1zYm47/UtkU7RKzkP5txQeKdxeC/DbvLnbWh6D/a
+lOi0+qPdv9KDNP3/6+w/OYGeZ+rr2b8FtLVdIZHwP9+sSJuDuda/kwmzxAaI
+8j+K0LKYXBnUv2fBIapYqfQ/b8KKRvqX0b+uXHKXbqb2P5rLV5omE8+/rgUq
+tICZ+D9uIalZl4LLv/QQU0//tvo/WNyv3HgayL+t/13yQbD8P3qEkdZjTsW/
+rFDaE/HT/j+JqPrJuqPCv7LXXjLOdgBAja5mobpYwL/HeMHehXEBQHwPNboY
+7by//8pcynOBAkDZQ8zDV1S5v/EO6blDfwNAJ34iVIdgtr8GBK7oSZIEQA3g
+kXOqkLO/938mL06gBUDWLojL+yWxv6Htj3k0nAZA7+Ddm9JTrr9uDDIDUa0H
+QGj1ObSKiqq/9RzFkE+sCEA9PMJwG2+nv1i0CzZMpglAVWsHtMK9pL/e/Ioa
+f7UKQPB/53AzK6K/Hjf7ApSyC0A3wvsKhg6gv4EipCrfxAxAS1jRPogWnL/A
+lABqKNINQHwD3NqWoJi/ufhNrVPNDkDDrWub68iVv9UN1C+13Q9AW0i7DmgS
+k79UiiVb/G0QQMxxwOhc2JC/LdE6Kp3qEEAAOkDRZdSNv5dw7BjZcRFAxRsf
+Bqgjir/eiJYJBvARQHOUfJzlG4e/tvncGc54EkDny3w4LjiEv2vjGyyH+BJA
+bo7hDTPZgb+OkDRKv3UTQKEq+fCJln+/Q5bph5L9E0D5/s7iBKp7v9QUl8dW
+fBRA6dxncmRxeL/36+AmtgUVQNH1Vw3RX3W/iIYEkpSMFUAUq0USlLxyv/aZ
+IP9jChZAJ7io8QaScL/1BdmLzpIWQOa5pgLeAW2/0eqJGioSF0Ba+1jAap1p
+vxuTFLUEjxdAg3SY9bSsZr/3kztvehYYQKa02u9z3WO/sA1bK+GUGECIseOS
+6I5hv2xU3JMVlxhA2blYvD2FYb8om138SZkYQKbWajiYe2G/oShgzbKdGEDD
+964cXWhhv5JDZW+EphhA/qgNRCZCYb90eW+zJ7gYQN2BGoaz9mC/OOWDO27b
+GEAC3fbppWNgv/QrBaSi3RhA3rNA2J9aYL+wcoYM198YQN1nb76eUWC/KQCJ
+3T/kGECkwYtnqz9gvxobjn8R7RhAnd6G4P8bYL/8UJjDtP4YQEEsQyEmq1+/
+uJcZLOkAGUBKcnhwtplfv3TempQdAxlAgxdUWVCIX7/ta51lhgcZQO3O3OKg
+ZV+/3oaiB1gQGUCFvepBtCBfv5rNI3CMEhlAVVP1ypAPX79WFKXYwBQZQGA4
+rsN2/l6/z6GnqSkZGUD2oGXvXtxev4zoKBJeGxlAHqIIGGHLXr9IL6p6kh0Z
+QJvqoptsul6/BHYr48YfGUBS1w11galev8C8rEv7IRlAMpsln5+YXr8b23AX
+
+          "]]}}}, {}}}, {DisplayFunction -> Identity, PlotRangePadding -> {{
+        Scaled[0.02], 
+        Scaled[0.02]}, {
+        Scaled[0.05], 
+        Scaled[0.05]}}, AxesOrigin -> {0, 0}, 
+     PlotRange -> {{0, 6.21}, {-0.4509227509446535, 0.2684248879418832}}, 
+     PlotRangeClipping -> True, ImagePadding -> All, DisplayFunction -> 
+     Identity, AspectRatio -> NCache[GoldenRatio^(-1), 0.6180339887498948], 
+     Axes -> {True, True}, AxesLabel -> {None, None}, AxesOrigin -> {0, 0}, 
+     DisplayFunction :> Identity, Frame -> {{False, False}, {False, False}}, 
+     FrameLabel -> {{None, None}, {None, None}}, 
+     FrameTicks -> {{Automatic, Automatic}, {Automatic, Automatic}}, 
+     GridLines -> {None, None}, GridLinesStyle -> Directive[
+       GrayLevel[0.5, 0.4]], 
+     Method -> {"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+           (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+            Part[#, 1]], 
+           (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+            Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+           (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+            Part[#, 1]], 
+           (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+            Part[#, 2]]}& )}}, 
+     PlotRange -> {{0, 6.21}, {-0.4509227509446535, 0.2684248879418832}}, 
+     PlotRangeClipping -> True, PlotRangePadding -> {{
+        Scaled[0.02], 
+        Scaled[0.02]}, {
+        Scaled[0.05], 
+        Scaled[0.05]}}, Ticks -> {Automatic, Automatic}}],FormBox[
+    TagBox[
+     GridBox[{{
+        FormBox[
+         TemplateBox[{"\"forDiff\"", "\"backDiff\"", "\"centDiff\""}, 
+          "PointLegend", DisplayFunction -> (StyleBox[
+            StyleBox[
+             PaneBox[
+              TagBox[
+               GridBox[{{
+                  TagBox[
+                   GridBox[{{
+                    GraphicsBox[{{
+                    Directive[
+                    EdgeForm[
+                    Directive[
+                    Opacity[0.3], 
+                    GrayLevel[0]]], 
+                    PointSize[0.198], 
+                    RGBColor[0.368417, 0.506779, 0.709798], 
+                    AbsoluteThickness[1.6]], {
+                    LineBox[{{0, 10}, {20, 10}}]}}, {
+                    Directive[
+                    EdgeForm[
+                    Directive[
+                    Opacity[0.3], 
+                    GrayLevel[0]]], 
+                    PointSize[0.198], 
+                    RGBColor[0.368417, 0.506779, 0.709798], 
+                    AbsoluteThickness[1.6]], {}}}, AspectRatio -> Full, 
+                    ImageSize -> {20, 10}, PlotRangePadding -> None, 
+                    ImagePadding -> Automatic, 
+                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #}, {
+                    GraphicsBox[{{
+                    Directive[
+                    EdgeForm[
+                    Directive[
+                    Opacity[0.3], 
+                    GrayLevel[0]]], 
+                    PointSize[0.198], 
+                    RGBColor[0.880722, 0.611041, 0.142051], 
+                    AbsoluteThickness[1.6]], {
+                    LineBox[{{0, 10}, {20, 10}}]}}, {
+                    Directive[
+                    EdgeForm[
+                    Directive[
+                    Opacity[0.3], 
+                    GrayLevel[0]]], 
+                    PointSize[0.198], 
+                    RGBColor[0.880722, 0.611041, 0.142051], 
+                    AbsoluteThickness[1.6]], {}}}, AspectRatio -> Full, 
+                    ImageSize -> {20, 10}, PlotRangePadding -> None, 
+                    ImagePadding -> Automatic, 
+                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #2}, {
+                    GraphicsBox[{{
+                    Directive[
+                    EdgeForm[
+                    Directive[
+                    Opacity[0.3], 
+                    GrayLevel[0]]], 
+                    PointSize[0.198], 
+                    RGBColor[0.560181, 0.691569, 0.194885], 
+                    AbsoluteThickness[1.6]], {
+                    LineBox[{{0, 10}, {20, 10}}]}}, {
+                    Directive[
+                    EdgeForm[
+                    Directive[
+                    Opacity[0.3], 
+                    GrayLevel[0]]], 
+                    PointSize[0.198], 
+                    RGBColor[0.560181, 0.691569, 0.194885], 
+                    AbsoluteThickness[1.6]], {}}}, AspectRatio -> Full, 
+                    ImageSize -> {20, 10}, PlotRangePadding -> None, 
+                    ImagePadding -> Automatic, 
+                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #3}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {Center, Left}, "Rows" -> {{Baseline}}}, 
+                    AutoDelete -> False, 
+                    GridBoxDividers -> {
+                    "Columns" -> {{False}}, "Rows" -> {{False}}}, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{All}}, "Rows" -> {{All}}}, 
+                    GridBoxSpacings -> {
+                    "Columns" -> {{0.5}}, "Rows" -> {{0.8}}}], "Grid"]}}, 
+                GridBoxAlignment -> {
+                 "Columns" -> {{Left}}, "Rows" -> {{Top}}}, AutoDelete -> 
+                False, GridBoxItemSize -> {
+                 "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                GridBoxSpacings -> {"Columns" -> {{1}}, "Rows" -> {{0}}}], 
+               "Grid"], Alignment -> Left, AppearanceElements -> None, 
+              ImageMargins -> {{5, 5}, {5, 5}}, ImageSizeAction -> 
+              "ResizeToFit"], LineIndent -> 0, StripOnInput -> False], {
+            FontFamily -> "Arial"}, Background -> Automatic, StripOnInput -> 
+            False]& ), InterpretationFunction :> (RowBox[{"PointLegend", "[", 
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"PointSize", "[", "0.011000000000000001`", "]"}], 
+                    ",", 
+                    InterpretationBox[
+                    ButtonBox[
+                    TooltipBox[
+                    GraphicsBox[{{
+                    GrayLevel[0], 
+                    RectangleBox[{0, 0}]}, {
+                    GrayLevel[0], 
+                    RectangleBox[{1, -1}]}, {
+                    RGBColor[0.368417, 0.506779, 0.709798], 
+                    RectangleBox[{0, -1}, {2, 1}]}}, AspectRatio -> 1, Frame -> 
+                    True, FrameStyle -> 
+                    RGBColor[
+                    0.24561133333333335`, 0.3378526666666667, 
+                    0.4731986666666667], FrameTicks -> None, PlotRangePadding -> 
+                    None, ImageSize -> 
+                    Dynamic[{
+                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification]}]], 
+                    "RGBColor[0.368417, 0.506779, 0.709798]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
+                    If[
+                    Not[
+                    AbsoluteCurrentValue["Deployed"]], 
+                    SelectionMove[Typeset`box$, All, Expression]; 
+                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
+                    FrontEnd`Private`$ColorSelectorInitialColor = 
+                    RGBColor[0.368417, 0.506779, 0.709798]; 
+                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
+                    MathLink`CallFrontEnd[
+                    FrontEnd`AttachCell[Typeset`box$, 
+                    FrontEndResource["RGBColorValueSelector"], {
+                    0, {Left, Bottom}}, {Left, Top}, 
+                    "ClosingActions" -> {
+                    "SelectionDeparture", "ParentChanged", 
+                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
+                    Automatic, Method -> "Preemptive"], 
+                    RGBColor[0.368417, 0.506779, 0.709798], Editable -> False,
+                     Selectable -> False], ",", 
+                    RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}]}], "]"}], 
+                   ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"PointSize", "[", "0.011000000000000001`", "]"}], 
+                    ",", 
+                    InterpretationBox[
+                    ButtonBox[
+                    TooltipBox[
+                    GraphicsBox[{{
+                    GrayLevel[0], 
+                    RectangleBox[{0, 0}]}, {
+                    GrayLevel[0], 
+                    RectangleBox[{1, -1}]}, {
+                    RGBColor[0.880722, 0.611041, 0.142051], 
+                    RectangleBox[{0, -1}, {2, 1}]}}, AspectRatio -> 1, Frame -> 
+                    True, FrameStyle -> 
+                    RGBColor[
+                    0.587148, 0.40736066666666665`, 0.09470066666666668], 
+                    FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
+                    Dynamic[{
+                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification]}]], 
+                    "RGBColor[0.880722, 0.611041, 0.142051]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
+                    If[
+                    Not[
+                    AbsoluteCurrentValue["Deployed"]], 
+                    SelectionMove[Typeset`box$, All, Expression]; 
+                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
+                    FrontEnd`Private`$ColorSelectorInitialColor = 
+                    RGBColor[0.880722, 0.611041, 0.142051]; 
+                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
+                    MathLink`CallFrontEnd[
+                    FrontEnd`AttachCell[Typeset`box$, 
+                    FrontEndResource["RGBColorValueSelector"], {
+                    0, {Left, Bottom}}, {Left, Top}, 
+                    "ClosingActions" -> {
+                    "SelectionDeparture", "ParentChanged", 
+                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
+                    Automatic, Method -> "Preemptive"], 
+                    RGBColor[0.880722, 0.611041, 0.142051], Editable -> False,
+                     Selectable -> False], ",", 
+                    RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}]}], "]"}], 
+                   ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"PointSize", "[", "0.011000000000000001`", "]"}], 
+                    ",", 
+                    InterpretationBox[
+                    ButtonBox[
+                    TooltipBox[
+                    GraphicsBox[{{
+                    GrayLevel[0], 
+                    RectangleBox[{0, 0}]}, {
+                    GrayLevel[0], 
+                    RectangleBox[{1, -1}]}, {
+                    RGBColor[0.560181, 0.691569, 0.194885], 
+                    RectangleBox[{0, -1}, {2, 1}]}}, AspectRatio -> 1, Frame -> 
+                    True, FrameStyle -> 
+                    RGBColor[
+                    0.37345400000000006`, 0.461046, 0.12992333333333334`], 
+                    FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
+                    Dynamic[{
+                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification]}]], 
+                    "RGBColor[0.560181, 0.691569, 0.194885]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
+                    If[
+                    Not[
+                    AbsoluteCurrentValue["Deployed"]], 
+                    SelectionMove[Typeset`box$, All, Expression]; 
+                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
+                    FrontEnd`Private`$ColorSelectorInitialColor = 
+                    RGBColor[0.560181, 0.691569, 0.194885]; 
+                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
+                    MathLink`CallFrontEnd[
+                    FrontEnd`AttachCell[Typeset`box$, 
+                    FrontEndResource["RGBColorValueSelector"], {
+                    0, {Left, Bottom}}, {Left, Top}, 
+                    "ClosingActions" -> {
+                    "SelectionDeparture", "ParentChanged", 
+                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
+                    Automatic, Method -> "Preemptive"], 
+                    RGBColor[0.560181, 0.691569, 0.194885], Editable -> False,
+                     Selectable -> False], ",", 
+                    RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}]}], 
+                    "]"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                 RowBox[{#, ",", #2, ",", #3}], "}"}], ",", 
+               RowBox[{"LegendMarkers", "\[Rule]", 
+                 RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"False", ",", "Automatic"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"False", ",", "Automatic"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"False", ",", "Automatic"}], "}"}]}], "}"}]}], 
+               ",", 
+               RowBox[{"Joined", "\[Rule]", 
+                 RowBox[{"{", 
+                   RowBox[{"True", ",", "True", ",", "True"}], "}"}]}], ",", 
+               RowBox[{"LabelStyle", "\[Rule]", 
+                 RowBox[{"{", "}"}]}], ",", 
+               RowBox[{"LegendLayout", "\[Rule]", "\"Column\""}]}], "]"}]& ), 
+          Editable -> True], TraditionalForm]}, {
+        FormBox["\"Exact\"", TraditionalForm]}}, 
+      GridBoxAlignment -> {"Columns" -> {{Left}}}, AutoDelete -> False, 
+      GridBoxItemSize -> {
+       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+      GridBoxSpacings -> {"Columns" -> {{0}}}], "Grid"], TraditionalForm]},
+  "Legended",
+  DisplayFunction->(GridBox[{{
+      TagBox[
+       ItemBox[
+        PaneBox[
+         TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
+         BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+       "SkipImageSizeLevel"], 
+      ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+    GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+    AutoDelete -> False, GridBoxItemSize -> Automatic, 
+    BaselinePosition -> {1, 1}]& ),
+  Editable->True,
+  InterpretationFunction->(RowBox[{"Legended", "[", 
+     RowBox[{#, ",", 
+       RowBox[{"Placed", "[", 
+         RowBox[{#2, ",", "After"}], "]"}]}], "]"}]& )]], "Output",
+ CellChangeTimes->{
+  3.72502054048316*^9, {3.725020609139144*^9, 3.7250206289865513`*^9}, 
+   3.7250206648840837`*^9, {3.725020753733823*^9, 3.725020770401516*^9}, 
+   3.725020962395026*^9, {3.725021124534062*^9, 3.7250211595151854`*^9}, 
+   3.725021207750163*^9, 3.725021336240766*^9, 3.725021410692543*^9, 
+   3.7250216690708447`*^9, 3.725021717774272*^9, {3.725021831424098*^9, 
+   3.725021847869768*^9}, 3.725022089179265*^9, {3.725022219361936*^9, 
+   3.725022227357915*^9}, 3.725022816211616*^9, 3.725023945810178*^9, 
+   3.7250239930274878`*^9, {3.725024118980729*^9, 3.7250241567723722`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["List convolution method", "Subsection",
+ CellChangeTimes->{{3.725024331758863*^9, 3.725024335534896*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"forDiffConv", " ", "=", " ", "\[IndentingNewLine]", 
+    RowBox[{"Transpose", "[", "\[IndentingNewLine]", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Drop", "[", 
+        RowBox[{"expX", ",", " ", 
+         RowBox[{"-", "1"}]}], "]"}], ",", " ", 
+       RowBox[{"(*", 
+        RowBox[{
+        "*", " ", "drop", " ", "the", " ", "first", " ", "value", " ", "as", 
+         " ", "ListConvolve", " ", "drops", " ", "a", " ", "value"}], " ", 
+        "**)"}], "\[IndentingNewLine]", 
+       RowBox[{"ListConvolve", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"1", "/", " ", "del"}], ",", " ", 
+           RowBox[{
+            RowBox[{"-", "1"}], "/", "del"}]}], "}"}], ",", " ", "expY"}], 
+        "]"}]}], "\[IndentingNewLine]", "}"}], " ", "\[IndentingNewLine]", 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"backDiffConv", " ", "=", " ", "\[IndentingNewLine]", 
+    RowBox[{"Transpose", "[", "\[IndentingNewLine]", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Drop", "[", 
+        RowBox[{"expX", ",", " ", 
+         RowBox[{"-", "1"}]}], "]"}], ",", " ", "\[IndentingNewLine]", 
+       RowBox[{"Drop", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"ListConvolve", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"1", "/", " ", "del"}], ",", " ", 
+             RowBox[{
+              RowBox[{"-", "1"}], "/", "del"}]}], "}"}], ",", 
+           "\[IndentingNewLine]", " ", "expY", ",", "\[IndentingNewLine]", 
+           " ", "1"}], " ", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"*", " ", "change", " ", "the", " ", "index"}], ",", " ", 
+            RowBox[{
+            "drop", " ", "the", " ", "first", " ", "value", " ", "later"}]}], 
+           " ", "**)"}], "\[IndentingNewLine]", "]"}], ",", 
+         "\[IndentingNewLine]", "1"}], "]"}]}], "\[IndentingNewLine]", "}"}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"centDiffConv", " ", "=", " ", "\[IndentingNewLine]", 
+    RowBox[{"Transpose", "[", "\[IndentingNewLine]", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Drop", "[", 
+        RowBox[{
+         RowBox[{"Drop", "[", 
+          RowBox[{"expX", ",", " ", 
+           RowBox[{"-", "1"}]}], "]"}], ",", " ", "1"}], "]"}], ",", " ", 
+       RowBox[{"(*", 
+        RowBox[{
+        "*", " ", "ListConvolve", " ", "drops", " ", "the", " ", "first", " ",
+          "and", " ", "last", " ", "value"}], " ", "**)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"ListConvolve", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"1", "/", 
+            RowBox[{"(", 
+             RowBox[{"2", "del"}], ")"}]}], ",", " ", "0", ",", 
+           RowBox[{
+            RowBox[{"-", "1"}], "/", 
+            RowBox[{"(", 
+             RowBox[{"2", "del"}], ")"}]}]}], "}"}], ",", 
+         "\[IndentingNewLine]", "expY"}], "\[IndentingNewLine]", "]"}]}], 
+      "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"listExpConv", " ", "=", " ", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "forDiffConv", ",", " ", "backDiffConv", ",", " ", "centDiffConv"}], 
+      "}"}], ",", " ", 
+     RowBox[{"Joined", " ", "\[Rule]", " ", "True"}], ",", " ", 
+     RowBox[{"PlotLegends", " ", "\[Rule]", " ", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<forDiff\>\"", ",", " ", "\"\<backDiff\>\"", ",", " ", 
+        "\"\<centDiff\>\""}], "}"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Show", "[", 
+  RowBox[{"listExpConv", ",", " ", "exactExp"}], 
+  "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.7250219584270153`*^9, 3.725021988636714*^9}, {
+  3.725022165143466*^9, 3.7250222098594646`*^9}, {3.725022241378357*^9, 
+  3.7250223681270523`*^9}, {3.725022463876462*^9, 3.7250224690363092`*^9}, {
+  3.725023062663115*^9, 3.725023102906008*^9}, {3.7250234056484823`*^9, 
+  3.72502341968041*^9}, {3.725023468492078*^9, 3.725023520271112*^9}, {
+  3.7250235546061363`*^9, 3.725023615682534*^9}, {3.72502368011506*^9, 
+  3.7250236961692553`*^9}, {3.725023882595393*^9, 3.725023942433795*^9}, {
+  3.7250240026395817`*^9, 3.725024092161138*^9}, {3.725024168938517*^9, 
+  3.7250241700522137`*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{GraphicsBox[{{{}, {{{}, {}, {
+         Hue[0.67, 0.6, 0.6], 
+         Directive[
+          PointSize[0.011000000000000001`], 
+          RGBColor[0.368417, 0.506779, 0.709798], 
+          AbsoluteThickness[1.6]], 
+         LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQB2IQXS2yzv1hVYu9wPNXIi+3vdn/qAokcMq+JGTP3Kym
+5/vtuK4vLrC9Ze8SIldQZv94f9vrwB1yrY/tFXLenGhvub//DYj7+qV9hdh7
+8y9nb+7XjOk/9FXjg72K2Or0eoWr+2NB3JjP9itUT5RJ+VzcPwHE7f9m71CZ
+5HMz6Mz+wyDuoZ/2S5oP69cZHN//DcT9+sfe5K3ZquQ/h/aDnSfC4DAjTsBv
+s9j+/WDuOkaHOT7uKRwlO/d7gLjuzA41KmmxD65t2Q/mPmRxsGnlvHCZf+N+
+iP/YHFLa04zVPqyGmsfhILJ5ls36+8ug5nE6uLwrmW+1axHUPG6Hjrefe2JX
+zYOax+Pw5irLq1DpmVDz+BxCZKbcd+ybsh8cPFwCDld+zjOJvzJhP5h7XcAh
+Y+pTrtN93fuXgLiLBR0a+gof/uxv218I4hYIOXxwjVH8UdEEDV9hhw+az/0b
+7eug5ok48ORYtt44XAE1T8ThyTrTggVuJVDzRB2eiE4/sXNmAdQ8MYcj/hEq
+h/WyoeaJO6xIYfKMckyDmifh8EKhnWemRdJ+AAhW8m4=
+          "]]}, {
+         Hue[0.9060679774997897, 0.6, 0.6], 
+         Directive[
+          PointSize[0.011000000000000001`], 
+          RGBColor[0.880722, 0.611041, 0.142051], 
+          AbsoluteThickness[1.6]], 
+         LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQB2IQXS2yzv1hVYu9wPNXIi+3vdn/qAokcMq+JGTP3Kym
+5/vtuK4vLrC9Ze8SIldQZv94f9vrwB1yrY/tFXLenGhvub//DYj7+qV9hdh7
+8y9nb+7XjOk/9FXjg72K2Or0eoWr+2NB3JjP9itUT5RJ+VzcPwHE7f9m71CZ
+5HMz6Mz+wyDuoZ/2S5oP69cZHN//DcT9+sfe5K3ZquQ/h/aDnSfC4DAjTsBv
+s9j+/WDuOkaHOT7uKRwlO/d7gLjuzA41KmmxD65t2Q/mPmRxsGnlvHCZf+N+
+iP/YHFLa04zVPqyGmsfhILJ5ls36+8ug5nE6uLwrmW+1axHUPG6Hjrefe2JX
+zYOax+Pw5irLq1DpmVDz+BxCZKbcd+ybsh8cPFwCDld+zjOJvzJhP5h7XcAh
+Y+pTrtN93fuXgLiLBR0a+gof/uxv218I4hYIOXxwjVH8UdEEDV9hhw+az/0b
+7eug5ok48ORYtt44XAE1T8ThyTrTggVuJVDzRB2eiE4/sXNmAdQ8MYcj/hEq
+h/WyoeaJO6xIYfKMckyDmifh8EKhnWemRdJ+AAhW8m4=
+          "]]}, {
+         Hue[0.1421359549995791, 0.6, 0.6], 
+         Directive[
+          PointSize[0.011000000000000001`], 
+          RGBColor[0.560181, 0.691569, 0.194885], 
+          AbsoluteThickness[1.6]], 
+         LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQA2IQ/ahKZJ37w1P2h+YG31wp82q/Hdf1xQW2t+xjQt62
+fUh4ur/tdeAOudbH9lquXlp3Gx7ufwPivn5p73Mwl8Fu5Z39mjH9h75qfLD3
+Ezt73rL8+v5YEDfms/2zuZbvfcwu758A4vZ/s/dI+inTXnp+/2EQ99BP+6J/
+QvtWHzy5/xuI+/WPfY7F3zcFYkf3g1xTJcLg4NA3f8U954P7wdx1jA6zrmrf
+jHXds98DxHVndujZcS2hRHX7fjD3IYvDnSvbxaI+b9pfDTaAzeHdiT0vn7Gv
+h5rH4WAzl2HHq/SVUPM4HdZcYH/35cwSqHncDi1F3zdtYV8INY/HYVdize6b
+j2ZDzeNzUKg88+T0lWn7wcHDJeAg0i3ZFbBx0n4w97qAQ8cRwV1HZvftXwLi
+LhZ0+DJRuyyJv3N/IYhbIORg8SqNsbKlBRq+wg4lb5enxJxpgJon4vDPa8Kr
+NY3VUPNEHCp6t1fZtJZBzRN1SElKk9EtKIKaJ+ZwzPZwlLRhHtQ8cQezqLXb
++HZkQM2TcDhx6MiqnzYp+wE8W/H7
+          "]]}}}, {}}, {{{{}, {}, {
+         Directive[
+          Opacity[1.], 
+          AbsoluteThickness[1.6], 
+          RGBColor[1, 0, 0]], 
+         LineBox[CompressedData["
+1:eJwB4QQe+yFib1JlAgAAAE0AAAACAAAAisOOdvJ6hD+TLh+5fK7vv26V+WCp
+a4g/L9V92uWe779TZ2RLYFyMPxm8nqdWj++/jgUdEOcekj95+g82T3Dvv1ap
+8uRUAJo/ktZ0upsy7790+E5HmOGkP7WSeB2fuO6/AyB9+DlSsj+MNIGNNcrt
+v8ozFNGKCsE/QZLK89gC7L/FRiU3ZRDRP9Is/PW9gui/cAFIJZUK2T84ZRbF
+Z6Plv4B5g+habuA/toNh1zYm47/UtkU7RKzkP5txQeKdxeC/DbvLnbWh6D/a
+lOi0+qPdv9KDNP3/6+w/OYGeZ+rr2b8FtLVdIZHwP9+sSJuDuda/kwmzxAaI
+8j+K0LKYXBnUv2fBIapYqfQ/b8KKRvqX0b+uXHKXbqb2P5rLV5omE8+/rgUq
+tICZ+D9uIalZl4LLv/QQU0//tvo/WNyv3HgayL+t/13yQbD8P3qEkdZjTsW/
+rFDaE/HT/j+JqPrJuqPCv7LXXjLOdgBAja5mobpYwL/HeMHehXEBQHwPNboY
+7by//8pcynOBAkDZQ8zDV1S5v/EO6blDfwNAJ34iVIdgtr8GBK7oSZIEQA3g
+kXOqkLO/938mL06gBUDWLojL+yWxv6Htj3k0nAZA7+Ddm9JTrr9uDDIDUa0H
+QGj1ObSKiqq/9RzFkE+sCEA9PMJwG2+nv1i0CzZMpglAVWsHtMK9pL/e/Ioa
+f7UKQPB/53AzK6K/Hjf7ApSyC0A3wvsKhg6gv4EipCrfxAxAS1jRPogWnL/A
+lABqKNINQHwD3NqWoJi/ufhNrVPNDkDDrWub68iVv9UN1C+13Q9AW0i7DmgS
+k79UiiVb/G0QQMxxwOhc2JC/LdE6Kp3qEEAAOkDRZdSNv5dw7BjZcRFAxRsf
+Bqgjir/eiJYJBvARQHOUfJzlG4e/tvncGc54EkDny3w4LjiEv2vjGyyH+BJA
+bo7hDTPZgb+OkDRKv3UTQKEq+fCJln+/Q5bph5L9E0D5/s7iBKp7v9QUl8dW
+fBRA6dxncmRxeL/36+AmtgUVQNH1Vw3RX3W/iIYEkpSMFUAUq0USlLxyv/aZ
+IP9jChZAJ7io8QaScL/1BdmLzpIWQOa5pgLeAW2/0eqJGioSF0Ba+1jAap1p
+vxuTFLUEjxdAg3SY9bSsZr/3kztvehYYQKa02u9z3WO/sA1bK+GUGECIseOS
+6I5hv2xU3JMVlxhA2blYvD2FYb8om138SZkYQKbWajiYe2G/oShgzbKdGEDD
+964cXWhhv5JDZW+EphhA/qgNRCZCYb90eW+zJ7gYQN2BGoaz9mC/OOWDO27b
+GEAC3fbppWNgv/QrBaSi3RhA3rNA2J9aYL+wcoYM198YQN1nb76eUWC/KQCJ
+3T/kGECkwYtnqz9gvxobjn8R7RhAnd6G4P8bYL/8UJjDtP4YQEEsQyEmq1+/
+uJcZLOkAGUBKcnhwtplfv3TempQdAxlAgxdUWVCIX7/ta51lhgcZQO3O3OKg
+ZV+/3oaiB1gQGUCFvepBtCBfv5rNI3CMEhlAVVP1ypAPX79WFKXYwBQZQGA4
+rsN2/l6/z6GnqSkZGUD2oGXvXtxev4zoKBJeGxlAHqIIGGHLXr9IL6p6kh0Z
+QJvqoptsul6/BHYr48YfGUBS1w11galev8C8rEv7IRlAMpsln5+YXr8b23AX
+
+          "]]}}}, {}}}, {DisplayFunction -> Identity, PlotRangePadding -> {{
+        Scaled[0.02], 
+        Scaled[0.02]}, {
+        Scaled[0.05], 
+        Scaled[0.02]}}, AxesOrigin -> {0, 0}, 
+     PlotRange -> {{0, 6.01}, {-0.8973279388949056, 0}}, PlotRangeClipping -> 
+     True, ImagePadding -> All, DisplayFunction -> Identity, AspectRatio -> 
+     NCache[GoldenRatio^(-1), 0.6180339887498948], Axes -> {True, True}, 
+     AxesLabel -> {None, None}, AxesOrigin -> {0, 0}, DisplayFunction :> 
+     Identity, Frame -> {{False, False}, {False, False}}, 
+     FrameLabel -> {{None, None}, {None, None}}, 
+     FrameTicks -> {{Automatic, Automatic}, {Automatic, Automatic}}, 
+     GridLines -> {None, None}, GridLinesStyle -> Directive[
+       GrayLevel[0.5, 0.4]], 
+     Method -> {"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+           (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+            Part[#, 1]], 
+           (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+            Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+           (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+            Part[#, 1]], 
+           (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+            Part[#, 2]]}& )}}, 
+     PlotRange -> {{0, 6.01}, {-0.8973279388949056, 0}}, PlotRangeClipping -> 
+     True, PlotRangePadding -> {{
+        Scaled[0.02], 
+        Scaled[0.02]}, {
+        Scaled[0.05], 
+        Scaled[0.02]}}, Ticks -> {Automatic, Automatic}}],FormBox[
+    TagBox[
+     GridBox[{{
+        FormBox[
+         TemplateBox[{"\"forDiff\"", "\"backDiff\"", "\"centDiff\""}, 
+          "PointLegend", DisplayFunction -> (StyleBox[
+            StyleBox[
+             PaneBox[
+              TagBox[
+               GridBox[{{
+                  TagBox[
+                   GridBox[{{
+                    GraphicsBox[{{
+                    Directive[
+                    EdgeForm[
+                    Directive[
+                    Opacity[0.3], 
+                    GrayLevel[0]]], 
+                    PointSize[0.198], 
+                    RGBColor[0.368417, 0.506779, 0.709798], 
+                    AbsoluteThickness[1.6]], {
+                    LineBox[{{0, 10}, {20, 10}}]}}, {
+                    Directive[
+                    EdgeForm[
+                    Directive[
+                    Opacity[0.3], 
+                    GrayLevel[0]]], 
+                    PointSize[0.198], 
+                    RGBColor[0.368417, 0.506779, 0.709798], 
+                    AbsoluteThickness[1.6]], {}}}, AspectRatio -> Full, 
+                    ImageSize -> {20, 10}, PlotRangePadding -> None, 
+                    ImagePadding -> Automatic, 
+                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #}, {
+                    GraphicsBox[{{
+                    Directive[
+                    EdgeForm[
+                    Directive[
+                    Opacity[0.3], 
+                    GrayLevel[0]]], 
+                    PointSize[0.198], 
+                    RGBColor[0.880722, 0.611041, 0.142051], 
+                    AbsoluteThickness[1.6]], {
+                    LineBox[{{0, 10}, {20, 10}}]}}, {
+                    Directive[
+                    EdgeForm[
+                    Directive[
+                    Opacity[0.3], 
+                    GrayLevel[0]]], 
+                    PointSize[0.198], 
+                    RGBColor[0.880722, 0.611041, 0.142051], 
+                    AbsoluteThickness[1.6]], {}}}, AspectRatio -> Full, 
+                    ImageSize -> {20, 10}, PlotRangePadding -> None, 
+                    ImagePadding -> Automatic, 
+                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #2}, {
+                    GraphicsBox[{{
+                    Directive[
+                    EdgeForm[
+                    Directive[
+                    Opacity[0.3], 
+                    GrayLevel[0]]], 
+                    PointSize[0.198], 
+                    RGBColor[0.560181, 0.691569, 0.194885], 
+                    AbsoluteThickness[1.6]], {
+                    LineBox[{{0, 10}, {20, 10}}]}}, {
+                    Directive[
+                    EdgeForm[
+                    Directive[
+                    Opacity[0.3], 
+                    GrayLevel[0]]], 
+                    PointSize[0.198], 
+                    RGBColor[0.560181, 0.691569, 0.194885], 
+                    AbsoluteThickness[1.6]], {}}}, AspectRatio -> Full, 
+                    ImageSize -> {20, 10}, PlotRangePadding -> None, 
+                    ImagePadding -> Automatic, 
+                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #3}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {Center, Left}, "Rows" -> {{Baseline}}}, 
+                    AutoDelete -> False, 
+                    GridBoxDividers -> {
+                    "Columns" -> {{False}}, "Rows" -> {{False}}}, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{All}}, "Rows" -> {{All}}}, 
+                    GridBoxSpacings -> {
+                    "Columns" -> {{0.5}}, "Rows" -> {{0.8}}}], "Grid"]}}, 
+                GridBoxAlignment -> {
+                 "Columns" -> {{Left}}, "Rows" -> {{Top}}}, AutoDelete -> 
+                False, GridBoxItemSize -> {
+                 "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                GridBoxSpacings -> {"Columns" -> {{1}}, "Rows" -> {{0}}}], 
+               "Grid"], Alignment -> Left, AppearanceElements -> None, 
+              ImageMargins -> {{5, 5}, {5, 5}}, ImageSizeAction -> 
+              "ResizeToFit"], LineIndent -> 0, StripOnInput -> False], {
+            FontFamily -> "Arial"}, Background -> Automatic, StripOnInput -> 
+            False]& ), InterpretationFunction :> (RowBox[{"PointLegend", "[", 
+             RowBox[{
+               RowBox[{"{", 
+                 RowBox[{
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"PointSize", "[", "0.011000000000000001`", "]"}], 
+                    ",", 
+                    InterpretationBox[
+                    ButtonBox[
+                    TooltipBox[
+                    GraphicsBox[{{
+                    GrayLevel[0], 
+                    RectangleBox[{0, 0}]}, {
+                    GrayLevel[0], 
+                    RectangleBox[{1, -1}]}, {
+                    RGBColor[0.368417, 0.506779, 0.709798], 
+                    RectangleBox[{0, -1}, {2, 1}]}}, AspectRatio -> 1, Frame -> 
+                    True, FrameStyle -> 
+                    RGBColor[
+                    0.24561133333333335`, 0.3378526666666667, 
+                    0.4731986666666667], FrameTicks -> None, PlotRangePadding -> 
+                    None, ImageSize -> 
+                    Dynamic[{
+                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification]}]], 
+                    "RGBColor[0.368417, 0.506779, 0.709798]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
+                    If[
+                    Not[
+                    AbsoluteCurrentValue["Deployed"]], 
+                    SelectionMove[Typeset`box$, All, Expression]; 
+                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
+                    FrontEnd`Private`$ColorSelectorInitialColor = 
+                    RGBColor[0.368417, 0.506779, 0.709798]; 
+                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
+                    MathLink`CallFrontEnd[
+                    FrontEnd`AttachCell[Typeset`box$, 
+                    FrontEndResource["RGBColorValueSelector"], {
+                    0, {Left, Bottom}}, {Left, Top}, 
+                    "ClosingActions" -> {
+                    "SelectionDeparture", "ParentChanged", 
+                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
+                    Automatic, Method -> "Preemptive"], 
+                    RGBColor[0.368417, 0.506779, 0.709798], Editable -> False,
+                     Selectable -> False], ",", 
+                    RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}]}], "]"}], 
+                   ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"PointSize", "[", "0.011000000000000001`", "]"}], 
+                    ",", 
+                    InterpretationBox[
+                    ButtonBox[
+                    TooltipBox[
+                    GraphicsBox[{{
+                    GrayLevel[0], 
+                    RectangleBox[{0, 0}]}, {
+                    GrayLevel[0], 
+                    RectangleBox[{1, -1}]}, {
+                    RGBColor[0.880722, 0.611041, 0.142051], 
+                    RectangleBox[{0, -1}, {2, 1}]}}, AspectRatio -> 1, Frame -> 
+                    True, FrameStyle -> 
+                    RGBColor[
+                    0.587148, 0.40736066666666665`, 0.09470066666666668], 
+                    FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
+                    Dynamic[{
+                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification]}]], 
+                    "RGBColor[0.880722, 0.611041, 0.142051]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
+                    If[
+                    Not[
+                    AbsoluteCurrentValue["Deployed"]], 
+                    SelectionMove[Typeset`box$, All, Expression]; 
+                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
+                    FrontEnd`Private`$ColorSelectorInitialColor = 
+                    RGBColor[0.880722, 0.611041, 0.142051]; 
+                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
+                    MathLink`CallFrontEnd[
+                    FrontEnd`AttachCell[Typeset`box$, 
+                    FrontEndResource["RGBColorValueSelector"], {
+                    0, {Left, Bottom}}, {Left, Top}, 
+                    "ClosingActions" -> {
+                    "SelectionDeparture", "ParentChanged", 
+                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
+                    Automatic, Method -> "Preemptive"], 
+                    RGBColor[0.880722, 0.611041, 0.142051], Editable -> False,
+                     Selectable -> False], ",", 
+                    RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}]}], "]"}], 
+                   ",", 
+                   RowBox[{"Directive", "[", 
+                    RowBox[{
+                    RowBox[{"PointSize", "[", "0.011000000000000001`", "]"}], 
+                    ",", 
+                    InterpretationBox[
+                    ButtonBox[
+                    TooltipBox[
+                    GraphicsBox[{{
+                    GrayLevel[0], 
+                    RectangleBox[{0, 0}]}, {
+                    GrayLevel[0], 
+                    RectangleBox[{1, -1}]}, {
+                    RGBColor[0.560181, 0.691569, 0.194885], 
+                    RectangleBox[{0, -1}, {2, 1}]}}, AspectRatio -> 1, Frame -> 
+                    True, FrameStyle -> 
+                    RGBColor[
+                    0.37345400000000006`, 0.461046, 0.12992333333333334`], 
+                    FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
+                    Dynamic[{
+                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification]}]], 
+                    "RGBColor[0.560181, 0.691569, 0.194885]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
+                    If[
+                    Not[
+                    AbsoluteCurrentValue["Deployed"]], 
+                    SelectionMove[Typeset`box$, All, Expression]; 
+                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
+                    FrontEnd`Private`$ColorSelectorInitialColor = 
+                    RGBColor[0.560181, 0.691569, 0.194885]; 
+                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
+                    MathLink`CallFrontEnd[
+                    FrontEnd`AttachCell[Typeset`box$, 
+                    FrontEndResource["RGBColorValueSelector"], {
+                    0, {Left, Bottom}}, {Left, Top}, 
+                    "ClosingActions" -> {
+                    "SelectionDeparture", "ParentChanged", 
+                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
+                    Automatic, Method -> "Preemptive"], 
+                    RGBColor[0.560181, 0.691569, 0.194885], Editable -> False,
+                     Selectable -> False], ",", 
+                    RowBox[{"AbsoluteThickness", "[", "1.6`", "]"}]}], 
+                    "]"}]}], "}"}], ",", 
+               RowBox[{"{", 
+                 RowBox[{#, ",", #2, ",", #3}], "}"}], ",", 
+               RowBox[{"LegendMarkers", "\[Rule]", 
+                 RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"False", ",", "Automatic"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"False", ",", "Automatic"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"False", ",", "Automatic"}], "}"}]}], "}"}]}], 
+               ",", 
+               RowBox[{"Joined", "\[Rule]", 
+                 RowBox[{"{", 
+                   RowBox[{"True", ",", "True", ",", "True"}], "}"}]}], ",", 
+               RowBox[{"LabelStyle", "\[Rule]", 
+                 RowBox[{"{", "}"}]}], ",", 
+               RowBox[{"LegendLayout", "\[Rule]", "\"Column\""}]}], "]"}]& ), 
+          Editable -> True], TraditionalForm]}, {
+        FormBox["\"Exact\"", TraditionalForm]}}, 
+      GridBoxAlignment -> {"Columns" -> {{Left}}}, AutoDelete -> False, 
+      GridBoxItemSize -> {
+       "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+      GridBoxSpacings -> {"Columns" -> {{0}}}], "Grid"], TraditionalForm]},
+  "Legended",
+  DisplayFunction->(GridBox[{{
+      TagBox[
+       ItemBox[
+        PaneBox[
+         TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
+         BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+       "SkipImageSizeLevel"], 
+      ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+    GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+    AutoDelete -> False, GridBoxItemSize -> Automatic, 
+    BaselinePosition -> {1, 1}]& ),
+  Editable->True,
+  InterpretationFunction->(RowBox[{"Legended", "[", 
+     RowBox[{#, ",", 
+       RowBox[{"Placed", "[", 
+         RowBox[{#2, ",", "After"}], "]"}]}], "]"}]& )]], "Output",
+ CellChangeTimes->{{3.725022195120694*^9, 3.725022210540332*^9}, 
+   3.725023103296859*^9, 3.725023395474462*^9, {3.725023448831512*^9, 
+   3.725023521247787*^9}, {3.7250236910095577`*^9, 3.725023696672813*^9}, {
+   3.725023885915587*^9, 3.725023936004315*^9}, 3.725023976050871*^9, {
+   3.725024067033318*^9, 3.7250241595007133`*^9}}]
+}, Open  ]],
 
 Cell[TextData[{
  StyleBox["2. This problem involves setting up a simple one-dimensional model \
@@ -164,6 +1269,174 @@ that the probability of moving to the right is 0.055 and to the left 0.045.",
  CellChangeTimes->{{3.441350220222*^9, 3.441350220821*^9}, {3.44135048426*^9, 
   3.441350484598*^9}, {3.441350562274*^9, 3.4413505646070004`*^9}}],
 
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"particles", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{"0", ",", " ", "101"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"particles", "[", 
+    RowBox[{"[", "51", "]"}], "]"}], " ", "=", " ", "100"}], 
+  ";"}], "\[IndentingNewLine]", "particles", "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"p", " ", "=", " ", "0.1"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"positions", " ", "=", "\[IndentingNewLine]", 
+   RowBox[{"Nest", "[", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"ListConvolve", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"p", "/", "2"}], ",", " ", 
+          RowBox[{"(", 
+           RowBox[{"1", "-", "p"}], ")"}], ",", " ", 
+          RowBox[{"p", "/", "2"}]}], "}"}], ",", "\[IndentingNewLine]", "#"}],
+        "]"}], "&"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     "particles", ",", "\[IndentingNewLine]", "\[IndentingNewLine]", "20"}], 
+    "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ListPlot", "[", "positions", "]"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "*", " ", "the", " ", "list", " ", "is", " ", "getting", " ", "shorter", 
+    " ", "and", " ", "shorter", " ", "because", " ", "of", " ", 
+    "listconvolve", " ", "cutting", " ", "it"}], " ", 
+   "**)"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.725024809231489*^9, 3.7250248122826567`*^9}, 
+   3.725025108731324*^9, {3.725025142702619*^9, 3.7250253654411697`*^9}, {
+   3.72502540015578*^9, 3.725025444968862*^9}, {3.725025495144546*^9, 
+   3.725025577807693*^9}, {3.725025650379075*^9, 3.725025696368202*^9}, {
+   3.725025790299078*^9, 3.7250259362841597`*^9}, {3.725026188812971*^9, 
+   3.725026286709198*^9}, {3.725026345101692*^9, 3.7250264288348417`*^9}, {
+   3.7250264678083572`*^9, 3.725026472927837*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", 
+   ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", 
+   "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", 
+   ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", 
+   "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", 
+   ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", 
+   "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "100", ",", "0", ",", 
+   "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", 
+   ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", 
+   "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", 
+   ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", 
+   "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", 
+   ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", 
+   "0", ",", "0", ",", "0", ",", "0"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.7250252112187862`*^9, {3.725025289974491*^9, 3.725025321423521*^9}, {
+   3.7250254044298563`*^9, 3.725025447186616*^9}, {3.725025521176264*^9, 
+   3.725025578435088*^9}, 3.725025651462425*^9, {3.725025682112487*^9, 
+   3.725025696621163*^9}, {3.7250258570874863`*^9, 3.725025936923358*^9}, {
+   3.7250261895177183`*^9, 3.725026250420074*^9}, {3.725026280685624*^9, 
+   3.7250262873269253`*^9}, 3.725026350839834*^9, 3.7250263922838163`*^9}],
+
+Cell[BoxData["0.1`"], "Output",
+ CellChangeTimes->{
+  3.7250252112187862`*^9, {3.725025289974491*^9, 3.725025321423521*^9}, {
+   3.7250254044298563`*^9, 3.725025447186616*^9}, {3.725025521176264*^9, 
+   3.725025578435088*^9}, 3.725025651462425*^9, {3.725025682112487*^9, 
+   3.725025696621163*^9}, {3.7250258570874863`*^9, 3.725025936923358*^9}, {
+   3.7250261895177183`*^9, 3.725026250420074*^9}, {3.725026280685624*^9, 
+   3.7250262873269253`*^9}, 3.725026350839834*^9, 3.725026392299638*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
+   "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "9.53674316406251`*^-25", 
+   ",", "3.433227539062502`*^-22", ",", "5.87272644042969`*^-20", ",", 
+   "6.3470077514648476`*^-18", ",", "4.861040019989018`*^-16", ",", 
+   "2.8046558372497578`*^-14", ",", "1.2650117507743845`*^-12", ",", 
+   "4.568065581974033`*^-11", ",", "1.3415354826681956`*^-9", ",", 
+   "3.236434732204241`*^-8", ",", "6.451069905209779`*^-7", ",", 
+   "0.000010647504823705396`", ",", "0.00014535408259632528`", ",", 
+   "0.0016338281179814076`", ",", "0.014995161227025319`", ",", 
+   "0.1109060514469488`", ",", "0.6482136763830031`", ",", 
+   "2.908472705044114`", ",", "9.589703016976346`", ",", "21.69074635932438`",
+    ",", "30.070345042065917`", ",", "21.69074635932438`", ",", 
+   "9.58970301697635`", ",", "2.908472705044115`", ",", "0.6482136763830031`",
+    ",", "0.11090605144694878`", ",", "0.014995161227025315`", ",", 
+   "0.0016338281179814073`", ",", "0.00014535408259632525`", ",", 
+   "0.000010647504823705396`", ",", "6.45106990520978`*^-7", ",", 
+   "3.236434732204241`*^-8", ",", "1.3415354826681956`*^-9", ",", 
+   "4.568065581974031`*^-11", ",", "1.2650117507743841`*^-12", ",", 
+   "2.8046558372497572`*^-14", ",", "4.861040019989015`*^-16", ",", 
+   "6.3470077514648476`*^-18", ",", "5.872726440429691`*^-20", ",", 
+   "3.433227539062502`*^-22", ",", "9.53674316406251`*^-25", ",", "0.`", ",", 
+   "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
+   "0.`", ",", "0.`", ",", "0.`"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.7250252112187862`*^9, {3.725025289974491*^9, 3.725025321423521*^9}, {
+   3.7250254044298563`*^9, 3.725025447186616*^9}, {3.725025521176264*^9, 
+   3.725025578435088*^9}, 3.725025651462425*^9, {3.725025682112487*^9, 
+   3.725025696621163*^9}, {3.7250258570874863`*^9, 3.725025936923358*^9}, {
+   3.7250261895177183`*^9, 3.725026250420074*^9}, {3.725026280685624*^9, 
+   3.7250262873269253`*^9}, 3.725026350839834*^9, 3.725026392311833*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.011000000000000001`],
+      AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxd0kkoRVEYB/AbGRZECEXxkMyZ5/f8nzeYxQsLemVcSDIsxO6EhZK3kRUl
+YkWGhYVIFHnsDEs9Gxl6mZNig+5X7vlO3W6/vu495/y/T9feZ+vyUBRF//v8
+vdX1UqLICzJ9mQOZQ5jDmSOZo5ljmOOY47FpOj+zD74Vqk5A2nrA88XLSJHq
+JPS7PEVt4ys5BY7Q4I4Ci71YdRoWu8fnx8cOyOmw2693XdNRetUZ+NgwI8I4
+RM7Emm0s+DvyhJwFh+10NcYvzKA6GwtVIfqo1jZyDu6/TNbe5WVyLlKeJtyN
+DbfkPNxnugOs/rGUcz68R1tnjg6byQVwuSeHnVsOciF2lm6Omzp3yUWoq5+b
+Tdq7IRfjw9nTNGX2oZz0SJxwTj2mxpINCNdd719u5JBL4Ir41HkEGciQ6wJI
+lr434lP7f2Fk+5diW3s+UYor6fwmeGnvJ0y4k+5vlvMRZjxI+VnkfIWF5W/F
+irY/wop3qX9laNH2V5RhXup/uTwfohwD0vxUyPMlKtj8VVJOtASzUsXqzEo1
+qzMrNazOrNSy+r9/AK7Dv20=
+      "]]}, {}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0., 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0., 61.}, {0, 0.03748790306756329}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.7250252112187862`*^9, {3.725025289974491*^9, 3.725025321423521*^9}, {
+   3.7250254044298563`*^9, 3.725025447186616*^9}, {3.725025521176264*^9, 
+   3.725025578435088*^9}, 3.725025651462425*^9, {3.725025682112487*^9, 
+   3.725025696621163*^9}, {3.7250258570874863`*^9, 3.725025936923358*^9}, {
+   3.7250261895177183`*^9, 3.725026250420074*^9}, {3.725026280685624*^9, 
+   3.7250262873269253`*^9}, 3.725026350839834*^9, 3.72502639256886*^9}]
+}, Open  ]],
+
 Cell[TextData[{
  StyleBox["3. This problem sets up a demonstration of the Rayleigh criterion \
 for the separation of images. The criterion depends on the diffraction \
@@ -238,13 +1511,15 @@ Physics and Astronomy, UCL
 January 2008, revised January 2009.\
 \>", "Text",
  CellChangeTimes->{{3.441350181244*^9, 3.441350189781*^9}}]
+}, Open  ]]
 },
-WindowSize->{905, 679},
-WindowMargins->{{130, Automatic}, {0, Automatic}},
+WindowSize->{798, 755},
+WindowMargins->{{3, Automatic}, {Automatic, 0}},
 PrintingCopies->1,
 PrintingPageRange->{1, 4},
 ShowSelection->True,
-FrontEndVersion->"6.0 for Microsoft Windows (32-bit) (June 19, 2007)",
+FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (April 11, \
+2016)",
 StyleDefinitions->Notebook[{
    Cell[
     CellGroupData[{
@@ -521,8 +1796,7 @@ Notebook level.", "Text"],
                     BoxMargins -> {{-0.175, 0}, {0, 0}}]}], TextForm], 
                Inherited}, LineSpacing -> {1, 7}, CounterIncrements -> 
              "Subsection", CounterAssignments -> {{"Subsubsection", 0}}, 
-             FontFamily -> "Helvetica", FontSize -> 18, FontWeight -> "Bold"],
-             
+             FontFamily -> "Helvetica", FontSize -> 18, FontWeight -> "Bold"], 
             Cell[
              StyleData["Subsection", "Presentation"], 
              CellMargins -> {{15, 10}, {12, 32}}, LineSpacing -> {1, 0}, 
@@ -793,8 +2067,7 @@ names.", "Text"],
             Cell[
              StyleData["InlineInput", "Condensed"]], 
             Cell[
-             StyleData["InlineInput", "Printout"], FontSize -> 10]}, Closed]],
-          
+             StyleData["InlineInput", "Printout"], FontSize -> 10]}, Closed]], 
          Cell[
           CellGroupData[{
             Cell[
@@ -1212,8 +2485,7 @@ a particular counter, and also increment that counter.", "Text"],
           FontSlant -> "Italic"], 
          Cell[
           StyleData["Footer"], CellMargins -> {{0, 0}, {0, 4}}, 
-          StyleMenuListing -> None, FontFamily -> "Helvetica", FontSize -> 6],
-          
+          StyleMenuListing -> None, FontFamily -> "Helvetica", FontSize -> 6], 
          Cell[
           StyleData["PageNumber"], CellMargins -> {{0, 0}, {4, 1}}, 
           StyleMenuListing -> None, FontFamily -> "Helvetica", FontSize -> 9, 
@@ -1232,7 +2504,7 @@ or between Notebooks.", "Text"],
              ButtonStyleMenuListing -> Automatic, FontColor -> 
              RGBColor[0.269993, 0.308507, 0.6], 
              ButtonBoxOptions -> {
-              Active -> True, ButtonFrame -> "None", 
+              Active -> True, Appearance -> {Automatic, None}, 
                ButtonFunction :> (FrontEndExecute[{
                   FrontEnd`NotebookLocate[#2]}]& ), ButtonNote -> 
                ButtonData}], 
@@ -1256,7 +2528,7 @@ help system.", "Text"],
              ButtonStyleMenuListing -> Automatic, FontColor -> 
              RGBColor[0.269993, 0.308507, 0.6], 
              ButtonBoxOptions -> {
-              Active -> True, ButtonFrame -> "None", 
+              Active -> True, Appearance -> {Automatic, None}, 
                ButtonFunction :> (FrontEndExecute[{
                   FrontEnd`HelpBrowserLookup["MainBook", #]}]& )}], 
             Cell[
@@ -1276,7 +2548,7 @@ help system.", "Text"],
              ButtonStyleMenuListing -> Automatic, FontFamily -> "Courier", 
              FontColor -> RGBColor[0.269993, 0.308507, 0.6], 
              ButtonBoxOptions -> {
-              Active -> True, ButtonFrame -> "None", 
+              Active -> True, Appearance -> {Automatic, None}, 
                ButtonFunction :> (FrontEndExecute[{
                   FrontEnd`HelpBrowserLookup["AddOns", #]}]& )}], 
             Cell[
@@ -1296,7 +2568,7 @@ help system.", "Text"],
              ButtonStyleMenuListing -> Automatic, FontFamily -> "Courier", 
              FontColor -> RGBColor[0.269993, 0.308507, 0.6], 
              ButtonBoxOptions -> {
-              Active -> True, ButtonFrame -> "None", 
+              Active -> True, Appearance -> {Automatic, None}, 
                ButtonFunction :> (FrontEndExecute[{
                   FrontEnd`HelpBrowserLookup["RefGuide", #]}]& )}], 
             Cell[
@@ -1316,7 +2588,7 @@ help system.", "Text"],
              ButtonStyleMenuListing -> Automatic, FontColor -> 
              RGBColor[0.269993, 0.308507, 0.6], 
              ButtonBoxOptions -> {
-              Active -> True, ButtonFrame -> "None", 
+              Active -> True, Appearance -> {Automatic, None}, 
                ButtonFunction :> (FrontEndExecute[{
                   FrontEnd`HelpBrowserLookup["RefGuide", #]}]& )}], 
             Cell[
@@ -1336,12 +2608,11 @@ help system.", "Text"],
              ButtonStyleMenuListing -> Automatic, FontColor -> 
              RGBColor[0.269993, 0.308507, 0.6], 
              ButtonBoxOptions -> {
-              Active -> True, ButtonFrame -> "None", 
+              Active -> True, Appearance -> {Automatic, None}, 
                ButtonFunction :> (FrontEndExecute[{
                   FrontEnd`HelpBrowserLookup["GettingStarted", #]}]& )}], 
             Cell[
-             StyleData["GettingStartedLink", "Presentation"], FontSize -> 16],
-             
+             StyleData["GettingStartedLink", "Presentation"], FontSize -> 16], 
             Cell[
              StyleData["GettingStartedLink", "Condensed"], FontSize -> 11], 
             Cell[
@@ -1357,7 +2628,7 @@ help system.", "Text"],
              ButtonStyleMenuListing -> Automatic, FontColor -> 
              RGBColor[0.269993, 0.308507, 0.6], 
              ButtonBoxOptions -> {
-              Active -> True, ButtonFrame -> "None", 
+              Active -> True, Appearance -> {Automatic, None}, 
                ButtonFunction :> (FrontEndExecute[{
                   FrontEnd`HelpBrowserLookup["Demos", #]}]& )}], 
             Cell[
@@ -1373,7 +2644,7 @@ help system.", "Text"],
              ButtonStyleMenuListing -> Automatic, FontColor -> 
              RGBColor[0.269993, 0.308507, 0.6], 
              ButtonBoxOptions -> {
-              Active -> True, ButtonFrame -> "None", 
+              Active -> True, Appearance -> {Automatic, None}, 
                ButtonFunction :> (FrontEndExecute[{
                   FrontEnd`HelpBrowserLookup["Tour", #]}]& )}], 
             Cell[
@@ -1389,7 +2660,7 @@ help system.", "Text"],
              ButtonStyleMenuListing -> Automatic, FontColor -> 
              RGBColor[0.269993, 0.308507, 0.6], 
              ButtonBoxOptions -> {
-              Active -> True, ButtonFrame -> "None", 
+              Active -> True, Appearance -> {Automatic, None}, 
                ButtonFunction :> (FrontEndExecute[{
                   FrontEnd`HelpBrowserLookup["OtherInformation", #]}]& )}], 
             Cell[
@@ -1397,7 +2668,6 @@ help system.", "Text"],
              16], 
             Cell[
              StyleData["OtherInformationLink", "Condensed"], FontSize -> 11], 
-            
             Cell[
              StyleData["OtherInformationLink", "SlideShow"]], 
             Cell[
@@ -1411,7 +2681,7 @@ help system.", "Text"],
              ButtonStyleMenuListing -> Automatic, FontColor -> 
              RGBColor[0.269993, 0.308507, 0.6], 
              ButtonBoxOptions -> {
-              Active -> True, ButtonFrame -> "None", 
+              Active -> True, Appearance -> {Automatic, None}, 
                ButtonFunction :> (FrontEndExecute[{
                   FrontEnd`HelpBrowserLookup["MasterIndex", #]}]& )}], 
             Cell[
@@ -1612,7 +2882,8 @@ for use in palette buttons.", "Text"],
             Cell[
              StyleData["SlideTOC", "Printout"], FontSize -> 10, FontColor -> 
              GrayLevel[0]]}, Closed]]}, Closed]]}, Open]]}, Visible -> False, 
-  FrontEndVersion -> "6.0 for Microsoft Windows (32-bit) (June 19, 2007)", 
+  FrontEndVersion -> 
+  "10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -1626,14 +2897,42 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[568, 21, 162, 4, 105, "Title"],
-Cell[733, 27, 16, 0, 25, "Text"],
-Cell[752, 29, 2057, 56, 380, "Text"],
-Cell[2812, 87, 2816, 77, 165, "Text"],
-Cell[5631, 166, 2623, 66, 261, "Text"],
-Cell[8257, 234, 158, 5, 85, "Text"]
+Cell[545, 20, 162, 4, 105, "Title"],
+Cell[710, 26, 16, 0, 22, "Text"],
+Cell[729, 28, 2057, 56, 373, "Text"],
+Cell[CellGroupData[{
+Cell[2811, 88, 95, 1, 47, "Subsection"],
+Cell[CellGroupData[{
+Cell[2931, 93, 1250, 29, 94, "Input"],
+Cell[4184, 124, 97, 1, 45, "Output"],
+Cell[4284, 127, 1995, 44, 256, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6328, 177, 110, 1, 47, "Subsection"],
+Cell[CellGroupData[{
+Cell[6463, 182, 3684, 91, 222, "Input"],
+Cell[10150, 275, 20183, 399, 245, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30382, 680, 111, 1, 47, "Subsection"],
+Cell[CellGroupData[{
+Cell[30518, 685, 4648, 109, 625, "Input"],
+Cell[35169, 796, 19816, 393, 243, "Output"]
+}, Open  ]],
+Cell[55000, 1192, 2816, 77, 149, "Text"],
+Cell[CellGroupData[{
+Cell[57841, 1273, 1989, 43, 329, "Input"],
+Cell[59833, 1318, 1585, 23, 76, "Output"],
+Cell[61421, 1343, 494, 7, 45, "Output"],
+Cell[61918, 1352, 2103, 32, 158, "Output"],
+Cell[64024, 1386, 2362, 50, 251, "Output"]
+}, Open  ]],
+Cell[66401, 1439, 2623, 66, 235, "Text"],
+Cell[69027, 1507, 158, 5, 76, "Text"]
+}, Open  ]]
 }
 ]
 *)
 
-(* End of internal cache information *)
