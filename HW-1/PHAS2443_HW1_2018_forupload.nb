@@ -1,0 +1,389 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13868,        381]
+NotebookOptionsPosition[     13493,        364]
+NotebookOutlinePosition[     13851,        380]
+CellTagsIndexPosition[     13808,        377]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[StyleBox["PHAS2443 : Practical Mathematics II   2017/18\n\
+Homework 1",
+ FontColor->RGBColor[0.5, 0, 0.5]]], "Text",
+ CellChangeTimes->{{3.724948608299775*^9, 3.7249486311000977`*^9}, {
+   3.7249488731488657`*^9, 3.724948875268561*^9}, {3.724949000074211*^9, 
+   3.7249490316716223`*^9}, 3.7249493368330717`*^9},
+ FormatType->"TextForm",
+ FontFamily->"Arial",
+ FontSize->24,
+ FontWeight->"Bold",
+ Background->RGBColor[
+  1, 1, 0.85],ExpressionUUID->"6bfc5f38-1e55-4d9c-8173-3fcc95cf636a"],
+
+Cell[TextData[{
+ StyleBox["(N.B. there is often more than one way to do something in ",
+  FontWeight->"Bold",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["Mathematica",
+  FontWeight->"Bold",
+  FontSlant->"Italic",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[")\n1.",
+  FontWeight->"Bold",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[" Construct",
+  FontWeight->"Bold",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[" a rule that will remove a lower-case alphabetic character \
+(letter) from a list of such characters if that character is a vowel (i.e. is \
+any of the characters \[OpenCurlyDoubleQuote]a\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]e\[CloseCurlyDoubleQuote], \[OpenCurlyDoubleQuote]i\
+\[CloseCurlyDoubleQuote], \[OpenCurlyDoubleQuote]o\[CloseCurlyDoubleQuote] or \
+\[OpenCurlyDoubleQuote]u\[CloseCurlyDoubleQuote]). Apply your rule \
+appropriately to the following list in the \[OpenCurlyQuote]Replace All\
+\[CloseCurlyQuote] mode described in the lectures, and display the output \
+clearly.\n{\[OpenCurlyDoubleQuote]g\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]u\[CloseCurlyDoubleQuote], \[OpenCurlyDoubleQuote]e\
+\[CloseCurlyDoubleQuote], \[OpenCurlyDoubleQuote]l\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]y\[CloseCurlyDoubleQuote], \[OpenCurlyDoubleQuote]e\
+\[CloseCurlyDoubleQuote], \[OpenCurlyDoubleQuote]i\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]p\[CloseCurlyDoubleQuote], \[OpenCurlyDoubleQuote]h\
+\[CloseCurlyDoubleQuote], \[OpenCurlyDoubleQuote]a\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]a\[CloseCurlyDoubleQuote]}  ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["[7 marks]",
+  FontWeight->"Bold",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["\n\n",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["2. ",
+  FontWeight->"Bold",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["Write",
+  FontWeight->"Bold",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[" code to implement a ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["recursive",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[" function which will calculate the factorial of",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[" ",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["a zero or positive integer, according to the following definitions \
+(where the symbol ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["k",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["! denotes the factorial of ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["k",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["):\n",
+  FontColor->RGBColor[0, 0, 1]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"0", "!"}], TraditionalForm]],
+  FontColor->RGBColor[0, 0, 1],ExpressionUUID->
+  "161b381c-1699-4e83-99f6-94c7007b93a6"],
+ StyleBox[" ",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["= 1\n",
+  FontColor->RGBColor[0, 0, 1]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "!"}], TraditionalForm]],
+  FontColor->RGBColor[0, 0, 1],ExpressionUUID->
+  "3a3f38eb-3966-45c6-a29f-ad390aa327d7"],
+ StyleBox[" = ",
+  FontColor->RGBColor[0, 0, 1]],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"n", "-", "1"}], ")"}], "!"}]}]}], TraditionalForm]],
+  FontColor->RGBColor[0, 0, 1],ExpressionUUID->
+  "20fc7edb-d0de-4c00-8492-f3f1195af2a0"],
+ StyleBox[")   for  ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["n>",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["1\nYour function should ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["not ",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["make use of the inbuilt ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["Factorial",
+  FontFamily->"Courier New",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[" function in ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["Mathematica",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[". Your function should be defined for one input argument which can \
+only be a positive integer or zero. Compare, quantitatively, the time \
+required by your function to calculate the value 50! with the time taken by ",
+  
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["Mathematica",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["\[CloseCurlyQuote]s ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["Factorial",
+  FontFamily->"Courier New",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[" function.  ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["[7 marks]",
+  FontWeight->"Bold",
+  FontColor->RGBColor[1, 0, 0]]
+}], "Text",
+ CellChangeTimes->{{3.631260498656431*^9, 3.6312605048535223`*^9}, {
+   3.631260824690526*^9, 3.6312608657906227`*^9}, 3.631360332941927*^9, {
+   3.662036376295371*^9, 3.6620364914926453`*^9}, {3.6620369658872833`*^9, 
+   3.662036967383383*^9}, {3.662058006326672*^9, 3.662058017516121*^9}, {
+   3.662058063329151*^9, 3.66205807032848*^9}, {3.693466266034913*^9, 
+   3.6934664233487253`*^9}, {3.69346650326716*^9, 3.6934665393025093`*^9}, {
+   3.696916229121193*^9, 3.696916255023773*^9}, {3.724675613916573*^9, 
+   3.7246759931174307`*^9}, {3.724676059269763*^9, 3.724676069594449*^9}, {
+   3.7249299722283278`*^9, 3.724930010172153*^9}, {3.724948509750865*^9, 
+   3.724948510293508*^9}, {3.724948656892556*^9, 3.724948661811452*^9}, 
+   3.724948718412356*^9},ExpressionUUID->"6532ea7a-d213-4e0e-b913-\
+1bdefabe57c5"],
+
+Cell[TextData[{
+ StyleBox["\n3",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[". ",
+  FontWeight->"Bold",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[" Create",
+  FontWeight->"Bold",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[" a list ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["S ",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["containing 11 integer elements. Set the value of all elements to \
+zero except for the central (6th) element, which you should set equal to 1. \
+Write code which will update all of the values in an integer list, according \
+to the following algorithm:\n- If the sum of a list element, its left \
+neighbour and its right neighbour is less than 3, then update that list \
+element with the value of that sum. Otherwise, update that list element with \
+the value of that sum modulo 3 (you may find the ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["Mathematica ",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["function ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["Mod",
+  FontFamily->"Courier New",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[" to be useful). Treat the list as a ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["cyclic",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[" one, where the right neighbour of the last element is the first \
+element and the left neighbour of the first element is the last element.\nUse \
+",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["NestList ",
+  FontFamily->"Courier New",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["to apply this update 50 times, starting with the list ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["S ",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["(the inital configuration of the automaton)",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[". ",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["Use ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["ArrayPlot",
+  FontFamily->"Courier New",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[" to make a plot of the results, such that each row in the plot \
+represents the update of the row above it. Are there any repeated \
+configurations among the set consisting of ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["S",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[" and these first 50 consecutive updates?\nWrite a function which \
+will accept an integer value ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["u ",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["representing the number of consecutive automaton updates, and \
+which will output the number of ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["distinct ",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["configurations of the automaton within the set consisting of the \
+list ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["S ",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["and the first ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["u ",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["automaton updates (the term ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["distinct ",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["means \[OpenCurlyQuote]excluding any repeats\[CloseCurlyQuote] - \
+thus, for example, the set {a,b,b,b,c,d} has ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["four ",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["distinct elements under this definition). Use your function to \
+make a joined plot of the number of distinct automaton configurations (on the \
+vertical axis) versus ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["u ",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["(on the horizontal axis), for the values of ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["u ",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["from 1 through 150. (You may find the ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["Mathematica ",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["function ",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["Union ",
+  FontFamily->"Courier New",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["to be useful.",
+  FontWeight->"Regular",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[")\n\n",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox["[12 marks]",
+  FontWeight->"Bold",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["\n",
+  FontColor->RGBColor[0, 0, 1]]
+}], "Text",
+ CellChangeTimes->CompressedData["
+1:eJwdxVkogwEAB/CP3ImlycwcIzkjN5F8rCZkG4pmmRQ5wkKs7UHZyn20PJBl
+e1pyFNY8eLC5tSKNopUjlPIpxzyQB77/9/Drx2/qrmp2JwiCT8O5UXPtoQEU
+WefK7MB53fNK/GmVqPDEq3EZ+wp81nCJcMaMhdNjFizSOPZxgvWDuXJbJIqg
+v9r8FOO3fJ4UFypJOb49NnnbSylS8b7ObBZXhzvo75W1cTiNSpHhh9khDa4f
+WxnGrLtDZrGgYhGTEXYDLku/7HrUUqT87U6NHS3BOhxUUMB8Pm1cwqtC8wau
+IcRbOCsrfA/rTONeOzaK7Llx88acA2cgdp9xcXBR2zMPN4e5InExV9qGswMk
+ndhLZ+q30iukGQP4V2tSY33D1CC+T7Nr8FOv5wImWCcGnLMfsoYbZYolG31f
+rOoa6y3xIYf0zskYLt4YdkbiF/5oNP7++0rEP60vSThZIiOP6GUGObPWg32B
+2/PLmdmC2EdcJohj5oychvrvUuTeFsXFZ349Piz631QV8z/QoxFz
+  "],
+ ExpressionUUID -> "b7fb8e08-629e-489a-8a12-8fbbff28c83c"],
+
+Cell[TextData[{
+ StyleBox["\nSolutions are due to be submitted via Moodle by 5pm on ",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["Tuesday January 30th",
+  FontWeight->"Bold",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[". Make a copy of your solutions with the output deleted (",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["Cell|Delete All Output",
+  FontFamily->"Courier New",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["), name that file {",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["yourname}_hw1 ",
+  FontFamily->"Courier New",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["with an appropriate substitution for",
+  FontFamily->"Times New Roman",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[" {yourname}",
+  FontFamily->"Courier New",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[", and upload that file to Moodle.  The notebook will be evaluated \
+using ",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["Evaluation|Evaluate Notebook, ",
+  FontFamily->"Courier New",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["so please try to make sure the file you send will produce the \
+results you expect.  If you send a file without deleting the output, the \
+output will be newly regenerated.",
+  FontColor->RGBColor[1, 0, 0]]
+}], "Text",
+ CellChangeTimes->{{3.567244573420117*^9, 3.5672446434831247`*^9}, {
+  3.631260262621859*^9, 3.6312602629419394`*^9}, {3.631260385975712*^9, 
+  3.6312604721631813`*^9}, {3.631280500757519*^9, 3.631280502229535*^9}, {
+  3.631360185958212*^9, 3.6313602108673067`*^9}, {3.631360241943797*^9, 
+  3.6313602683504763`*^9}, {3.631360458939906*^9, 3.6313604736720867`*^9}, {
+  3.662055641021793*^9, 3.6620556541640177`*^9}, {3.662055716719954*^9, 
+  3.66205571855332*^9}, {3.6620557506988497`*^9, 3.6620558579545403`*^9}, {
+  3.69355117186649*^9, 3.693551178916716*^9}, {3.724936491532778*^9, 
+  3.724936496549004*^9}},
+ Background->RGBColor[
+  1, 1, 0.85],ExpressionUUID->"b2f1ae3e-df4e-4727-8d24-632959ba7b8e"]
+},
+WindowSize->{808, 751},
+WindowMargins->{{47, Automatic}, {Automatic, 78}},
+FrontEndVersion->"10.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (December 10, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 502, 11, 89, "Text"],
+Cell[1063, 33, 5363, 140, 283, "Text"],
+Cell[6429, 175, 5126, 142, 418, "Text"],
+Cell[11558, 319, 1931, 43, 147, "Text"]
+}
+]
+*)
+
