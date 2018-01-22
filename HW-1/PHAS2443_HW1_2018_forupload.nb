@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13868,        381]
-NotebookOptionsPosition[     13493,        364]
-NotebookOutlinePosition[     13851,        380]
-CellTagsIndexPosition[     13808,        377]
+NotebookDataLength[     14099,        380]
+NotebookOptionsPosition[     13524,        364]
+NotebookOutlinePosition[     13863,        379]
+CellTagsIndexPosition[     13820,        376]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -24,7 +24,6 @@ Homework 1",
  CellChangeTimes->{{3.724948608299775*^9, 3.7249486311000977`*^9}, {
    3.7249488731488657`*^9, 3.724948875268561*^9}, {3.724949000074211*^9, 
    3.7249490316716223`*^9}, 3.7249493368330717`*^9},
- FormatType->"TextForm",
  FontFamily->"Arial",
  FontSize->24,
  FontWeight->"Bold",
@@ -51,7 +50,7 @@ any of the characters \[OpenCurlyDoubleQuote]a\[CloseCurlyDoubleQuote], \
 \[OpenCurlyDoubleQuote]e\[CloseCurlyDoubleQuote], \[OpenCurlyDoubleQuote]i\
 \[CloseCurlyDoubleQuote], \[OpenCurlyDoubleQuote]o\[CloseCurlyDoubleQuote] or \
 \[OpenCurlyDoubleQuote]u\[CloseCurlyDoubleQuote]). Apply your rule \
-appropriately to the following list in the \[OpenCurlyQuote]Replace All\
+appropriately to the following list in the \[OpenCurlyQuote]ReplaceRepeatedl\
 \[CloseCurlyQuote] mode described in the lectures, and display the output \
 clearly.\n{\[OpenCurlyDoubleQuote]g\[CloseCurlyDoubleQuote], \
 \[OpenCurlyDoubleQuote]u\[CloseCurlyDoubleQuote], \[OpenCurlyDoubleQuote]e\
@@ -170,7 +169,8 @@ required by your function to calculate the value 50! with the time taken by ",
    3.7246759931174307`*^9}, {3.724676059269763*^9, 3.724676069594449*^9}, {
    3.7249299722283278`*^9, 3.724930010172153*^9}, {3.724948509750865*^9, 
    3.724948510293508*^9}, {3.724948656892556*^9, 3.724948661811452*^9}, 
-   3.724948718412356*^9},ExpressionUUID->"6532ea7a-d213-4e0e-b913-\
+   3.724948718412356*^9, {3.725190541319553*^9, 
+   3.7251905455635157`*^9}},ExpressionUUID->"6532ea7a-d213-4e0e-b913-\
 1bdefabe57c5"],
 
 Cell[TextData[{
@@ -314,8 +314,8 @@ IcRbOCsrfA/rTONeOzaK7Llx88acA2cgdp9xcXBR2zMPN4e5InExV9qGswMk
 ndhLZ+q30iukGQP4V2tSY33D1CC+T7Nr8FOv5wImWCcGnLMfsoYbZYolG31f
 rOoa6y3xIYf0zskYLt4YdkbiF/5oNP7++0rEP60vSThZIiOP6GUGObPWg32B
 2/PLmdmC2EdcJohj5oychvrvUuTeFsXFZ349Piz631QV8z/QoxFz
-  "],
- ExpressionUUID -> "b7fb8e08-629e-489a-8a12-8fbbff28c83c"],
+  
+  "],ExpressionUUID->"b7fb8e08-629e-489a-8a12-8fbbff28c83c"],
 
 Cell[TextData[{
  StyleBox["\nSolutions are due to be submitted via Moodle by 5pm on ",
@@ -362,10 +362,9 @@ output will be newly regenerated.",
  Background->RGBColor[
   1, 1, 0.85],ExpressionUUID->"b2f1ae3e-df4e-4727-8d24-632959ba7b8e"]
 },
-WindowSize->{808, 751},
-WindowMargins->{{47, Automatic}, {Automatic, 78}},
-FrontEndVersion->"10.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (December 10, \
-2015)",
+WindowSize->{1920, 1016},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+FrontEndVersion->"11.2 for Linux x86 (64-bit) (September 10, 2017)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -379,10 +378,10 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 502, 11, 89, "Text"],
-Cell[1063, 33, 5363, 140, 283, "Text"],
-Cell[6429, 175, 5126, 142, 418, "Text"],
-Cell[11558, 319, 1931, 43, 147, "Text"]
+Cell[558, 20, 477, 10, 90, "Text",ExpressionUUID->"6bfc5f38-1e55-4d9c-8173-3fcc95cf636a"],
+Cell[1038, 32, 5420, 141, 242, "Text",ExpressionUUID->"6532ea7a-d213-4e0e-b913-1bdefabe57c5"],
+Cell[6461, 175, 5125, 142, 288, "Text",ExpressionUUID->"b7fb8e08-629e-489a-8a12-8fbbff28c83c"],
+Cell[11589, 319, 1931, 43, 98, "Text",ExpressionUUID->"b2f1ae3e-df4e-4727-8d24-632959ba7b8e"]
 }
 ]
 *)

@@ -1,0 +1,191 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5682,        181]
+NotebookOptionsPosition[      4855,        145]
+NotebookOutlinePosition[      5212,        161]
+CellTagsIndexPosition[      5169,        158]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+PHAS2443: Practical Mathematics II 2017/2018
+Homework 1
+Hayk Khachatryan - 15013904\
+\>", "Chapter",
+ CellChangeTimes->{{3.7256436991053953`*^9, 3.725643723780263*^9}, {
+  3.725643863623876*^9, 3.725643886190737*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Question 1", "Section",
+ CellChangeTimes->{{3.725643892832725*^9, 3.725643893710389*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "getOutLower", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"getOutLower", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+     "\"\<a\>\"", "|", "\"\<e\>\"", "|", "\"\<i\>\"", "|", "\"\<o\>\"", " ", 
+      "|", "\"\<u\>\""}], ")"}], " ", "\[Rule]", " ", "Nothing"}]}], 
+  ";"}]}], "Code",
+ CellChangeTimes->{{3.7256454227912893`*^9, 3.7256454887284107`*^9}, {
+  3.725645746125742*^9, 3.7256457649052877`*^9}, {3.725645860334375*^9, 
+  3.725645874676715*^9}, {3.725645906692733*^9, 3.7256459857763023`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{
+   "\"\<g\>\"", ",", " ", "\"\<u\>\"", ",", " ", "\"\<e\>\"", ",", " ", 
+    "\"\<l\>\"", ",", " ", "\"\<y\>\"", ",", " ", "\"\<e\>\"", ",", " ", 
+    "\"\<i\>\"", ",", " ", "\"\<p\>\"", ",", " ", "\"\<h\>\"", ",", " ", 
+    "\"\<a\>\"", ",", " ", "\"\<a\>\""}], "}"}], " ", "//.", 
+  "getOutLower"}]], "Code",
+ CellChangeTimes->{{3.725645998971012*^9, 3.7256460134239607`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"g\"\>", ",", "\<\"l\"\>", ",", "\<\"y\"\>", ",", "\<\"p\"\>", 
+   ",", "\<\"h\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.725645996862966*^9, 3.7256460139843817`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Question 2", "Section",
+ CellChangeTimes->{{3.7256460406322947`*^9, 3.725646043438286*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "factorial", "]"}], "\n", 
+ RowBox[{
+  RowBox[{"factorial", "[", "0", "]"}], " ", ":=", " ", "1"}], "\n", 
+ RowBox[{
+  RowBox[{"factorial", "[", 
+   RowBox[{"q_Integer", " ", "/;", " ", 
+    RowBox[{"q", " ", ">", " ", "0"}]}], "]"}], " ", ":=", " ", 
+  RowBox[{"q", " ", 
+   RowBox[{"factorial", "[", 
+    RowBox[{"q", "-", "1"}], "]"}]}]}]}], "Code",
+ CellChangeTimes->{{3.725646063221573*^9, 3.725646135259842*^9}, {
+  3.7256462365976763`*^9, 3.7256462377628613`*^9}, {3.725646279763888*^9, 
+  3.725646302920686*^9}, {3.725646386473225*^9, 3.725646443347765*^9}, {
+  3.7256465072131433`*^9, 3.72564651806042*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"myTiming", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"Timing", "[", 
+     RowBox[{"factorial", "[", "50", "]"}], "]"}], "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"mathematicaTiming", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"Timing", "[", 
+     RowBox[{"Factorial", "[", "50", "]"}], "]"}], "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"howLong", " ", "=", 
+   RowBox[{"mathematicaTiming", " ", "/", " ", "myTiming"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{
+  "\"\<My function takes ~\>\"", ",", " ", "howLong", ",", " ", 
+   "\"\< as long as the built in Mathematica function to compute 50! (\>\"", 
+   ",", " ", "myTiming", ",", " ", "\"\<s vs \>\"", ",", " ", 
+   "mathematicaTiming", ",", " ", "\"\<s)\>\""}], "]"}]}], "Code",
+ CellChangeTimes->{{3.725646581438623*^9, 3.725646687020173*^9}, {
+  3.725646732472815*^9, 3.725646911202582*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"My function takes ~\"\>", "\[InvisibleSpace]", 
+   "0.021276595744680854`", 
+   "\[InvisibleSpace]", "\<\" as long as the built in Mathematica function to \
+compute 50! (\"\>", "\[InvisibleSpace]", "0.000235`", 
+   "\[InvisibleSpace]", "\<\"s vs \"\>", "\[InvisibleSpace]", "5.`*^-6", 
+   "\[InvisibleSpace]", "\<\"s)\"\>"}],
+  SequenceForm[
+  "My function takes ~", 0.021276595744680854`, 
+   " as long as the built in Mathematica function to compute 50! (", 0.000235,
+    "s vs ", 5.*^-6, "s)"],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.7256469115183887`*^9, 3.725646926348209*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Question 3", "Section",
+ CellChangeTimes->{{3.7256469398900642`*^9, 3.72564694368788*^9}}],
+
+Cell[BoxData[""], "Code"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{969, 464},
+WindowMargins->{{Automatic, -200}, {12, Automatic}},
+FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (April 11, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 227, 6, 153, "Chapter"],
+Cell[CellGroupData[{
+Cell[832, 32, 95, 1, 64, "Section"],
+Cell[930, 35, 563, 12, 67, "Code"],
+Cell[CellGroupData[{
+Cell[1518, 51, 430, 9, 50, "Code"],
+Cell[1951, 62, 215, 4, 28, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2215, 72, 97, 1, 64, "Section"],
+Cell[2315, 75, 654, 14, 81, "Code"],
+Cell[CellGroupData[{
+Cell[2994, 93, 1013, 24, 98, "Code"],
+Cell[4010, 119, 644, 13, 24, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4703, 138, 96, 1, 64, "Section"],
+Cell[4802, 141, 25, 0, 49, "Code"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
