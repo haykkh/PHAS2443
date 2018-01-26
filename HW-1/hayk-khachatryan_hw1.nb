@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15678,        427]
-NotebookOptionsPosition[     14538,        381]
-NotebookOutlinePosition[     14892,        397]
-CellTagsIndexPosition[     14849,        394]
+NotebookDataLength[     13415,        356]
+NotebookOptionsPosition[     12467,        320]
+NotebookOutlinePosition[     12880,        337]
+CellTagsIndexPosition[     12837,        334]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -44,8 +44,6 @@ Cell[BoxData[{
       "|", "\"\<u\>\""}], ")"}], " ", "\[Rule]", " ", "Nothing"}]}], 
   ";"}]}], "Input"],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
  RowBox[{
   RowBox[{"{", 
@@ -54,15 +52,7 @@ Cell[BoxData[
     "\"\<l\>\"", ",", " ", "\"\<y\>\"", ",", " ", "\"\<e\>\"", ",", " ", 
     "\"\<i\>\"", ",", " ", "\"\<p\>\"", ",", " ", "\"\<h\>\"", ",", " ", 
     "\"\<a\>\"", ",", " ", "\"\<a\>\""}], "}"}], " ", "//.", 
-  "getOutLower"}]], "Input"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"\<\"g\"\>", ",", "\<\"l\"\>", ",", "\<\"y\"\>", ",", "\<\"p\"\>", 
-   ",", "\<\"h\"\>"}], "}"}]], "Output",
- CellChangeTimes->{{3.725645996862966*^9, 3.7256460139843817`*^9}, 
-   3.725810865668066*^9, 3.7258947458671303`*^9}]
-}, Open  ]]
+  "getOutLower"}]], "Input"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -82,8 +72,6 @@ Cell[BoxData[{
    RowBox[{"factorial", "[", 
     RowBox[{"q", "-", "1"}], "]"}]}]}]}], "Input"],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[{
  RowBox[{
   RowBox[{"myTiming", " ", "=", " ", 
@@ -98,34 +86,18 @@ Cell[BoxData[{
      RowBox[{"Factorial", "[", "50", "]"}], "]"}], "[", 
     RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"howLong", " ", "=", " ", 
-   RowBox[{"mathematicaTiming", " ", "/", " ", "myTiming"}]}], 
-  ";"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"howLong", " ", "=", " ", 
+    RowBox[{"mathematicaTiming", " ", "/", " ", "myTiming"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{"Print", "[", 
   RowBox[{
   "\"\<My function takes ~\>\"", ",", " ", "howLong", ",", " ", 
    "\"\< as long as the built in Mathematica function to compute 50! (\>\"", 
    ",", " ", "myTiming", ",", " ", "\"\<s vs \>\"", ",", " ", 
    "mathematicaTiming", ",", " ", "\"\<s)\>\""}], "]"}]}], "Input",
- CellChangeTimes->{{3.725894758437191*^9, 3.725894843609809*^9}}],
-
-Cell[BoxData[
- InterpretationBox[
-  RowBox[{"\<\"My function takes ~\"\>", "\[InvisibleSpace]", 
-   "0.014336917562724014`", 
-   "\[InvisibleSpace]", "\<\" as long as the built in Mathematica function to \
-compute 50! (\"\>", "\[InvisibleSpace]", "0.000279`", 
-   "\[InvisibleSpace]", "\<\"s vs \"\>", "\[InvisibleSpace]", "4.`*^-6", 
-   "\[InvisibleSpace]", "\<\"s)\"\>"}],
-  SequenceForm[
-  "My function takes ~", 0.014336917562724014`, 
-   " as long as the built in Mathematica function to compute 50! (", 0.000279,
-    "s vs ", 4.*^-6, "s)"],
-  Editable->False]], "Print",
- CellChangeTimes->{{3.7256469115183887`*^9, 3.725646926348209*^9}, 
-   3.725810865732091*^9, 3.725894745941367*^9, {3.7258948300422153`*^9, 
-   3.7258948441903763`*^9}}]
-}, Open  ]]
+ CellChangeTimes->{{3.725894758437191*^9, 3.725894843609809*^9}, 
+   3.725960448857452*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -133,7 +105,8 @@ Cell[CellGroupData[{
 Cell["Question 3", "Section",
  CellChangeTimes->{{3.7256469398900642`*^9, 3.72564694368788*^9}}],
 
-Cell[BoxData[
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "cycler", "]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"cycler", "[", 
@@ -227,8 +200,8 @@ Cell[BoxData[
        "list"}], " ", "*)"}], "\[IndentingNewLine]", "nests"}], "   ", 
     RowBox[{"(*", " ", 
      RowBox[{"how", " ", "many", " ", "times", " ", "to", " ", "nest"}], " ", 
-     "*)"}], "\[IndentingNewLine]", "]"}]}], " ", "\[IndentingNewLine]", 
-  "\[IndentingNewLine]"}]], "Input",
+     "*)"}], "\[IndentingNewLine]", "]"}]}], " ", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
  CellChangeTimes->{{3.725894140727193*^9, 3.725894263097567*^9}, {
    3.72589434418958*^9, 3.7258944233245277`*^9}, {3.725894478618885*^9, 
    3.725894496895033*^9}, {3.725894545761582*^9, 3.725894550198999*^9}, 
@@ -236,9 +209,7 @@ Cell[BoxData[
    3.72589522754852*^9, 3.725895324189179*^9}, {3.7258953703472233`*^9, 
    3.72589537793102*^9}, {3.725895418884718*^9, 3.7258956440540037`*^9}, {
    3.7258957639945602`*^9, 3.7258957671794024`*^9}, {3.7258958190890217`*^9, 
-   3.725895831599988*^9}}],
-
-Cell[CellGroupData[{
+   3.725895831599988*^9}, {3.725960729995975*^9, 3.7259607333215103`*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -252,40 +223,17 @@ Cell[BoxData[{
    RowBox[{"S", ",", " ", "150"}], "]"}], "]"}]}], "Input",
  CellChangeTimes->{3.7258957757913*^9}],
 
-Cell[BoxData[
- GraphicsBox[RasterBox[CompressedData["
-1:eJztlMthBDEIQwXXVJGWUsI2sOWk3RjpMc491+yOP+MPCAnm8/X+erWk79M+
-TlNXqVV1FqvPy3QzO4O7s+sD85zdc2POnMn2p20/CxpDY611riuTmp9Hv3tS
-HBg3Y3b9nxEfvt4cmLOzopl5rJj1yYHgJ5CNLjFU7hdherCxBBVjDjO/a9Ym
-ap+ACDMNUbHr8Av/AZHZUsRc/fzDhXtPHK9gbegZRrYLHcICtHi36QkotIaR
-cIGYFrFFQF4J1b2coI4ioG0OI0be9hbkSKPrQHESqyKNjChng0jaXIH/igIC
-mTCfvpjGCa3Ci9NLImsgJ1mDyQ7Ddr3EBFDVbSQ45Cj02JHpeeRKavfDBYmR
-CwqzwCf7EsEFn5Bra2NrR79qB+G3Mkju1GVRfomj2fYRYm2KTOhkBZrs6VC8
-shfXCpnYVN6NJYwkJxx52AoKkbJe6AuOXErEfAO8LVEfKevkZCJeLA2GKJQ8
-piaWfeR6CnApLWhFeXRKMlj6kijTrh16U1fILWBvraz0mOve718S/f+T+ZdP
-Zj9E9Q/9bwky
-   "], {{0, 0}, {11, 151}}, {0, 2}],
-  Frame->Automatic,
-  FrameLabel->{None, None},
-  FrameTicks->{{None, None}, {None, None}},
-  GridLinesStyle->Directive[
-    GrayLevel[0.5, 0.4]],
-  Method->{
-   "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
-    Automatic}]], "Output",
- CellChangeTimes->{{3.725895772098428*^9, 3.7258957765692377`*^9}}]
-}, Open  ]],
-
 Cell[TextData[StyleBox["It seems to begin repeating itself towards the end", \
 "Section"]], "Text",
  CellChangeTimes->{{3.725894874320223*^9, 3.7258948933858852`*^9}}],
 
-Cell[BoxData[
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "distinctions", "]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"distinctions", "[", "u_Integer", "]"}], ":=", " ", 
   "\[IndentingNewLine]", 
   RowBox[{"Length", "[", "                ", "\[IndentingNewLine]", 
-   RowBox[{"Union", "[", "                 ", 
+   RowBox[{"Union", "[", "                         ", 
     RowBox[{"(*", " ", 
      RowBox[{"remove", " ", "repeat", " ", "configurations"}], " ", "*)"}], 
     "\[IndentingNewLine]", 
@@ -294,96 +242,88 @@ Cell[BoxData[
     RowBox[{"(*", " ", 
      RowBox[{
      "run", " ", "cycler", " ", "with", " ", "S", " ", "and", " ", "u", " ", 
-      "nests"}], " ", "*)"}], "\[IndentingNewLine]", "]"}], "]"}]}]], "Input",\
+      "nests"}], " ", "*)"}], "\[IndentingNewLine]", "]"}], "]"}]}]}], "Input",\
 
  CellChangeTimes->{{3.725894592621396*^9, 3.725894613894108*^9}, {
   3.725894683335013*^9, 3.7258946869961*^9}, {3.725895672195653*^9, 
-  3.7258957179357443`*^9}}],
+  3.7258957179357443`*^9}, {3.725960426244087*^9, 3.725960433192741*^9}, {
+  3.725960738570084*^9, 3.725960763878759*^9}}],
 
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"ListPlot", "[", 
-  RowBox[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"distinctions150", " ", "=", " ", 
    RowBox[{"Table", "[", 
     RowBox[{
+     RowBox[{"distinctions", "[", "x", "]"}], ",", " ", 
      RowBox[{"{", 
-      RowBox[{"x", ",", " ", 
-       RowBox[{"distinctions", "[", "x", "]"}]}], "}"}], ",", " ", 
-     RowBox[{"{", 
-      RowBox[{"x", ",", " ", "1", ",", " ", "150"}], "}"}]}], "]"}], ",", " ", 
-   RowBox[{"Joined", " ", "\[Rule]", " ", "True"}], ",", " ", 
-   RowBox[{"AxesLabel", "\[Rule]", 
-    RowBox[{"{", 
+      RowBox[{"x", ",", " ", "1", ",", " ", "150"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"xDistinctions150", " ", "=", " ", 
+    RowBox[{"MapIndexed", "[", 
      RowBox[{
-     "\"\<Update number\>\"", ",", " ", "\"\<Distinct configurations\>\""}], 
-     "}"}]}], ",", " ", 
-   RowBox[{
-   "PlotLabel", "\[Rule]", " ", 
-    "\"\<Number of distinct automaton configurations\>\""}]}], "]"}]], "Input",\
-
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"First", "[", "#2", "]"}], ",", " ", "#1"}], "}"}], " ", 
+       "&"}], ",", " ", "distinctions150"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ListPlot", "[", "\[IndentingNewLine]", 
+   RowBox[{"xDistinctions150", ",", " ", "\[IndentingNewLine]", 
+    RowBox[{
+    "PlotLabel", "\[Rule]", " ", 
+     "\"\<Number of distinct automaton configurations\>\""}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"AxesLabel", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<Update number\>\"", ",", " ", "\"\<Distinct configurations\>\""}], 
+      "}"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Joined", " ", "\[Rule]", " ", "True"}]}], "\[IndentingNewLine]", 
+   "]"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"repeatBeg", " ", "=", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "finding", " ", "where", " ", "the", " ", "automaton", " ", 
+      "configurations", " ", "start", " ", "repeating"}], " ", "*)"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Position", "[", "\[IndentingNewLine]", 
+       RowBox[{"distinctions150", ",", "\[IndentingNewLine]", 
+        RowBox[{"Max", "[", "distinctions150", "]"}]}], "\[IndentingNewLine]",
+        "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "[", 
+     RowBox[{"[", "1", "]"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{
+  "\"\<The automaton configurations begin repeating after \>\"", ",", " ", 
+   "repeatBeg", ",", " ", "\"\< updates.\>\""}], 
+  "]"}], "\[IndentingNewLine]"}], "Input",
  CellChangeTimes->{{3.725894615699198*^9, 3.725894689740304*^9}, {
   3.725894912067388*^9, 3.7258949557528877`*^9}, {3.725895017578187*^9, 
-  3.725895040021641*^9}}],
+  3.725895040021641*^9}, {3.725958094691299*^9, 3.725958290913513*^9}, {
+  3.725958330567997*^9, 3.7259585571510553`*^9}, {3.7259599788074017`*^9, 
+  3.725959991480178*^9}, {3.7259600457841663`*^9, 3.7259600566773663`*^9}, {
+  3.725960091873592*^9, 3.725960139812756*^9}, {3.725960184072105*^9, 
+  3.725960404860629*^9}, {3.7259605642810793`*^9, 3.7259605908045177`*^9}}],
 
-Cell[BoxData[
- GraphicsBox[{{}, {{}, {}, 
-    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.009166666666666668], 
-     AbsoluteThickness[1.6], LineBox[CompressedData["
-1:eJx1zTlOFgAQhuEvVpYWFhYUaIgxhBg2URBl2Bdlkc0N5ZeEmit8p6D+jzJH
-4QgeAQwm5nsTJ5k881bz9OLq8PKBpOu7/eP9/F76e1T6ED6Cj+ETOAJH4TM4
-Bp/DF3AcTsCXcBJOwWk4A2fhKzgHX8M3cB4uwLdwEb6D7+ESrNRQy6mhVlJD
-raaGWksNtZ4aaiM11GZqqK3UUNupoXZSQ31IDfUxNdRuaqi91FD7qaEO0oKG
-DfUpLWjYUIdpQcOGOkoLGjbUcVrQsKFO0oKGDXWaFjRsqM9pQcOG+pIWNGyo
-r2lBw4b6lhY0bKjvaUHDhjpLCxo21I+0oGFD/UwL+j82WufZhTa60Rpkj6IL
-PUAbPUQ3+gatX/iPLvQAbfQQ3egbtC7wH13oAdroIbr/9S2qjf1V
-      "]]}}, {}},
-  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
-  Axes->{True, True},
-  AxesLabel->{
-    FormBox["\"Update number\"", TraditionalForm], 
-    FormBox["\"Distinct configurations\"", TraditionalForm]},
-  AxesOrigin->{0, 0},
-  DisplayFunction->Identity,
-  Frame->{{False, False}, {False, False}},
-  FrameLabel->{{None, None}, {None, None}},
-  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
-  GridLines->{None, None},
-  GridLinesStyle->Directive[
-    GrayLevel[0.5, 0.4]],
-  ImagePadding->All,
-  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
-        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
-         Part[#, 1]], 
-        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
-         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
-        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
-         Part[#, 1]], 
-        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
-         Part[#, 2]]}& )}},
-  PlotLabel->FormBox[
-   "\"Number of distinct automaton configurations\"", TraditionalForm],
-  PlotRange->{{0, 150.}, {0, 122.}},
-  PlotRangeClipping->True,
-  PlotRangePadding->{{
-     Scaled[0.02], 
-     Scaled[0.02]}, {
-     Scaled[0.02], 
-     Scaled[0.05]}},
-  Ticks->{Automatic, Automatic}]], "Output",
- CellChangeTimes->{
-  3.7258946184702997`*^9, {3.725894653964302*^9, 3.725894661619144*^9}, 
-   3.725894694558713*^9, 3.725894747711994*^9, 3.7258949574434977`*^9, 
-   3.725895041608714*^9, 3.7258957267437468`*^9}]
-}, Open  ]]
+Cell["", "Outline1",
+ CellChangeTimes->{3.725960682084203*^9}]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{937, 563},
-WindowMargins->{{Automatic, 1}, {-4, Automatic}},
+TaggingRules->{"$testsRun" -> False},
 FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (April 11, \
 2016)",
-StyleDefinitions->"Default.nb"
+StyleDefinitions->FrontEnd`FileName[{"Report"}, "StandardReport.nb", 
+  CharacterEncoding -> "UTF-8"]
 ]
 (* End of Notebook Content *)
 
@@ -399,34 +339,23 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 227, 6, 153, "Chapter"],
 Cell[CellGroupData[{
-Cell[832, 32, 95, 1, 64, "Section"],
-Cell[930, 35, 346, 9, 48, "Input"],
-Cell[CellGroupData[{
-Cell[1301, 48, 363, 8, 28, "Input"],
-Cell[1667, 58, 265, 5, 28, "Output"]
-}, Open  ]]
+Cell[832, 32, 95, 1, 66, "Section"],
+Cell[930, 35, 346, 9, 57, "Input"],
+Cell[1279, 46, 363, 8, 37, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1981, 69, 97, 1, 64, "Section"],
-Cell[2081, 72, 391, 10, 63, "Input"],
-Cell[CellGroupData[{
-Cell[2497, 86, 970, 23, 114, "Input"],
-Cell[3470, 111, 746, 15, 24, "Print"]
-}, Open  ]]
+Cell[1679, 59, 97, 1, 66, "Section"],
+Cell[1779, 62, 391, 10, 72, "Input"],
+Cell[2173, 74, 1034, 25, 140, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4265, 132, 96, 1, 64, "Section"],
-Cell[4364, 135, 4765, 103, 437, "Input"],
-Cell[CellGroupData[{
-Cell[9154, 242, 396, 10, 46, "Input"],
-Cell[9553, 254, 972, 21, 447, "Output"]
-}, Open  ]],
-Cell[10540, 278, 167, 2, 47, "Text"],
-Cell[10710, 282, 789, 18, 97, "Input"],
-Cell[CellGroupData[{
-Cell[11524, 304, 833, 22, 63, "Input"],
-Cell[12360, 328, 2138, 48, 211, "Output"]
-}, Open  ]]
+Cell[3244, 104, 96, 1, 66, "Section"],
+Cell[3343, 107, 4879, 104, 463, "Input"],
+Cell[8225, 213, 396, 10, 55, "Input"],
+Cell[8624, 225, 167, 2, 47, "Text"],
+Cell[8794, 229, 964, 20, 123, "Input"],
+Cell[9761, 251, 2613, 62, 327, "Input"],
+Cell[12377, 315, 62, 1, 20, "Outline1"]
 }, Open  ]]
 }, Open  ]]
 }
