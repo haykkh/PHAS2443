@@ -10,19 +10,18 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[     81372,       1815]
-NotebookOptionsPosition[     15173,        421]
-NotebookOutlinePosition[     81172,       1808]
-CellTagsIndexPosition[     81129,       1805]
-WindowFrame->Normal
-ContainsDynamic->False*)
+NotebookDataLength[    119096,       2778]
+NotebookOptionsPosition[     51238,       1357]
+NotebookOutlinePosition[    117266,       2738]
+CellTagsIndexPosition[    117223,       2735]
+WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell["\<\
 PHAS2443: Practical Mathematics II
 Exercises 5: Elliptic Differential Equations\
-\>", "Title"],
+\>", "Title",ExpressionUUID->"f806a685-75e3-4606-bf05-08e7a6f7df7b"],
 
 Cell[TextData[{
  StyleBox["1.",
@@ -84,7 +83,8 @@ that we can express the update rule as\n  ",
           SubscriptBox["\[Phi]", 
            RowBox[{"i", ",", 
             RowBox[{"j", "-", "1"}]}]]}], ")"}], "/", "4"}]}]}]}],
-    FontColor->RGBColor[0, 0, 1]], TraditionalForm]}]],
+    FontColor->RGBColor[0, 0, 1]], TraditionalForm]}],ExpressionUUID->
+  "b3035952-2c83-4e10-9588-3f9fb05ad488"],
  StyleBox["\n  so that we can very simply sweep through the mesh. In fact the \
 easiest way to do this is to set up the whole mesh, including the boundaries, \
 but only update the interior points.\n    Note that because of the way the \
@@ -118,9 +118,934 @@ one pass through the whole mesh, and then to ",
   FontColor->RGBColor[0, 0, 1]],
  StyleBox[" that. Solve the same problem as we looked at in the lectures, \
 with the top and bottom of a plate held at 400K and the sides at 300K, for \
-the cases:\n     i) N=20, M=20;\n     ii) N=10, M=40.\n     In each case find \
-out how many iterations are required for the process to converge to 0.01K \
-(which suggests that ",
+the cases:",
+  FontColor->RGBColor[0, 0, 1]]
+}], "Text",
+ CellChangeTimes->{
+  3.726833418438817*^9},ExpressionUUID->"79bf8602-629f-4180-9d75-\
+562bfb03bffd"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{
+  3.7268401645265784`*^9},ExpressionUUID->"7265aca3-cf03-4b55-a27f-\
+b703c392b3ae"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"updater", "[", 
+   RowBox[{"i_", ",", " ", "j_", ",", " ", "w_"}], "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"\[Phi]", "[", 
+    RowBox[{"[", 
+     RowBox[{"i", ",", "j"}], "]"}], "]"}], " ", "=", " ", 
+   RowBox[{
+    RowBox[{"\[Phi]", "[", 
+     RowBox[{"[", 
+      RowBox[{"i", ",", "j"}], "]"}], "]"}], " ", "+", " ", 
+    RowBox[{"w", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"\[Phi]", "[", 
+          RowBox[{"[", 
+           RowBox[{
+            RowBox[{"i", "+", "1"}], ",", " ", "j"}], "]"}], "]"}], " ", "+", 
+         RowBox[{"\[Phi]", "[", 
+          RowBox[{"[", 
+           RowBox[{
+            RowBox[{"i", "-", "1"}], ",", " ", "j"}], "]"}], "]"}], " ", "+", 
+         RowBox[{"\[Phi]", "[", 
+          RowBox[{"[", 
+           RowBox[{"i", ",", " ", 
+            RowBox[{"j", "+", "1"}]}], "]"}], "]"}], " ", "+", 
+         RowBox[{"\[Phi]", "[", 
+          RowBox[{"[", 
+           RowBox[{"i", ",", " ", 
+            RowBox[{"j", "-", "1"}]}], "]"}], "]"}], " ", "-", " ", 
+         RowBox[{"4", 
+          RowBox[{"\[Phi]", "[", 
+           RowBox[{"[", 
+            RowBox[{"i", ",", "j"}], "]"}], "]"}]}]}], ")"}], " ", "/", " ", 
+       "4"}], " ", ")"}], " "}]}]}]}]], "Input",
+ CellChangeTimes->{{3.7268357943591886`*^9, 3.726835863696986*^9}, {
+  3.7268359849276924`*^9, 3.726835985505866*^9}, {3.726836049391301*^9, 
+  3.726836049672574*^9}, {3.7268362156147346`*^9, 3.726836225959568*^9}, {
+  3.7268367775950785`*^9, 3.7268367913115854`*^9}, {3.7268368218042173`*^9, 
+  3.7268368222417717`*^9}, {3.7268369108813524`*^9, 
+  3.7268369321960716`*^9}},ExpressionUUID->"263fbcdd-dd3b-4258-a025-\
+79934e4a719b"],
+
+Cell[BoxData[{
+ StyleBox[
+  RowBox[{"Clear", "[", "\[Phi]", "]"}], "Input",
+  FontColor->RGBColor[0, 0, 1]], "\[IndentingNewLine]", 
+ RowBox[{
+  StyleBox[
+   RowBox[{"laplacer", "[", 
+    RowBox[{"n_Integer", ",", " ", 
+     StyleBox[
+      RowBox[{
+       StyleBox[
+        StyleBox["m", "Input",
+         FontColor->RGBColor[0, 0, 1]], "Input",
+        FontColor->RGBColor[0, 0, 1]], "_Integer"}]], 
+     StyleBox[",", "Input",
+      FontColor->RGBColor[0, 0, 1]], 
+     StyleBox[
+      StyleBox[" ", "Input",
+       FontColor->RGBColor[0, 0, 1]], "Input",
+      FontColor->RGBColor[0, 0, 1]], 
+     StyleBox[
+      RowBox[{
+       StyleBox["in", "Input",
+        FontColor->RGBColor[0, 0, 1]], "it", 
+       StyleBox["i", "Input",
+        FontColor->RGBColor[0, 0, 1]], "al", 
+       StyleBox["T", "Input",
+        FontColor->RGBColor[0, 0, 1]], 
+       StyleBox[
+        StyleBox["_", "Input",
+         FontColor->RGBColor[0, 0, 1]], "Input",
+        FontColor->RGBColor[0, 0, 1]]}]], 
+     StyleBox[",", "Input",
+      FontColor->RGBColor[0, 0, 1]], 
+     StyleBox["w_", "Input",
+      FontColor->RGBColor[0, 0, 1]]}], "]"}], "Input",
+   FontColor->RGBColor[0, 0, 1]], 
+  StyleBox[" ", "Input",
+   FontColor->RGBColor[0, 0, 1]], 
+  StyleBox[":=", "Input",
+   FontColor->RGBColor[0, 0, 1]], 
+  StyleBox[" ", "Input",
+   FontColor->RGBColor[0, 0, 1]], 
+  StyleBox["\[IndentingNewLine]", "Input",
+   FontColor->RGBColor[0, 0, 1]], 
+  RowBox[{
+   StyleBox["Module", "Input",
+    FontColor->RGBColor[0, 0, 1]], 
+   StyleBox["[", "Input",
+    FontColor->RGBColor[0, 0, 1]], 
+   StyleBox[
+    StyleBox["\[IndentingNewLine]", "Input",
+     FontColor->RGBColor[0, 0, 1]], "Input",
+    FontColor->RGBColor[0, 0, 1]], 
+   RowBox[{
+    StyleBox[
+     RowBox[{
+      StyleBox[
+       StyleBox["{", "Input",
+        FontColor->RGBColor[0, 0, 1]], "Input",
+       FontColor->RGBColor[0, 0, 1]], 
+      StyleBox[
+       StyleBox[
+        StyleBox["\[IndentingNewLine]", "Input",
+         FontColor->RGBColor[0, 0, 1]], "Input",
+        FontColor->RGBColor[0, 0, 1]], "Input",
+       FontColor->RGBColor[0, 0, 1]], 
+      StyleBox[
+       StyleBox[
+        StyleBox[
+         StyleBox["\[IndentingNewLine]", "Input",
+          FontColor->RGBColor[0, 0, 1]], "Input",
+         FontColor->RGBColor[0, 0, 1]], "Input",
+        FontColor->RGBColor[0, 0, 1]], "Input",
+       FontColor->RGBColor[0, 0, 1]], 
+      StyleBox[
+       StyleBox[
+        StyleBox[
+         StyleBox["}", "Input",
+          FontColor->RGBColor[0, 0, 1]], "Input",
+         FontColor->RGBColor[0, 0, 1]], "Input",
+        FontColor->RGBColor[0, 0, 1]], "Input",
+       FontColor->RGBColor[0, 0, 1]]}], "Input",
+     FontColor->RGBColor[0, 0, 1]], 
+    StyleBox[
+     StyleBox[
+      StyleBox[",", "Input",
+       FontColor->RGBColor[0, 0, 1]], "Input",
+      FontColor->RGBColor[0, 0, 1]], "Input",
+     FontColor->RGBColor[0, 0, 1]], 
+    StyleBox[
+     StyleBox[
+      StyleBox[
+       StyleBox["\[IndentingNewLine]", "Input",
+        FontColor->RGBColor[0, 0, 1]], "Input",
+       FontColor->RGBColor[0, 0, 1]], "Input",
+      FontColor->RGBColor[0, 0, 1]], "Input",
+     FontColor->RGBColor[0, 0, 1]], 
+    RowBox[{
+     RowBox[{
+      StyleBox["\[Phi]", "Input",
+       FontColor->RGBColor[0, 0, 1]], 
+      StyleBox[" ", "Input",
+       FontColor->RGBColor[0, 0, 1]], 
+      StyleBox["=", "Input",
+       FontColor->RGBColor[0, 0, 1]], 
+      StyleBox[" ", "Input",
+       FontColor->RGBColor[0, 0, 1]], 
+      RowBox[{"Table", "[", 
+       RowBox[{"initialT", ",", " ", 
+        RowBox[{"n", "+", "2"}], ",", " ", 
+        RowBox[{"m", "+", "2"}]}], "]"}]}], ";", 
+     StyleBox[
+      StyleBox["\[IndentingNewLine]", "Input",
+       FontColor->RGBColor[0, 0, 1]], "Input",
+      FontColor->RGBColor[0, 0, 1]], 
+     RowBox[{
+      RowBox[{
+       StyleBox["\[Phi]", "Input",
+        FontColor->RGBColor[0, 0, 1]], 
+       StyleBox[
+        StyleBox[
+         StyleBox["[", "Input",
+          FontColor->RGBColor[0, 0, 1]], "Input",
+         FontColor->RGBColor[0, 0, 1]], "Input",
+        FontColor->RGBColor[0, 0, 1]], 
+       RowBox[{
+        StyleBox[
+         StyleBox["[", "Input",
+          FontColor->RGBColor[0, 0, 1]], "Input",
+         FontColor->RGBColor[0, 0, 1]], 
+        RowBox[{
+         StyleBox[
+          StyleBox[
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox["1", "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]], 
+         StyleBox[
+          StyleBox[
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox[",", "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]], 
+         StyleBox[
+          StyleBox[
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox[" ", "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]], 
+         StyleBox[
+          RowBox[{
+           StyleBox[
+            StyleBox["Al", "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], 
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox[
+                StyleBox[
+                 StyleBox["l", "Input",
+                  FontColor->RGBColor[0, 0, 1]], "Input",
+                 FontColor->RGBColor[0, 0, 1]], "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]]}]]}], 
+        StyleBox[
+         StyleBox[
+          StyleBox[
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox["]", "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]], "Input",
+         FontColor->RGBColor[0, 0, 1]]}], 
+       StyleBox[
+        StyleBox[
+         StyleBox[
+          StyleBox[
+           StyleBox["]", "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]], "Input",
+         FontColor->RGBColor[0, 0, 1]], "Input",
+        FontColor->RGBColor[0, 0, 1]]}], 
+      StyleBox[
+       StyleBox["  ", "Input",
+        FontColor->RGBColor[0, 0, 1]], "Input",
+       FontColor->RGBColor[0, 0, 1]], 
+      StyleBox[
+       StyleBox[
+        StyleBox[
+         StyleBox["=", "Input",
+          FontColor->RGBColor[0, 0, 1]], "Input",
+         FontColor->RGBColor[0, 0, 1]], "Input",
+        FontColor->RGBColor[0, 0, 1]], "Input",
+       FontColor->RGBColor[0, 0, 1]], 
+      StyleBox[
+       RowBox[{
+        RowBox[{
+         StyleBox[
+          StyleBox[
+           StyleBox[
+            StyleBox["\[Phi]", "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]], 
+         StyleBox[
+          StyleBox[
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox["[", "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]], 
+         RowBox[{
+          StyleBox["[", "Input",
+           FontColor->RGBColor[0, 0, 1]], 
+          RowBox[{
+           RowBox[{
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox[
+                StyleBox[
+                 StyleBox[
+                  StyleBox[
+                   StyleBox["n", "Input",
+                    FontColor->RGBColor[0, 0, 1]], "Input",
+                   FontColor->RGBColor[0, 0, 1]], "Input",
+                  FontColor->RGBColor[0, 0, 1]], "Input",
+                 FontColor->RGBColor[0, 0, 1]], "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], 
+            StyleBox["+", "Input",
+             FontColor->RGBColor[0, 0, 1]], 
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox["2", "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]]}], 
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox[
+                StyleBox[
+                 StyleBox[
+                  StyleBox[
+                   StyleBox[
+                    StyleBox[",", "Input",
+                    FontColor->RGBColor[0, 0, 1]], "Input",
+                    FontColor->RGBColor[0, 0, 1]], "Input",
+                   FontColor->RGBColor[0, 0, 1]], "Input",
+                  FontColor->RGBColor[0, 0, 1]], "Input",
+                 FontColor->RGBColor[0, 0, 1]], "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], 
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox[
+                StyleBox[
+                 StyleBox[
+                  StyleBox[
+                   StyleBox[
+                    StyleBox[
+                    StyleBox[" ", "Input",
+                    FontColor->RGBColor[0, 0, 1]], "Input",
+                    FontColor->RGBColor[0, 0, 1]], "Input",
+                    FontColor->RGBColor[0, 0, 1]], "Input",
+                   FontColor->RGBColor[0, 0, 1]], "Input",
+                  FontColor->RGBColor[0, 0, 1]], "Input",
+                 FontColor->RGBColor[0, 0, 1]], "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], 
+           StyleBox[
+            RowBox[{
+             StyleBox[
+              StyleBox[
+               StyleBox[
+                StyleBox[
+                 StyleBox["Al", "Input",
+                  FontColor->RGBColor[0, 0, 1]], "Input",
+                 FontColor->RGBColor[0, 0, 1]], "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], 
+             StyleBox[
+              StyleBox[
+               StyleBox[
+                StyleBox[
+                 StyleBox[
+                  StyleBox[
+                   StyleBox[
+                    StyleBox[
+                    StyleBox[
+                    StyleBox[
+                    StyleBox["l", "Input",
+                    FontColor->RGBColor[0, 0, 1]], "Input",
+                    FontColor->RGBColor[0, 0, 1]], "Input",
+                    FontColor->RGBColor[0, 0, 1]], "Input",
+                    FontColor->RGBColor[0, 0, 1]], "Input",
+                    FontColor->RGBColor[0, 0, 1]], "Input",
+                   FontColor->RGBColor[0, 0, 1]], "Input",
+                  FontColor->RGBColor[0, 0, 1]], "Input",
+                 FontColor->RGBColor[0, 0, 1]], "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]]}]]}], 
+          StyleBox[
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox[
+                StyleBox[
+                 StyleBox[
+                  StyleBox[
+                   StyleBox[
+                    StyleBox["]", "Input",
+                    FontColor->RGBColor[0, 0, 1]], "Input",
+                    FontColor->RGBColor[0, 0, 1]], "Input",
+                   FontColor->RGBColor[0, 0, 1]], "Input",
+                  FontColor->RGBColor[0, 0, 1]], "Input",
+                 FontColor->RGBColor[0, 0, 1]], "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]]}], 
+         StyleBox[
+          StyleBox[
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox[
+                StyleBox[
+                 StyleBox["]", "Input",
+                  FontColor->RGBColor[0, 0, 1]], "Input",
+                 FontColor->RGBColor[0, 0, 1]], "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]]}], 
+        StyleBox[" ", "Input",
+         FontColor->RGBColor[0, 0, 1]], "=", 
+        StyleBox[
+         StyleBox[
+          StyleBox[
+           StyleBox[
+            StyleBox[" ", "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]], "Input",
+         FontColor->RGBColor[0, 0, 1]], 
+        StyleBox[
+         RowBox[{
+          StyleBox["40", "Input",
+           FontColor->RGBColor[0, 0, 1]], 
+          StyleBox[
+           StyleBox[
+            StyleBox[
+             StyleBox["0", "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]], "."}]]}], "Input",
+       FontColor->RGBColor[0, 0, 1]]}], 
+     StyleBox[";", "Input",
+      FontColor->RGBColor[0, 0, 1]], 
+     StyleBox[
+      StyleBox["\[IndentingNewLine]", "Input",
+       FontColor->RGBColor[0, 0, 1]], "Input",
+      FontColor->RGBColor[0, 0, 1]], 
+     RowBox[{
+      RowBox[{
+       StyleBox["\[Phi]", "Input",
+        FontColor->RGBColor[0, 0, 1]], 
+       StyleBox[
+        StyleBox[
+         StyleBox[
+          StyleBox["[", "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]], "Input",
+         FontColor->RGBColor[0, 0, 1]], "Input",
+        FontColor->RGBColor[0, 0, 1]], 
+       RowBox[{
+        StyleBox[
+         StyleBox["[", "Input",
+          FontColor->RGBColor[0, 0, 1]], "Input",
+         FontColor->RGBColor[0, 0, 1]], 
+        RowBox[{
+         StyleBox[
+          RowBox[{
+           StyleBox[
+            StyleBox["Al", "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], 
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox[
+                StyleBox[
+                 StyleBox["l", "Input",
+                  FontColor->RGBColor[0, 0, 1]], "Input",
+                 FontColor->RGBColor[0, 0, 1]], "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]]}]], 
+         StyleBox[
+          StyleBox[
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox[",", "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]], 
+         StyleBox[
+          StyleBox[
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox[
+                StyleBox[" ", "Input",
+                 FontColor->RGBColor[0, 0, 1]], "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]], 
+         StyleBox[
+          StyleBox[
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox[
+                StyleBox["1", "Input",
+                 FontColor->RGBColor[0, 0, 1]], "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]]}], 
+        StyleBox[
+         StyleBox[
+          StyleBox[
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox["]", "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]], "Input",
+         FontColor->RGBColor[0, 0, 1]]}], 
+       StyleBox[
+        StyleBox[
+         StyleBox[
+          StyleBox[
+           StyleBox[
+            StyleBox["]", "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]], "Input",
+         FontColor->RGBColor[0, 0, 1]], "Input",
+        FontColor->RGBColor[0, 0, 1]]}], 
+      StyleBox[
+       StyleBox[
+        StyleBox[
+         StyleBox[
+          StyleBox[" ", "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]], "Input",
+         FontColor->RGBColor[0, 0, 1]], "Input",
+        FontColor->RGBColor[0, 0, 1]], "Input",
+       FontColor->RGBColor[0, 0, 1]], 
+      StyleBox[
+       StyleBox[
+        StyleBox[
+         StyleBox[
+          StyleBox["=", "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]], "Input",
+         FontColor->RGBColor[0, 0, 1]], "Input",
+        FontColor->RGBColor[0, 0, 1]], "Input",
+       FontColor->RGBColor[0, 0, 1]], 
+      StyleBox[" ", "Input",
+       FontColor->RGBColor[0, 0, 1]], 
+      StyleBox[
+       RowBox[{
+        RowBox[{"\[Phi]", 
+         StyleBox[
+          StyleBox[
+           StyleBox[
+            StyleBox[
+             StyleBox["[", "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]], 
+         RowBox[{
+          StyleBox["[", "Input",
+           FontColor->RGBColor[0, 0, 1]], 
+          RowBox[{
+           StyleBox[
+            RowBox[{
+             StyleBox[
+              StyleBox[
+               StyleBox[
+                StyleBox[
+                 StyleBox[
+                  StyleBox[
+                   StyleBox[
+                    StyleBox["A", "Input",
+                    FontColor->RGBColor[0, 0, 1]], "Input",
+                    FontColor->RGBColor[0, 0, 1]], "Input",
+                   FontColor->RGBColor[0, 0, 1]], "Input",
+                  FontColor->RGBColor[0, 0, 1]], "Input",
+                 FontColor->RGBColor[0, 0, 1]], "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "ll"}]], 
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox[
+                StyleBox[
+                 StyleBox[
+                  StyleBox[",", "Input",
+                   FontColor->RGBColor[0, 0, 1]], "Input",
+                  FontColor->RGBColor[0, 0, 1]], "Input",
+                 FontColor->RGBColor[0, 0, 1]], "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], 
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox[
+                StyleBox[
+                 StyleBox[
+                  StyleBox[" ", "Input",
+                   FontColor->RGBColor[0, 0, 1]], "Input",
+                  FontColor->RGBColor[0, 0, 1]], "Input",
+                 FontColor->RGBColor[0, 0, 1]], "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], 
+           RowBox[{
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox[
+                StyleBox[
+                 StyleBox[
+                  StyleBox[
+                   StyleBox["m", "Input",
+                    FontColor->RGBColor[0, 0, 1]], "Input",
+                   FontColor->RGBColor[0, 0, 1]], "Input",
+                  FontColor->RGBColor[0, 0, 1]], "Input",
+                 FontColor->RGBColor[0, 0, 1]], "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], 
+            StyleBox["+", "Input",
+             FontColor->RGBColor[0, 0, 1]], 
+            StyleBox[
+             StyleBox[
+              StyleBox["2", "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]]}]}], 
+          StyleBox[
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox[
+                StyleBox[
+                 StyleBox[
+                  StyleBox["]", "Input",
+                   FontColor->RGBColor[0, 0, 1]], "Input",
+                  FontColor->RGBColor[0, 0, 1]], "Input",
+                 FontColor->RGBColor[0, 0, 1]], "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]]}], 
+         StyleBox[
+          StyleBox[
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox["]", "Input",
+                FontColor->RGBColor[0, 0, 1]], "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]]}], 
+        StyleBox[
+         StyleBox[
+          StyleBox[
+           StyleBox[
+            StyleBox[
+             StyleBox[" ", "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]], "Input",
+         FontColor->RGBColor[0, 0, 1]], 
+        StyleBox[
+         StyleBox[
+          StyleBox[
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox["=", "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]], "Input",
+          FontColor->RGBColor[0, 0, 1]], "Input",
+         FontColor->RGBColor[0, 0, 1]], " ", 
+        StyleBox[
+         RowBox[{
+          StyleBox["30", "Input",
+           FontColor->RGBColor[0, 0, 1]], 
+          StyleBox[
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox["0", "Input",
+               FontColor->RGBColor[0, 0, 1]], "Input",
+              FontColor->RGBColor[0, 0, 1]], "Input",
+             FontColor->RGBColor[0, 0, 1]], "Input",
+            FontColor->RGBColor[0, 0, 1]], "Input",
+           FontColor->RGBColor[0, 0, 1]], "."}]]}], "Input",
+       FontColor->RGBColor[0, 0, 1]]}], 
+     StyleBox[";", "Input",
+      FontColor->RGBColor[0, 0, 1]], 
+     StyleBox["\[IndentingNewLine]", "Input",
+      FontColor->RGBColor[0, 0, 1]], 
+     StyleBox[
+      RowBox[{"counter", " ", "=", " ", "0"}], "Input",
+      FontColor->RGBColor[0, 0, 1]], 
+     StyleBox[";", "Input",
+      FontColor->RGBColor[0, 0, 1]], "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"While", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Abs", "[", 
+         RowBox[{
+          RowBox[{"\[Phi]", "[", 
+           RowBox[{"[", 
+            RowBox[{
+             RowBox[{"Ceiling", "[", 
+              FractionBox[
+               RowBox[{"n", "+", "2"}], "2"], "]"}], ",", " ", 
+             RowBox[{"Ceiling", "[", 
+              FractionBox[
+               RowBox[{"m", "+", "2"}], "2"], "]"}]}], "]"}], "]"}], " ", "-",
+           "350."}], "]"}], " ", ">", " ", "0.01"}], ",", " ", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{"updater", "[", 
+           RowBox[{"i", ",", "j", ",", "w"}], "]"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", " ", "2", ",", " ", 
+            RowBox[{"n", "+", "1"}]}], "}"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"j", ",", " ", "2", ",", " ", 
+            RowBox[{"m", "+", "1"}]}], "}"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"counter", " ", "=", " ", 
+         RowBox[{"counter", " ", "+", " ", "1"}]}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"\"\<It takes \>\"", " ", "<>", " ", 
+      RowBox[{"ToString", "[", "counter", "]"}], " ", "<>", " ", 
+      "\"\< iterations\>\""}]}]}], "\[IndentingNewLine]", 
+   "]"}]}], "\n"}], "Input",
+ CellChangeTimes->{{3.726834197851055*^9, 3.726834220346739*^9}, {
+   3.7268343752294407`*^9, 3.7268343765586452`*^9}, {3.7268345520796595`*^9, 
+   3.7268346762659445`*^9}, {3.726834851412364*^9, 3.7268348666962614`*^9}, {
+   3.7268351966163235`*^9, 3.7268352094181347`*^9}, {3.7268352403276553`*^9, 
+   3.726835276824896*^9}, {3.726835327548647*^9, 3.726835354596605*^9}, {
+   3.726835443497465*^9, 3.7268354515832334`*^9}, {3.7268354892510223`*^9, 
+   3.726835491630185*^9}, {3.7268356880788193`*^9, 3.726835691332697*^9}, {
+   3.7268357382669005`*^9, 3.726835739345685*^9}, {3.726835774391302*^9, 
+   3.7268357757684326`*^9}, {3.7268358337965965`*^9, 
+   3.7268358359373207`*^9}, {3.7268358761850767`*^9, 3.726835934548402*^9}, {
+   3.7268365360178347`*^9, 3.7268366752764997`*^9}, {3.7268368367207637`*^9, 
+   3.7268368469406652`*^9}, {3.7268369417067027`*^9, 
+   3.7268369418471794`*^9}, {3.726836987650918*^9, 3.726837015872056*^9}, {
+   3.726837107435423*^9, 3.7268371200366344`*^9}, {3.7268371695597806`*^9, 
+   3.726837169981703*^9}, {3.7268372005386086`*^9, 3.7268373327915363`*^9}, {
+   3.7268373642089396`*^9, 3.7268374619714937`*^9}, {3.726837529451605*^9, 
+   3.7268375311151743`*^9}, {3.7268376540543823`*^9, 3.726837718163022*^9}, {
+   3.7268377637139688`*^9, 3.7268377641983194`*^9}, {3.7268378679411297`*^9, 
+   3.7268379159253497`*^9}, {3.7268380314960346`*^9, 3.72683825456349*^9}, {
+   3.7268383307618403`*^9, 3.726838338491949*^9}, {3.7268384027488832`*^9, 
+   3.7268384483934727`*^9}, {3.7268384998529563`*^9, 3.726838576469107*^9}, {
+   3.726838635014984*^9, 3.7268386607984014`*^9}, 3.7268394774791727`*^9, 
+   3.726839618051655*^9, {3.7268398210366926`*^9, 3.726839849016531*^9}, {
+   3.7268399036680136`*^9, 3.726839903855543*^9}, {3.7268399525995445`*^9, 
+   3.7268399527401967`*^9}, {3.726840002128355*^9, 3.7268400358181252`*^9}, 
+   3.726840166949809*^9, 
+   3.7268402041696267`*^9},ExpressionUUID->"9cf1cdec-21e0-49c2-918f-\
+313557a2a3e4"],
+
+Cell[TextData[StyleBox["     i) N=20, M=20;",
+ FontColor->RGBColor[0, 0, 1]]], "Text",
+ CellChangeTimes->{{3.7268338973786106`*^9, 3.726833910111889*^9}, {
+   3.726834050225602*^9, 3.726834071934146*^9}, {3.726834151684003*^9, 
+   3.7268341945074916`*^9}, 
+   3.7268377739747105`*^9},ExpressionUUID->"4b1524d2-7bec-450c-97b6-\
+f3e6bb7016e5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"laplacer", "[", 
+  RowBox[{"20", ",", "20", ",", "1000", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.726838684924758*^9, 3.7268387110967584`*^9}, {
+  3.7268393071065454`*^9, 3.726839307247411*^9}, {3.72683934322097*^9, 
+  3.7268393733987055`*^9}, {3.7268398879763117`*^9, 3.7268398972262917`*^9}, {
+  3.7268399380462017`*^9, 3.7268399458462625`*^9}, {3.7268399801836815`*^9, 
+  3.7268399935043893`*^9}, {3.726840213081128*^9, 
+  3.7268402133936815`*^9}},ExpressionUUID->"37e3bd29-f341-47c6-8dd9-\
+194aeaab22f8"],
+
+Cell[BoxData["\<\"It takes 516 iterations\"\>"], "Output",
+ CellChangeTimes->{{3.726838689724182*^9, 3.726838712846836*^9}, {
+   3.726839311411145*^9, 3.7268393746327524`*^9}, 3.726839482286293*^9, 
+   3.7268398574289026`*^9, {3.726839889366973*^9, 3.72683989772805*^9}, {
+   3.726839942080062*^9, 3.7268400386933966`*^9}, 3.726840173750471*^9, {
+   3.7268402087497234`*^9, 
+   3.726840215599066*^9}},ExpressionUUID->"dbd740d3-1e70-4a82-b655-\
+034d8ac08f43"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"laplacer", "[", 
+  RowBox[{"20", ",", "20", ",", "1000", ",", " ", "1.05"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7268387157703867`*^9, 3.726838728780135*^9}, {
+  3.72683934796292*^9, 3.7268393481660256`*^9}, {3.726840218021353*^9, 
+  3.726840218396265*^9}},ExpressionUUID->"c5c0f797-d4ca-4f41-8edd-\
+77c73c219ef2"],
+
+Cell[BoxData["\<\"It takes 466 iterations\"\>"], "Output",
+ CellChangeTimes->{3.7268387305792656`*^9, 3.7268393495966964`*^9, 
+  3.726840220539821*^9},ExpressionUUID->"3e0b074e-fa1f-4a2b-852b-\
+0b4f2792d2fe"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["\n     ii) N=10, M=40.",
+ FontColor->RGBColor[0, 0, 1]]], "Text",
+ CellChangeTimes->{{3.7268338973786106`*^9, 3.726833910111889*^9}, {
+   3.726834050225602*^9, 3.726834071934146*^9}, {3.726834151684003*^9, 
+   3.7268341945074916`*^9}, 
+   3.726838741141139*^9},ExpressionUUID->"4e9e38d4-34c0-4d68-8988-\
+557c9de27039"],
+
+Cell[BoxData[
+ RowBox[{"laplacer", "[", 
+  RowBox[{"10", ",", "40", ",", "360", ",", "1.05"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7268387433133354`*^9, 3.7268387552774487`*^9}, {
+  3.7268394880738044`*^9, 
+  3.7268394964057007`*^9}},ExpressionUUID->"a868bc9e-776b-4c0a-a0ef-\
+a754fb46b62c"],
+
+Cell[TextData[{
+ StyleBox["\n     In each case find out how many iterations are required for \
+the process to converge to 0.01K (which suggests that ",
   FontColor->RGBColor[0, 0, 1]],
  StyleBox["NestWhile",
   FontFamily->"Courier New",
@@ -128,7 +1053,11 @@ out how many iterations are required for the process to converge to 0.01K \
  StyleBox[" might be useful), \n      a) with no over-relaxation (w=1)\n      \
 b) with the over-relaxation factor set to 1.05.",
   FontColor->RGBColor[0, 0, 1]]
-}], "Text"],
+}], "Text",
+ CellChangeTimes->{{3.7268338973786106`*^9, 3.726833910111889*^9}, {
+  3.726834050225602*^9, 3.726834071934146*^9}, {3.726834151684003*^9, 
+  3.7268341945074916`*^9}},ExpressionUUID->"3cb991ee-5887-40b3-a82b-\
+3cff934808d3"],
 
 Cell[TextData[{
  StyleBox["2.",
@@ -145,7 +1074,7 @@ Consider the following ",
   FontColor->RGBColor[0, 0, 1]],
  StyleBox["-\[Theta] mesh:",
   FontColor->RGBColor[0, 0, 1]]
-}], "Text"],
+}], "Text",ExpressionUUID->"c4954868-e5b5-4445-95d7-3fe3c54e4171"],
 
 Cell[CellGroupData[{
 
@@ -219,7 +1148,9 @@ Cell[BoxData[
     "]"}], ",", 
    RowBox[{"AspectRatio", "\[Rule]", "Automatic"}]}], "]"}]], "Input",
  CellOpen->False,
- CellChangeTimes->{3.4431821975369997`*^9}],
+ CellChangeTimes->{
+  3.4431821975369997`*^9},ExpressionUUID->"a835659f-7651-4572-a1e1-\
+46a68235e69c"],
 
 Cell[BoxData[
  GraphicsBox[{LineBox[{{0, 0}, {1, 0}}], InsetBox[
@@ -231,14 +1162,14 @@ Cell[BoxData[
       0.8660254037844386, 0.5}}]], InsetBox[
     InterpretationBox["\<\"j=\\!\\(TraditionalForm\\`1\\)\"\>",
      StringForm["j=``", 1],
-     Editable->False], {1.0392304845413263`, 0.6}], 
+     Editable->False], {1.0392304845413263, 0.6}], 
    LineBox[NCache[{{0, 0}, {
       Rational[1, 2], Rational[1, 2] 3^Rational[1, 2]}}, {{0, 0}, {0.5, 
       0.8660254037844386}}]], InsetBox[
     InterpretationBox["\<\"j=\\!\\(TraditionalForm\\`2\\)\"\>",
      StringForm["j=``", 2],
-     Editable->False], {0.6, 1.0392304845413263`}], LineBox[{{0, 0}, {0, 1}}],
-    InsetBox[
+     Editable->False], {0.6, 1.0392304845413263}], LineBox[{{0, 0}, {0, 1}}], 
+   InsetBox[
     InterpretationBox["\<\"j=\\!\\(TraditionalForm\\`3\\)\"\>",
      StringForm["j=``", 3],
      Editable->False], {0, 1.2}], 
@@ -247,13 +1178,13 @@ Cell[BoxData[
       0.8660254037844386}}]], InsetBox[
     InterpretationBox["\<\"j=\\!\\(TraditionalForm\\`4\\)\"\>",
      StringForm["j=``", 4],
-     Editable->False], {-0.6, 1.0392304845413263`}], 
+     Editable->False], {-0.6, 1.0392304845413263}], 
    LineBox[NCache[{{0, 0}, {
       Rational[-1, 2] 3^Rational[1, 2], Rational[1, 2]}}, {{0, 
       0}, {-0.8660254037844386, 0.5}}]], InsetBox[
     InterpretationBox["\<\"j=\\!\\(TraditionalForm\\`5\\)\"\>",
      StringForm["j=``", 5],
-     Editable->False], {-1.0392304845413263`, 0.6}], 
+     Editable->False], {-1.0392304845413263, 0.6}], 
    LineBox[{{0, 0}, {-1, 0}}], InsetBox[
     InterpretationBox["\<\"j=\\!\\(TraditionalForm\\`6\\)\"\>",
      StringForm["j=``", 6],
@@ -263,13 +1194,13 @@ Cell[BoxData[
       0}, {-0.8660254037844386, -0.5}}]], InsetBox[
     InterpretationBox["\<\"j=\\!\\(TraditionalForm\\`7\\)\"\>",
      StringForm["j=``", 7],
-     Editable->False], {-1.0392304845413263`, -0.6}], 
+     Editable->False], {-1.0392304845413263, -0.6}], 
    LineBox[
     NCache[{{0, 0}, {Rational[-1, 2], Rational[-1, 2] 3^Rational[1, 2]}}, {{0,
        0}, {-0.5, -0.8660254037844386}}]], InsetBox[
     InterpretationBox["\<\"j=\\!\\(TraditionalForm\\`8\\)\"\>",
      StringForm["j=``", 8],
-     Editable->False], {-0.6, -1.0392304845413263`}], 
+     Editable->False], {-0.6, -1.0392304845413263}], 
    LineBox[{{0, 0}, {0, -1}}], InsetBox[
     InterpretationBox["\<\"j=\\!\\(TraditionalForm\\`9\\)\"\>",
      StringForm["j=``", 9],
@@ -279,13 +1210,13 @@ Cell[BoxData[
       0.5, -0.8660254037844386}}]], InsetBox[
     InterpretationBox["\<\"j=\\!\\(TraditionalForm\\`10\\)\"\>",
      StringForm["j=``", 10],
-     Editable->False], {0.6, -1.0392304845413263`}], 
+     Editable->False], {0.6, -1.0392304845413263}], 
    LineBox[NCache[{{0, 0}, {
       Rational[1, 2] 3^Rational[1, 2], Rational[-1, 2]}}, {{0, 0}, {
       0.8660254037844386, -0.5}}]], InsetBox[
     InterpretationBox["\<\"j=\\!\\(TraditionalForm\\`11\\)\"\>",
      StringForm["j=``", 11],
-     Editable->False], {1.0392304845413263`, -0.6}], CircleBox[{0, 0}, 0.25], 
+     Editable->False], {1.0392304845413263, -0.6}], CircleBox[{0, 0}, 0.25], 
    InsetBox[
     InterpretationBox["\<\"i=\\!\\(TraditionalForm\\`1\\)\"\>",
      StringForm["i=``", 1],
@@ -293,17 +1224,18 @@ Cell[BoxData[
    CircleBox[{0, 0}, 0.5], InsetBox[
     InterpretationBox["\<\"i=\\!\\(TraditionalForm\\`2\\)\"\>",
      StringForm["i=``", 2],
-     Editable->False], {-0.15529142706151225`, 0.579555495773441}], 
+     Editable->False], {-0.15529142706151225, 0.579555495773441}], 
    CircleBox[{0, 0}, 0.75], InsetBox[
     InterpretationBox["\<\"i=\\!\\(TraditionalForm\\`3\\)\"\>",
      StringForm["i=``", 3],
-     Editable->False], {-0.23293714059226833`, 0.8693332436601615}], 
+     Editable->False], {-0.23293714059226833, 0.8693332436601615}], 
    CircleBox[{0, 0}], InsetBox[
     InterpretationBox["\<\"i=\\!\\(TraditionalForm\\`4\\)\"\>",
      StringForm["i=``", 4],
      Editable->False], {-0.3105828541230245, 1.159110991546882}]},
   AspectRatio->Automatic]], "Output",
- CellChangeTimes->{3.443182201148*^9}]
+ CellChangeTimes->{
+  3.443182201148*^9},ExpressionUUID->"bbfb97a5-c22d-4aa9-a077-e4393aba7b17"]
 }, Open  ]],
 
 Cell[TextData[{
@@ -332,7 +1264,8 @@ polar coordinates we can write\n (1) ",
          SuperscriptBox["\[PartialD]", "2"], 
          RowBox[{"\[PartialD]", 
           SuperscriptBox["\[Theta]", "2"]}]]}]}]}]}],
-    FontColor->RGBColor[0, 0, 1]], TraditionalForm]]],
+    FontColor->RGBColor[0, 0, 1]], TraditionalForm]],ExpressionUUID->
+  "c6e7d5cf-8b43-40ae-b99f-cc8d782a269a"],
  "\n ",
  StyleBox["or\n (2) ",
   FontColor->RGBColor[0, 0, 1]],
@@ -357,7 +1290,8 @@ polar coordinates we can write\n (1) ",
         SuperscriptBox["\[PartialD]", "2"], 
         RowBox[{"\[PartialD]", 
          SuperscriptBox["\[Theta]", "2"]}]]}]}]}]}], TraditionalForm]],
-  FontColor->RGBColor[0, 0, 1]],
+  FontColor->RGBColor[0, 0, 1],ExpressionUUID->
+  "7b2f99b6-7198-439e-b23b-9e6191e5c418"],
  StyleBox[".",
   FontColor->RGBColor[0, 0, 1]],
  StyleBox["\n  Express both (1) and (2) in finite difference form for a \
@@ -374,14 +1308,16 @@ points, so ",
   FormBox[
    RowBox[{
     SubscriptBox["\[Theta]", "1"], "=", " ", "500"}], TraditionalForm]],
-  FontColor->RGBColor[0, 0, 1]],
+  FontColor->RGBColor[0, 0, 1],ExpressionUUID->
+  "76da8ab0-4077-410e-86f4-b661527c5676"],
  StyleBox[" and ",
   FontColor->RGBColor[0, 0, 1]],
  Cell[BoxData[
   FormBox[
    RowBox[{
     SubscriptBox["\[Theta]", "11"], "=", "300."}], TraditionalForm]],
-  FontColor->RGBColor[0, 0, 1]],
+  FontColor->RGBColor[0, 0, 1],ExpressionUUID->
+  "a8289e49-4228-492d-87e3-b11513cb250a"],
  StyleBox[" Note that we have reduced the problem to a one-dimensional one, \
 in ",
   FontColor->RGBColor[0, 0, 1]],
@@ -411,21 +1347,20 @@ Compare your results with the exact solution, \[Theta](",
   FontColor->RGBColor[0, 0, 1]],
  StyleBox[".",
   FontColor->RGBColor[0, 0, 1]]
-}], "Text"],
+}], "Text",ExpressionUUID->"9dd8ed4f-3f15-4698-89e9-8b088ee3e516"],
 
 Cell["\<\
 A.H. Harker
 Physics and Astronomy, UCL
 September 2005\
-\>", "Text"]
+\>", "Text",ExpressionUUID->"668724c5-f8f4-4361-8a30-2635228fce90"]
 },
-WindowSize->{1196, 776},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowSize->{958, 988},
+WindowMargins->{{-7, Automatic}, {Automatic, 0}},
 PrintingCopies->1,
 PrintingPageRange->{Automatic, Automatic},
 ShowSelection->True,
-Magnification->2,
-FrontEndVersion->"6.0 for Microsoft Windows (32-bit) (May 21, 2008)",
+FrontEndVersion->"11.1 for Microsoft Windows (64-bit) (March 13, 2017)",
 StyleDefinitions->Notebook[{
    Cell[
     CellGroupData[{
@@ -702,8 +1637,7 @@ Notebook level.", "Text"],
                     BoxMargins -> {{-0.175, 0}, {0, 0}}]}], TextForm], 
                Inherited}, LineSpacing -> {1, 7}, CounterIncrements -> 
              "Subsection", CounterAssignments -> {{"Subsubsection", 0}}, 
-             FontFamily -> "Helvetica", FontSize -> 18, FontWeight -> "Bold"],
-             
+             FontFamily -> "Helvetica", FontSize -> 18, FontWeight -> "Bold"], 
             Cell[
              StyleData["Subsection", "Presentation"], 
              CellMargins -> {{15, 10}, {12, 32}}, LineSpacing -> {1, 0}, 
@@ -974,8 +1908,7 @@ names.", "Text"],
             Cell[
              StyleData["InlineInput", "Condensed"]], 
             Cell[
-             StyleData["InlineInput", "Printout"], FontSize -> 10]}, Closed]],
-          
+             StyleData["InlineInput", "Printout"], FontSize -> 10]}, Closed]], 
          Cell[
           CellGroupData[{
             Cell[
@@ -1393,8 +2326,7 @@ a particular counter, and also increment that counter.", "Text"],
           FontSlant -> "Italic"], 
          Cell[
           StyleData["Footer"], CellMargins -> {{0, 0}, {0, 4}}, 
-          StyleMenuListing -> None, FontFamily -> "Helvetica", FontSize -> 6],
-          
+          StyleMenuListing -> None, FontFamily -> "Helvetica", FontSize -> 6], 
          Cell[
           StyleData["PageNumber"], CellMargins -> {{0, 0}, {4, 1}}, 
           StyleMenuListing -> None, FontFamily -> "Helvetica", FontSize -> 9, 
@@ -1413,7 +2345,7 @@ or between Notebooks.", "Text"],
              ButtonStyleMenuListing -> Automatic, FontColor -> 
              RGBColor[0.269993, 0.308507, 0.6], 
              ButtonBoxOptions -> {
-              Active -> True, ButtonFrame -> "None", 
+              Active -> True, Appearance -> {Automatic, None}, 
                ButtonFunction :> (FrontEndExecute[{
                   FrontEnd`NotebookLocate[#2]}]& ), ButtonNote -> 
                ButtonData}], 
@@ -1437,7 +2369,7 @@ help system.", "Text"],
              ButtonStyleMenuListing -> Automatic, FontColor -> 
              RGBColor[0.269993, 0.308507, 0.6], 
              ButtonBoxOptions -> {
-              Active -> True, ButtonFrame -> "None", 
+              Active -> True, Appearance -> {Automatic, None}, 
                ButtonFunction :> (FrontEndExecute[{
                   FrontEnd`HelpBrowserLookup["MainBook", #]}]& )}], 
             Cell[
@@ -1457,7 +2389,7 @@ help system.", "Text"],
              ButtonStyleMenuListing -> Automatic, FontFamily -> "Courier", 
              FontColor -> RGBColor[0.269993, 0.308507, 0.6], 
              ButtonBoxOptions -> {
-              Active -> True, ButtonFrame -> "None", 
+              Active -> True, Appearance -> {Automatic, None}, 
                ButtonFunction :> (FrontEndExecute[{
                   FrontEnd`HelpBrowserLookup["AddOns", #]}]& )}], 
             Cell[
@@ -1477,7 +2409,7 @@ help system.", "Text"],
              ButtonStyleMenuListing -> Automatic, FontFamily -> "Courier", 
              FontColor -> RGBColor[0.269993, 0.308507, 0.6], 
              ButtonBoxOptions -> {
-              Active -> True, ButtonFrame -> "None", 
+              Active -> True, Appearance -> {Automatic, None}, 
                ButtonFunction :> (FrontEndExecute[{
                   FrontEnd`HelpBrowserLookup["RefGuide", #]}]& )}], 
             Cell[
@@ -1497,7 +2429,7 @@ help system.", "Text"],
              ButtonStyleMenuListing -> Automatic, FontColor -> 
              RGBColor[0.269993, 0.308507, 0.6], 
              ButtonBoxOptions -> {
-              Active -> True, ButtonFrame -> "None", 
+              Active -> True, Appearance -> {Automatic, None}, 
                ButtonFunction :> (FrontEndExecute[{
                   FrontEnd`HelpBrowserLookup["RefGuide", #]}]& )}], 
             Cell[
@@ -1517,12 +2449,11 @@ help system.", "Text"],
              ButtonStyleMenuListing -> Automatic, FontColor -> 
              RGBColor[0.269993, 0.308507, 0.6], 
              ButtonBoxOptions -> {
-              Active -> True, ButtonFrame -> "None", 
+              Active -> True, Appearance -> {Automatic, None}, 
                ButtonFunction :> (FrontEndExecute[{
                   FrontEnd`HelpBrowserLookup["GettingStarted", #]}]& )}], 
             Cell[
-             StyleData["GettingStartedLink", "Presentation"], FontSize -> 16],
-             
+             StyleData["GettingStartedLink", "Presentation"], FontSize -> 16], 
             Cell[
              StyleData["GettingStartedLink", "Condensed"], FontSize -> 11], 
             Cell[
@@ -1538,7 +2469,7 @@ help system.", "Text"],
              ButtonStyleMenuListing -> Automatic, FontColor -> 
              RGBColor[0.269993, 0.308507, 0.6], 
              ButtonBoxOptions -> {
-              Active -> True, ButtonFrame -> "None", 
+              Active -> True, Appearance -> {Automatic, None}, 
                ButtonFunction :> (FrontEndExecute[{
                   FrontEnd`HelpBrowserLookup["Demos", #]}]& )}], 
             Cell[
@@ -1554,7 +2485,7 @@ help system.", "Text"],
              ButtonStyleMenuListing -> Automatic, FontColor -> 
              RGBColor[0.269993, 0.308507, 0.6], 
              ButtonBoxOptions -> {
-              Active -> True, ButtonFrame -> "None", 
+              Active -> True, Appearance -> {Automatic, None}, 
                ButtonFunction :> (FrontEndExecute[{
                   FrontEnd`HelpBrowserLookup["Tour", #]}]& )}], 
             Cell[
@@ -1570,7 +2501,7 @@ help system.", "Text"],
              ButtonStyleMenuListing -> Automatic, FontColor -> 
              RGBColor[0.269993, 0.308507, 0.6], 
              ButtonBoxOptions -> {
-              Active -> True, ButtonFrame -> "None", 
+              Active -> True, Appearance -> {Automatic, None}, 
                ButtonFunction :> (FrontEndExecute[{
                   FrontEnd`HelpBrowserLookup["OtherInformation", #]}]& )}], 
             Cell[
@@ -1578,7 +2509,6 @@ help system.", "Text"],
              16], 
             Cell[
              StyleData["OtherInformationLink", "Condensed"], FontSize -> 11], 
-            
             Cell[
              StyleData["OtherInformationLink", "SlideShow"]], 
             Cell[
@@ -1592,7 +2522,7 @@ help system.", "Text"],
              ButtonStyleMenuListing -> Automatic, FontColor -> 
              RGBColor[0.269993, 0.308507, 0.6], 
              ButtonBoxOptions -> {
-              Active -> True, ButtonFrame -> "None", 
+              Active -> True, Appearance -> {Automatic, None}, 
                ButtonFunction :> (FrontEndExecute[{
                   FrontEnd`HelpBrowserLookup["MasterIndex", #]}]& )}], 
             Cell[
@@ -1793,7 +2723,7 @@ for use in palette buttons.", "Text"],
             Cell[
              StyleData["SlideTOC", "Printout"], FontSize -> 10, FontColor -> 
              GrayLevel[0]]}, Closed]]}, Closed]]}, Open]]}, Visible -> False, 
-  FrontEndVersion -> "6.0 for Microsoft Windows (32-bit) (May 21, 2008)", 
+  FrontEndVersion -> "11.1 for Microsoft Windows (64-bit) (March 13, 2017)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -1807,19 +2737,50 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[568, 21, 104, 3, 304, "Title"],
-Cell[675, 26, 3852, 104, 695, "Text"],
-Cell[4530, 132, 649, 15, 203, "Text"],
+Cell[545, 20, 159, 3, 105, "Title", "ExpressionUUID" -> \
+"f806a685-75e3-4606-bf05-08e7a6f7df7b"],
+Cell[707, 25, 3597, 100, 206, "Text", "ExpressionUUID" -> \
+"79bf8602-629f-4180-9d75-562bfb03bffd"],
+Cell[4307, 127, 130, 3, 46, "Input", "ExpressionUUID" -> \
+"7265aca3-cf03-4b55-a27f-b703c392b3ae"],
+Cell[4440, 132, 1737, 45, 65, "Input", "ExpressionUUID" -> \
+"263fbcdd-dd3b-4258-a025-79934e4a719b"],
+Cell[6180, 179, 30621, 801, 465, "Input", "ExpressionUUID" -> \
+"9cf1cdec-21e0-49c2-918f-313557a2a3e4"],
+Cell[36804, 982, 341, 6, 25, "Text", "ExpressionUUID" -> \
+"4b1524d2-7bec-450c-97b6-f3e6bb7016e5"],
 Cell[CellGroupData[{
-Cell[5204, 151, 2565, 70, 38, "Input",
- CellOpen->False],
-Cell[7772, 223, 3883, 82, 799, "Output"]
+Cell[37170, 992, 542, 9, 46, "Input", "ExpressionUUID" -> \
+"37e3bd29-f341-47c6-8dd9-194aeaab22f8"],
+Cell[37715, 1003, 458, 7, 46, "Output", "ExpressionUUID" -> \
+"dbd740d3-1e70-4a82-b655-034d8ac08f43"]
 }, Open  ]],
-Cell[11670, 308, 3419, 105, 467, "Text"],
-Cell[15092, 415, 77, 4, 137, "Text"]
+Cell[CellGroupData[{
+Cell[38210, 1015, 341, 6, 46, "Input", "ExpressionUUID" -> \
+"c5c0f797-d4ca-4f41-8edd-77c73c219ef2"],
+Cell[38554, 1023, 208, 3, 46, "Output", "ExpressionUUID" -> \
+"3e0b074e-fa1f-4a2b-852b-0b4f2792d2fe"]
+}, Open  ]],
+Cell[38777, 1029, 342, 6, 55, "Text", "ExpressionUUID" -> \
+"4e9e38d4-34c0-4d68-8988-557c9de27039"],
+Cell[39122, 1037, 294, 6, 46, "Input", "ExpressionUUID" -> \
+"a868bc9e-776b-4c0a-a0ef-a754fb46b62c"],
+Cell[39419, 1045, 668, 14, 115, "Text", "ExpressionUUID" -> \
+"3cb991ee-5887-40b3-a82b-3cff934808d3"],
+Cell[40090, 1061, 704, 15, 103, "Text", "ExpressionUUID" -> \
+"c4954868-e5b5-4445-95d7-3fe3c54e4171"],
+Cell[CellGroupData[{
+Cell[40819, 1080, 2625, 72, 19, "Input", "ExpressionUUID" -> \
+"a835659f-7651-4572-a1e1-46a68235e69c",
+ CellOpen->False],
+Cell[43447, 1154, 3931, 83, 385, "Output", "ExpressionUUID" -> \
+"bbfb97a5-c22d-4aa9-a077-e4393aba7b17"]
+}, Open  ]],
+Cell[47393, 1240, 3706, 109, 257, "Text", "ExpressionUUID" -> \
+"9dd8ed4f-3f15-4698-89e9-8b088ee3e516"],
+Cell[51102, 1351, 132, 4, 85, "Text", "ExpressionUUID" -> \
+"668724c5-f8f4-4361-8a30-2635228fce90"]
 }
 ]
 *)
-
-(* End of internal cache information *)
 
